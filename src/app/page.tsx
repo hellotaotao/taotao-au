@@ -80,6 +80,21 @@ const heroMetrics = [
   },
 ];
 
+const motionSignals = [
+  {
+    label: "Pulse",
+    value: "Useful AI",
+  },
+  {
+    label: "Priority",
+    value: "Fast trial",
+  },
+  {
+    label: "Bias",
+    value: "Clean UX",
+  },
+];
+
 const focusAreas = [
   "Practical AI products",
   "Education",
@@ -149,9 +164,29 @@ export default function Home() {
                   Get in touch
                 </a>
               </div>
+
+              <div
+                className="motion-rail reveal"
+                style={buildStyle("0.24s")}
+                role="group"
+                aria-label="Current build signals"
+              >
+                <span className="motion-rail-track" aria-hidden="true" />
+                {motionSignals.map((signal, index) => (
+                  <div
+                    key={signal.label}
+                    className="motion-chip"
+                    style={buildStyle(`${0.3 + index * 0.08}s`)}
+                  >
+                    <span className="motion-chip-label">{signal.label}</span>
+                    <span className="motion-chip-value">{signal.value}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <aside className="spotlight-card reveal" style={buildStyle("0.2s")}>
+              <div className="spotlight-sheen" aria-hidden="true" />
               <p className="section-label">Right now</p>
               <p className="spotlight-title">
                 Shipping small, useful products with AI where it actually helps.
@@ -212,6 +247,7 @@ export default function Home() {
                 className="project-card reveal"
                 style={buildStyle(`${0.24 + index * 0.08}s`, project.accent)}
               >
+                <span className="project-glow-ring" aria-hidden="true" />
                 <div className="project-meta">
                   <span className="project-index">
                     {String(index + 1).padStart(2, "0")}

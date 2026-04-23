@@ -32,6 +32,11 @@ describe("Home page", () => {
       "href",
       "#contact",
     );
+
+    expect(
+      screen.getByRole("group", { name: /Current build signals/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/Fast trial/i)).toBeInTheDocument();
   });
 
   it("renders the current projects section with the full project set", () => {

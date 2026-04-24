@@ -78,7 +78,7 @@ a:focus-visible {
 }
 
 .site-background {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 0;
   overflow: hidden;
@@ -97,9 +97,8 @@ a:focus-visible {
     linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   background-size: var(--grid-size) var(--grid-size);
-  opacity: 0.26;
+  opacity: 0.18;
   mask-image: radial-gradient(circle at 50% 28%, black 30%, transparent 82%);
-  animation: grid-drift 24s linear infinite;
 }
 
 .bg-beam {
@@ -120,15 +119,14 @@ a:focus-visible {
       rgba(255, 132, 206, 0.14) 340deg,
       transparent 360deg
     );
-  filter: blur(110px);
-  opacity: 0.54;
-  animation: beam-spin 30s linear infinite;
+  filter: blur(72px);
+  opacity: 0.28;
 }
 
 .bg-orb {
   border-radius: 999px;
-  filter: blur(90px);
-  mix-blend-mode: screen;
+  filter: blur(56px);
+  opacity: 0.6;
 }
 
 .orb-one {
@@ -137,7 +135,6 @@ a:focus-visible {
   width: 34rem;
   height: 34rem;
   background: rgba(70, 132, 255, 0.28);
-  animation: float-one 16s ease-in-out infinite;
 }
 
 .orb-two {
@@ -146,7 +143,6 @@ a:focus-visible {
   width: 28rem;
   height: 28rem;
   background: rgba(255, 179, 106, 0.22);
-  animation: float-two 21s ease-in-out infinite;
 }
 
 .orb-three {
@@ -155,7 +151,6 @@ a:focus-visible {
   width: 30rem;
   height: 30rem;
   background: var(--accent-green);
-  animation: float-three 18s ease-in-out infinite;
 }
 
 .page-frame {
@@ -176,7 +171,6 @@ a:focus-visible {
   border-radius: var(--radius-panel);
   background: linear-gradient(180deg, var(--surface-strong), var(--surface));
   box-shadow: var(--shadow-panel);
-  backdrop-filter: blur(20px);
 }
 
 .panel::before {
@@ -215,10 +209,8 @@ a:focus-visible {
     rgba(255, 255, 255, 0.015) 55%,
     transparent 68%
   );
-  opacity: 0;
-  transform: translate3d(-42%, 0, 0) rotate(-5deg);
-  animation: hero-sheen 24s linear infinite;
-  animation-delay: calc(var(--delay, 0s) + 1.2s);
+  opacity: 0.08;
+  transform: translate3d(-12%, 0, 0) rotate(-5deg);
 }
 
 .hero-layout {
@@ -344,8 +336,7 @@ a:focus-visible {
   padding: 0.68rem 0.9rem;
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 999px;
-  background: rgba(9, 17, 29, 0.6);
-  backdrop-filter: blur(10px);
+  background: rgba(9, 17, 29, 0.72);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
   overflow: hidden;
   transition:
@@ -366,9 +357,8 @@ a:focus-visible {
     rgba(255, 255, 255, 0.02) 65%,
     transparent 100%
   );
+  opacity: 0;
   transform: translateX(-130%);
-  animation: chip-sheen 8.5s linear infinite;
-  animation-delay: calc(var(--delay, 0s) + 0.9s);
   pointer-events: none;
 }
 
@@ -482,10 +472,8 @@ a:focus-visible {
     rgba(255, 255, 255, 0)
   );
   transform: rotate(10deg);
-  opacity: 0.4;
-  filter: blur(8px);
-  animation: sheen-drift 12s var(--ease-out) infinite;
-  animation-delay: calc(var(--delay, 0s) + 0.8s);
+  opacity: 0.2;
+  filter: blur(6px);
   transition:
     opacity 0.35s ease,
     transform 0.55s var(--ease-out);
@@ -566,8 +554,6 @@ a:focus-visible {
   );
   opacity: 0;
   transform: translate3d(-145%, 0, 0);
-  animation: surface-sheen 18s linear infinite;
-  animation-delay: calc(var(--delay, 0s) + 1.15s);
   z-index: 0;
   pointer-events: none;
 }
@@ -645,9 +631,7 @@ a:focus-visible {
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.09);
   background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 68%);
-  opacity: 0.38;
-  animation: ring-pulse 9s ease-in-out infinite;
-  animation-delay: calc(var(--delay, 0s) + 0.7s);
+  opacity: 0.28;
   transition:
     opacity 0.35s ease,
     transform 0.45s var(--ease-out);
@@ -661,10 +645,8 @@ a:focus-visible {
   inset: auto -12% 52% 40%;
   height: 10rem;
   background: radial-gradient(circle, var(--card-accent) 0%, transparent 72%);
-  filter: blur(24px);
-  opacity: 0.92;
-  animation: accent-pulse 13s ease-in-out infinite;
-  animation-delay: calc(var(--delay, 0s) + 0.8s);
+  filter: blur(16px);
+  opacity: 0.42;
   z-index: 0;
   pointer-events: none;
 }
@@ -778,9 +760,7 @@ a:focus-visible {
   height: 0.42rem;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-  box-shadow: 0 0 18px rgba(157, 214, 255, 0.45);
-  animation: dot-pulse 4.8s ease-in-out infinite;
-  animation-delay: calc(var(--delay, 0s) + 0.9s);
+  box-shadow: 0 0 10px rgba(157, 214, 255, 0.28);
 }
 
 .contact-header {

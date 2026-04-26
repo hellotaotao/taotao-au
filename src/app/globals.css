@@ -119,14 +119,12 @@ a:focus-visible {
       rgba(255, 132, 206, 0.14) 340deg,
       transparent 360deg
     );
-  filter: blur(72px);
-  opacity: 0.28;
+  opacity: 0.18;
 }
 
 .bg-orb {
   border-radius: 999px;
-  filter: blur(56px);
-  opacity: 0.6;
+  opacity: 0.2;
 }
 
 .orb-one {
@@ -472,8 +470,7 @@ a:focus-visible {
     rgba(255, 255, 255, 0)
   );
   transform: rotate(10deg);
-  opacity: 0.2;
-  filter: blur(6px);
+  opacity: 0.18;
   transition:
     opacity 0.35s ease,
     transform 0.55s var(--ease-out);
@@ -644,9 +641,8 @@ a:focus-visible {
   position: absolute;
   inset: auto -12% 52% 40%;
   height: 10rem;
-  background: radial-gradient(circle, var(--card-accent) 0%, transparent 72%);
-  filter: blur(16px);
-  opacity: 0.42;
+  background: radial-gradient(circle, var(--card-accent) 0%, transparent 74%);
+  opacity: 0.24;
   z-index: 0;
   pointer-events: none;
 }

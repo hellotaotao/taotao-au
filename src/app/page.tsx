@@ -3,35 +3,43 @@ import type { CSSProperties } from "react";
 const projectCards = [
   {
     name: "Mentii",
-    href: "https://menti.taotao.au",
-    status: "Live on Vercel",
+    href: "https://menti.taotao.au/",
+    status: "Live website",
     accent: "rgba(120, 189, 255, 0.5)",
     description:
       "A lightweight audience interaction tool for live sessions, voting, and host-controlled experiences.",
   },
   {
-    name: "BetterSchool",
-    href: "https://betterschool.au",
-    status: "Live on Vercel",
+    name: "BetterSchool.au",
+    href: "https://betterschool.au/",
+    status: "Live website",
     accent: "rgba(255, 190, 126, 0.48)",
     description:
       "A school discovery product focused on helping families compare options with map-led exploration.",
   },
   {
-    name: "WhispLine",
-    href: "https://github.com/hellotaotao/WhispLine",
-    status: "Active build",
-    accent: "rgba(160, 255, 214, 0.42)",
-    description:
-      "Voice-first productivity tooling aimed at making accurate dictation and input feel effortless.",
-  },
-  {
     name: "Voicely",
-    href: "https://github.com/hellotaotao/Voicely",
-    status: "Active build",
+    href: "https://voicely.taotao.au/",
+    status: "Live website",
     accent: "rgba(230, 171, 255, 0.42)",
     description:
-      "A macOS-native voice product exploring faster capture, cleaner workflows, and practical AI assistance.",
+      "A privacy-first iOS voice notes and transcription product with a dedicated public website.",
+  },
+  {
+    name: "Energy Plan Lens",
+    href: "https://energy.taotao.au/",
+    status: "Live website",
+    accent: "rgba(160, 255, 214, 0.42)",
+    description:
+      "A practical energy comparison lens for making electricity plan details easier to inspect and understand.",
+  },
+  {
+    name: "WhispLine / SayType",
+    href: "https://github.com/hellotaotao/WhispLine",
+    status: "Active build",
+    accent: "rgba(255, 223, 132, 0.42)",
+    description:
+      "Voice-first productivity tooling still in active development before a deployed public website.",
   },
 ];
 
@@ -68,7 +76,7 @@ const spotlightStats = [
 const heroMetrics = [
   {
     label: "Current home",
-    value: "taotao.au is becoming the main hub for products, experiments, and updates.",
+    value: "taotao.au is the main hub for live products, active builds, and updates.",
   },
   {
     label: "Build style",
@@ -103,9 +111,9 @@ const focusAreas = [
 ];
 
 const nowItems = [
-  "Turning taotao.au into the main home for current work.",
-  "Improving live products like Mentii and BetterSchool.",
-  "Exploring voice-first tools such as WhispLine and Voicely.",
+  "Keeping taotao.au current with live public project websites.",
+  "Improving live products like Mentii, BetterSchool.au, Voicely, and Energy Plan Lens.",
+  "Building WhispLine / SayType before it has a deployed public website.",
 ];
 
 function buildStyle(delay: string, accent?: string): CSSProperties {
@@ -235,8 +243,8 @@ export default function Home() {
               </h2>
             </div>
             <p className="section-intro">
-              A selection of the products and experiments I am actively pushing
-              forward right now.
+              Live project websites first, followed by active builds that are
+              still moving toward a public launch.
             </p>
           </div>
 

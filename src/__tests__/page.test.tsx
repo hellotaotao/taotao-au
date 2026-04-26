@@ -55,43 +55,79 @@ describe("Home page", () => {
 
     expect(
       within(projects).getByText(
-        /A selection of the products and experiments I am actively pushing forward right now/i,
+        /Live project websites first, followed by active builds that are still moving toward a public launch/i,
       ),
     ).toBeInTheDocument();
 
+    expect(within(projects).getAllByRole("link")).toHaveLength(5);
+
     expect(within(projects).getByRole("link", { name: /Mentii/i })).toHaveAttribute(
       "href",
-      "https://menti.taotao.au",
+      "https://menti.taotao.au/",
     );
 
     expect(
-      within(projects).getByRole("link", { name: /BetterSchool/i }),
-    ).toHaveAttribute("href", "https://betterschool.au");
+      within(projects).getByRole("link", { name: /BetterSchool.au/i }),
+    ).toHaveAttribute("href", "https://betterschool.au/");
 
-    expect(
-      within(projects).getByRole("link", { name: /WhispLine/i }),
-    ).toHaveAttribute("href", "https://github.com/hellotaotao/WhispLine");
-
-    expect(within(projects).getByRole("link", { name: /Voicely/i })).toHaveAttribute(
+    const voicelyLink = within(projects).getByRole("link", { name: /Voicely/i });
+    expect(voicelyLink).toHaveAttribute("href", "https://voicely.taotao.au/");
+    expect(voicelyLink).not.toHaveAttribute(
       "href",
       "https://github.com/hellotaotao/Voicely",
     );
+
+    expect(
+      within(projects).getByRole("link", { name: /Energy Plan Lens/i }),
+    ).toHaveAttribute("href", "https://energy.taotao.au/");
+
+    expect(
+      within(projects).getByRole("link", { name: /WhispLine \/ SayType/i }),
+    ).toHaveAttribute("href", "https://github.com/hellotaotao/WhispLine");
+
+    expect(
+      within(projects).queryByRole("link", { name: /Field Proof/i }),
+    ).not.toBeInTheDocument();
+    expect(
+      within(projects).queryByRole("link", { name: /AI Ops Canvas/i }),
+    ).not.toBeInTheDocument();
+    expect(
+      within(projects).queryByRole("link", { name: /Social Deduction Host/i }),
+    ).not.toBeInTheDocument();
   });
 
-  it("renders about, now, and contact sections as named regions", () => {
+  it("keeps the now section aligned with current public project sites", () => {
+    render(<Home />);
+
+    const now = screen.getByRole("region", { name: /^Now$/i });
+
+    expect(
+      within(now).getByText(
+        /Keeping taotao.au current with live public project websites/i,
+      ),
+    ).toBeInTheDocument();
+
+    expect(
+      within(now).getByText(
+        /Improving live products like Mentii, BetterSchool.au, Voicely, and Energy Plan Lens/i,
+      ),
+    ).toBeInTheDocument();
+
+    expect(
+      within(now).getByText(
+        /Building WhispLine \/ SayType before it has a deployed public website/i,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("renders about and contact sections as named regions", () => {
     render(<Home />);
 
     const about = screen.getByRole("region", { name: /About/i });
-    const now = screen.getByRole("region", { name: /^Now$/i });
     const contact = screen.getByRole("region", { name: /Contact/i });
 
     expect(about).toBeInTheDocument();
-    expect(now).toBeInTheDocument();
     expect(contact).toBeInTheDocument();
-
-    expect(
-      within(now).getByText(/Turning taotao.au into the main home/i),
-    ).toBeInTheDocument();
 
     expect(within(contact).getByRole("link", { name: /GitHub/i })).toHaveAttribute(
       "href",

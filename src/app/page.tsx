@@ -34,6 +34,14 @@ const projectCards = [
       "A practical energy comparison lens for making electricity plan details easier to inspect and understand.",
   },
   {
+    name: "Avalon Host",
+    href: "https://avalon.taotao.au/",
+    status: "Live website",
+    accent: "rgba(142, 226, 255, 0.44)",
+    description:
+      "A mobile web host for in-person Avalon games and quick Avalon Lite sessions.",
+  },
+  {
     name: "WhispLine / SayType",
     href: "https://github.com/hellotaotao/WhispLine",
     status: "Active build",
@@ -112,7 +120,7 @@ const focusAreas = [
 
 const nowItems = [
   "Keeping taotao.au current with live public project websites.",
-  "Improving live products like Mentii, BetterSchool.au, Voicely, and Energy Plan Lens.",
+  "Improving live products like Mentii, BetterSchool.au, Voicely, Energy Plan Lens, and Avalon Host.",
   "Building WhispLine / SayType before it has a deployed public website.",
 ];
 

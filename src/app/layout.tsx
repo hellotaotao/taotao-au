@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import "./globals.css";
-import { detectLocaleFromAcceptLanguage } from "./i18n";
+import { resolvedLocaleHeader, resolveLocale } from "./i18n";
 
 export const metadata: Metadata = {
   title: "Tao Wang | taotao.au",
@@ -15,9 +15,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const headersList = await headers();
-  const locale = detectLocaleFromAcceptLanguage(
-    headersList.get("accept-language"),
-  );
+  const locale = resolveLocale({
+    languageParam: headersList.get(resolvedLocaleHeader),
+    acceptLanguage: headersList.get("accept-language"),
+  });
 
   return (
     <html lang={locale === "zh" ? "zh" : "en"} className="h-full antialiased">

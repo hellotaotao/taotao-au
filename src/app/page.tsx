@@ -1,13 +1,24 @@
 import { headers } from "next/headers";
 
 import { HomePage } from "./home-page";
-import { detectLocaleFromAcceptLanguage } from "./i18n";
+import { resolveLocale } from "./i18n";
 
-export default async function Home() {
+type HomeSearchParams = Promise<{
+  language?: string | string[];
+  lang?: string | string[];
+}>;
+
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: HomeSearchParams;
+}) {
   const headersList = await headers();
-  const locale = detectLocaleFromAcceptLanguage(
-    headersList.get("accept-language"),
-  );
+  const query = await searchParams;
+  const locale = resolveLocale({
+    languageParam: query.language ?? query.lang,
+    acceptLanguage: headersList.get("accept-language"),
+  });
 
   return <HomePage locale={locale} />;
 }

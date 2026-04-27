@@ -2,7 +2,11 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { HomePage } from "../app/home-page";
-import { detectLocaleFromAcceptLanguage } from "../app/i18n";
+import {
+  detectLocaleFromAcceptLanguage,
+  detectLocaleFromLanguageParam,
+  resolveLocale,
+} from "../app/i18n";
 
 describe("i18n locale detection", () => {
   it("detects Chinese from zh language tags and defaults to English", () => {
@@ -13,6 +17,62 @@ describe("i18n locale detection", () => {
     expect(detectLocaleFromAcceptLanguage("en-AU,en;q=0.9")).toBe("en");
     expect(detectLocaleFromAcceptLanguage(undefined)).toBe("en");
     expect(detectLocaleFromAcceptLanguage("fr-FR,fr;q=0.9")).toBe("en");
+  });
+
+  it("detects manual Chinese language query values", () => {
+    for (const value of ["zh", "cn", "zh-cn", "zh-tw", "chinese", "中文"]) {
+      expect(detectLocaleFromLanguageParam(value)).toBe("zh");
+      expect(detectLocaleFromLanguageParam(` ${value.toUpperCase()} `)).toBe(
+        "zh",
+      );
+    }
+  });
+
+  it("detects manual English language query values", () => {
+    for (const value of ["en", "en-au", "en-us", "english"]) {
+      expect(detectLocaleFromLanguageParam(value)).toBe("en");
+      expect(detectLocaleFromLanguageParam(` ${value.toUpperCase()} `)).toBe(
+        "en",
+      );
+    }
+  });
+
+  it("ignores unknown or missing manual language query values", () => {
+    expect(detectLocaleFromLanguageParam(undefined)).toBeUndefined();
+    expect(detectLocaleFromLanguageParam(null)).toBeUndefined();
+    expect(detectLocaleFromLanguageParam("")).toBeUndefined();
+    expect(detectLocaleFromLanguageParam("fr")).toBeUndefined();
+    expect(detectLocaleFromLanguageParam(["unknown", "zh"])).toBeUndefined();
+  });
+
+  it("resolves manual language query values before Accept-Language fallback", () => {
+    expect(
+      resolveLocale({
+        languageParam: "en",
+        acceptLanguage: "zh-CN,zh;q=0.9,en;q=0.8",
+      }),
+    ).toBe("en");
+
+    expect(
+      resolveLocale({
+        languageParam: "cn",
+        acceptLanguage: "en-AU,en;q=0.9",
+      }),
+    ).toBe("zh");
+
+    expect(
+      resolveLocale({
+        languageParam: "unknown",
+        acceptLanguage: "zh-TW,en;q=0.7",
+      }),
+    ).toBe("zh");
+
+    expect(
+      resolveLocale({
+        languageParam: undefined,
+        acceptLanguage: "fr-FR,fr;q=0.9",
+      }),
+    ).toBe("en");
   });
 });
 

@@ -1,5 +1,7 @@
 export type Locale = "en" | "zh";
 
+export const resolvedLocaleHeader = "x-taotao-locale";
+
 export type ProjectCard = {
   name: string;
   href: string;
@@ -23,6 +25,53 @@ export function detectLocaleFromAcceptLanguage(
   return languages.some((language) => language === "zh" || language.startsWith("zh-"))
     ? "zh"
     : "en";
+}
+
+export function detectLocaleFromLanguageParam(
+  value: string | string[] | null | undefined,
+): Locale | undefined {
+  const rawValue = Array.isArray(value) ? value[0] : value;
+
+  if (!rawValue) {
+    return undefined;
+  }
+
+  const normalizedValue = rawValue.trim().toLowerCase();
+
+  if (
+    normalizedValue === "zh" ||
+    normalizedValue === "cn" ||
+    normalizedValue === "zh-cn" ||
+    normalizedValue === "zh-tw" ||
+    normalizedValue === "chinese" ||
+    normalizedValue === "中文"
+  ) {
+    return "zh";
+  }
+
+  if (
+    normalizedValue === "en" ||
+    normalizedValue === "en-au" ||
+    normalizedValue === "en-us" ||
+    normalizedValue === "english"
+  ) {
+    return "en";
+  }
+
+  return undefined;
+}
+
+export function resolveLocale({
+  languageParam,
+  acceptLanguage,
+}: {
+  languageParam?: string | string[] | null;
+  acceptLanguage?: string | null;
+}): Locale {
+  return (
+    detectLocaleFromLanguageParam(languageParam) ??
+    detectLocaleFromAcceptLanguage(acceptLanguage)
+  );
 }
 
 const projectsBase = [

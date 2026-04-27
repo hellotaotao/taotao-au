@@ -1,11 +1,24 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import Home from "../app/page";
+import { HomePage } from "../app/home-page";
+import { detectLocaleFromAcceptLanguage } from "../app/i18n";
+
+describe("i18n locale detection", () => {
+  it("detects Chinese from zh language tags and defaults to English", () => {
+    expect(detectLocaleFromAcceptLanguage("zh-CN,zh;q=0.9,en;q=0.8")).toBe(
+      "zh",
+    );
+    expect(detectLocaleFromAcceptLanguage("zh-TW,en;q=0.7")).toBe("zh");
+    expect(detectLocaleFromAcceptLanguage("en-AU,en;q=0.9")).toBe("en");
+    expect(detectLocaleFromAcceptLanguage(undefined)).toBe("en");
+    expect(detectLocaleFromAcceptLanguage("fr-FR,fr;q=0.9")).toBe("en");
+  });
+});
 
 describe("Home page", () => {
   it("renders Tao Wang hero and keeps the primary homepage pathways", () => {
-    render(<Home />);
+    render(<HomePage locale="en" />);
 
     expect(
       screen.getByRole("heading", {
@@ -39,8 +52,23 @@ describe("Home page", () => {
     expect(screen.getByText(/Fast trial/i)).toBeInTheDocument();
   });
 
+  it("renders Chinese content for the Chinese locale", () => {
+    render(<HomePage locale="zh" />);
+
+    expect(
+      screen.getByText(/我构建实用的 AI 产品、工具和实验/),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("heading", {
+        level: 2,
+        name: "当前项目",
+      }),
+    ).toBeInTheDocument();
+  });
+
   it("renders the current projects section with the full project set", () => {
-    render(<Home />);
+    render(<HomePage locale="en" />);
 
     const projects = screen.getByRole("region", {
       name: /Current projects/i,
@@ -101,7 +129,7 @@ describe("Home page", () => {
   });
 
   it("keeps the now section aligned with current public project sites", () => {
-    render(<Home />);
+    render(<HomePage locale="en" />);
 
     const now = screen.getByRole("region", { name: /^Now$/i });
 
@@ -125,7 +153,7 @@ describe("Home page", () => {
   });
 
   it("renders about and contact sections as named regions", () => {
-    render(<Home />);
+    render(<HomePage locale="en" />);
 
     const about = screen.getByRole("region", { name: /About/i });
     const contact = screen.getByRole("region", { name: /Contact/i });

@@ -1,0 +1,321 @@
+export type Locale = "en" | "zh";
+
+export type ProjectCard = {
+  name: string;
+  href: string;
+  status: string;
+  accent: string;
+  description: string;
+};
+
+export function detectLocaleFromAcceptLanguage(
+  acceptLanguage: string | null | undefined,
+): Locale {
+  if (!acceptLanguage) {
+    return "en";
+  }
+
+  const languages = acceptLanguage
+    .split(",")
+    .map((entry) => entry.trim().split(";")[0]?.toLowerCase())
+    .filter(Boolean);
+
+  return languages.some((language) => language === "zh" || language.startsWith("zh-"))
+    ? "zh"
+    : "en";
+}
+
+const projectsBase = [
+  {
+    name: "Mentii",
+    href: "https://menti.taotao.au/",
+    accent: "rgba(120, 189, 255, 0.5)",
+    description: {
+      en: "A lightweight audience interaction tool for live sessions, voting, and host-controlled experiences.",
+      zh: "一个轻量的现场观众互动工具，支持实时环节、投票和主持人控制的体验。",
+    },
+  },
+  {
+    name: "BetterSchool.au",
+    href: "https://betterschool.au/",
+    accent: "rgba(255, 190, 126, 0.48)",
+    description: {
+      en: "A school discovery product focused on helping families compare options with map-led exploration.",
+      zh: "面向家庭的学校发现产品，用地图驱动的探索方式帮助比较不同选择。",
+    },
+  },
+  {
+    name: "Voicely",
+    href: "https://voicely.taotao.au/",
+    accent: "rgba(230, 171, 255, 0.42)",
+    description: {
+      en: "A privacy-first iOS voice notes and transcription product with a dedicated public website.",
+      zh: "一个隐私优先的 iOS 语音笔记和转录产品，并有独立公开网站。",
+    },
+  },
+  {
+    name: "Energy Plan Lens",
+    href: "https://energy.taotao.au/",
+    accent: "rgba(160, 255, 214, 0.42)",
+    description: {
+      en: "A practical energy comparison lens for making electricity plan details easier to inspect and understand.",
+      zh: "一个实用的电力方案比较视角，让电费计划细节更容易查看和理解。",
+    },
+  },
+  {
+    name: "Avalon Host",
+    href: "https://avalon.taotao.au/",
+    accent: "rgba(142, 226, 255, 0.44)",
+    description: {
+      en: "A mobile web host for in-person Avalon games and quick Avalon Lite sessions.",
+      zh: "一个移动网页主持工具，用于线下阿瓦隆游戏和快速 Avalon Lite 场次。",
+    },
+  },
+  {
+    name: "WhispLine / SayType",
+    href: "https://github.com/hellotaotao/WhispLine",
+    accent: "rgba(255, 223, 132, 0.42)",
+    description: {
+      en: "Voice-first productivity tooling still in active development before a deployed public website.",
+      zh: "语音优先的效率工具，目前仍在积极开发中，尚未部署公开网站。",
+    },
+  },
+] as const;
+
+export const translations = {
+  en: {
+    projectStatus: {
+      live: "Live website",
+      active: "Active build",
+    },
+    contactLinks: [
+      {
+        name: "GitHub",
+        href: "https://github.com/hellotaotao",
+      },
+      {
+        name: "Email",
+        href: "mailto:hellotaotao@gmail.com",
+      },
+      {
+        name: "LinkedIn",
+        href: "https://www.linkedin.com",
+      },
+    ],
+    spotlightStats: [
+      {
+        label: "Base",
+        value: "Adelaide, Australia",
+      },
+      {
+        label: "Priority",
+        value: "Useful workflows and sharp UX",
+      },
+      {
+        label: "Mode",
+        value: "Small products, fast iteration",
+      },
+    ],
+    heroMetrics: [
+      {
+        label: "Current home",
+        value: "taotao.au is the main hub for live products, active builds, and updates.",
+      },
+      {
+        label: "Build style",
+        value: "Simple interfaces, quick feedback loops, and steady practical refinement.",
+      },
+      {
+        label: "Focus areas",
+        value: "AI, productivity, education, and voice-first software with real utility.",
+      },
+    ],
+    motionSignals: [
+      {
+        label: "Pulse",
+        value: "Useful AI",
+      },
+      {
+        label: "Priority",
+        value: "Fast trial",
+      },
+      {
+        label: "Bias",
+        value: "Clean UX",
+      },
+    ],
+    focusAreas: [
+      "Practical AI products",
+      "Education",
+      "Productivity tools",
+      "Voice-first software",
+    ],
+    nowItems: [
+      "Keeping taotao.au current with live public project websites.",
+      "Improving live products like Mentii, BetterSchool.au, Voicely, Energy Plan Lens, and Avalon Host.",
+      "Building WhispLine / SayType before it has a deployed public website.",
+    ],
+    hero: {
+      eyebrow: "taotao.au",
+      badges: ["Adelaide-based builder", "Useful AI over AI spectacle"],
+      title: "Tao Wang",
+      lead: "I build practical AI products, tools, and experiments.",
+      body: "Based in Adelaide, I work on useful software that is simple, fast to try, and grounded in real-world problems. This site is the main hub for my current products, ideas, and ongoing work.",
+      projectsCta: "View current projects",
+      contactCta: "Get in touch",
+      signalsLabel: "Current build signals",
+    },
+    spotlight: {
+      label: "Right now",
+      title: "Shipping small, useful products with AI where it actually helps.",
+      copy: "The work is biased toward fast time-to-value, clean interfaces, and real workflows instead of novelty for its own sake.",
+    },
+    projects: {
+      label: "Selected work",
+      title: "Current projects",
+      intro:
+        "Live project websites first, followed by active builds that are still moving toward a public launch.",
+    },
+    about: {
+      label: "Profile",
+      title: "About",
+      copy: [
+        "I like building software that feels immediately useful: products with a clear purpose, simple interfaces, and enough technical depth to keep getting better over time.",
+        "My work often sits at the intersection of AI, productivity, education, and practical web products.",
+      ],
+      focusLabel: "Focus areas",
+    },
+    now: {
+      label: "In motion",
+      title: "Now",
+    },
+    contact: {
+      label: "Open line",
+      title: "Contact",
+      intro:
+        "The easiest way to find me is through GitHub or email. If we are discussing products, prototypes, or practical AI ideas, feel free to reach out.",
+    },
+  },
+  zh: {
+    projectStatus: {
+      live: "线上网站",
+      active: "开发中",
+    },
+    contactLinks: [
+      {
+        name: "GitHub",
+        href: "https://github.com/hellotaotao",
+      },
+      {
+        name: "Email",
+        href: "mailto:hellotaotao@gmail.com",
+      },
+      {
+        name: "LinkedIn",
+        href: "https://www.linkedin.com",
+      },
+    ],
+    spotlightStats: [
+      {
+        label: "位置",
+        value: "澳大利亚阿德莱德",
+      },
+      {
+        label: "优先级",
+        value: "有用的流程和清晰的体验",
+      },
+      {
+        label: "节奏",
+        value: "小产品，快速迭代",
+      },
+    ],
+    heroMetrics: [
+      {
+        label: "当前主页",
+        value: "taotao.au 是线上产品、开发中项目和更新的主要入口。",
+      },
+      {
+        label: "构建方式",
+        value: "简单界面、快速反馈循环，以及持续的实用改进。",
+      },
+      {
+        label: "关注方向",
+        value: "AI、效率、教育，以及真正有用的语音优先软件。",
+      },
+    ],
+    motionSignals: [
+      {
+        label: "脉冲",
+        value: "有用的 AI",
+      },
+      {
+        label: "优先级",
+        value: "快速试用",
+      },
+      {
+        label: "偏好",
+        value: "干净体验",
+      },
+    ],
+    focusAreas: ["实用 AI 产品", "教育", "效率工具", "语音优先软件"],
+    nowItems: [
+      "持续更新 taotao.au，让公开项目网站保持当前状态。",
+      "改进 Mentii、BetterSchool.au、Voicely、Energy Plan Lens 和 Avalon Host 等线上产品。",
+      "继续开发 WhispLine / SayType，直到它拥有公开部署的网站。",
+    ],
+    hero: {
+      eyebrow: "taotao.au",
+      badges: ["常驻阿德莱德的产品构建者", "重视有用 AI，而不是 AI 表演"],
+      title: "Tao Wang",
+      lead: "我构建实用的 AI 产品、工具和实验。",
+      body: "我在阿德莱德工作，专注于简单、容易试用、并扎根真实问题的软件。这个网站是我当前产品、想法和持续工作的主要入口。",
+      projectsCta: "查看当前项目",
+      contactCta: "联系我",
+      signalsLabel: "当前构建信号",
+    },
+    spotlight: {
+      label: "现在",
+      title: "在 AI 真正有帮助的地方，发布小而实用的产品。",
+      copy: "这些工作偏向快速体现价值、干净界面和真实流程，而不是为了新奇而新奇。",
+    },
+    projects: {
+      label: "精选作品",
+      title: "当前项目",
+      intro: "先列出已经上线的项目网站，再列出仍在走向公开发布的开发中项目。",
+    },
+    about: {
+      label: "简介",
+      title: "关于",
+      copy: [
+        "我喜欢构建能立刻体现用途的软件：目标清楚、界面简单，并且有足够技术深度，可以持续变得更好。",
+        "我的工作经常落在 AI、效率、教育和实用网页产品的交汇处。",
+      ],
+      focusLabel: "关注方向",
+    },
+    now: {
+      label: "进行中",
+      title: "现在",
+    },
+    contact: {
+      label: "联系方式",
+      title: "联系",
+      intro:
+        "最容易找到我的方式是 GitHub 或邮件。如果你想聊产品、原型或实用 AI 想法，欢迎联系。",
+    },
+  },
+} as const;
+
+export function getProjectCards(locale: Locale): ProjectCard[] {
+  const t = translations[locale];
+
+  return projectsBase.map((project, index) => ({
+    name: project.name,
+    href: project.href,
+    accent: project.accent,
+    status:
+      index === projectsBase.length - 1
+        ? t.projectStatus.active
+        : t.projectStatus.live,
+    description: project.description[locale],
+  }));
+}

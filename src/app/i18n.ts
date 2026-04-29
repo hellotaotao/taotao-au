@@ -94,6 +94,15 @@ const projectsBase = [
     },
   },
   {
+    name: "CaseMap",
+    href: "https://casemap.taotao.au/",
+    accent: "rgba(186, 168, 255, 0.46)",
+    description: {
+      en: "An AI preparation map for Chinese debate, turning motions into argument pools, clash routes, and attack-defense prep.",
+      zh: "一个中文辩论 AI 备赛地图，把辩题拆成立论池、交锋路线和攻防准备。",
+    },
+  },
+  {
     name: "Voicely",
     href: "https://voicely.taotao.au/",
     accent: "rgba(230, 171, 255, 0.42)",
@@ -201,7 +210,7 @@ export const translations = {
     ],
     nowItems: [
       "Keeping taotao.au current with live public project websites.",
-      "Improving live products like Mentii, BetterSchool.au, Voicely, Energy Plan Lens, and Avalon Host.",
+      "Improving live products like Mentii, BetterSchool.au, CaseMap, Voicely, Energy Plan Lens, and Avalon Host.",
       "Building WhispLine / SayType before it has a deployed public website.",
     ],
     hero: {
@@ -309,7 +318,7 @@ export const translations = {
     focusAreas: ["实用 AI 产品", "教育", "效率工具", "语音优先软件"],
     nowItems: [
       "持续更新 taotao.au，让公开项目网站保持当前状态。",
-      "改进 Mentii、BetterSchool.au、Voicely、Energy Plan Lens 和 Avalon Host 等线上产品。",
+      "改进 Mentii、BetterSchool.au、CaseMap、Voicely、Energy Plan Lens 和 Avalon Host 等线上产品。",
       "继续开发 WhispLine / SayType，直到它拥有公开部署的网站。",
     ],
     hero: {

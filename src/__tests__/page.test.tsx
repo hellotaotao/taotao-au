@@ -147,7 +147,7 @@ describe("Home page", () => {
       ),
     ).toBeInTheDocument();
 
-    expect(within(projects).getAllByRole("link")).toHaveLength(6);
+    expect(within(projects).getAllByRole("link")).toHaveLength(7);
 
     expect(within(projects).getByRole("link", { name: /Mentii/i })).toHaveAttribute(
       "href",
@@ -157,6 +157,10 @@ describe("Home page", () => {
     expect(
       within(projects).getByRole("link", { name: /BetterSchool.au/i }),
     ).toHaveAttribute("href", "https://betterschool.au/");
+
+    expect(
+      within(projects).getByRole("link", { name: /CaseMap/i }),
+    ).toHaveAttribute("href", "https://casemap.taotao.au/");
 
     const voicelyLink = within(projects).getByRole("link", { name: /Voicely/i });
     expect(voicelyLink).toHaveAttribute("href", "https://voicely.taotao.au/");
@@ -201,7 +205,7 @@ describe("Home page", () => {
 
     expect(
       within(now).getByText(
-        /Improving live products like Mentii, BetterSchool.au, Voicely, Energy Plan Lens, and Avalon Host/i,
+        /Improving live products like Mentii, BetterSchool.au, CaseMap, Voicely, Energy Plan Lens, and Avalon Host/i,
       ),
     ).toBeInTheDocument();
 

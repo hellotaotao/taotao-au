@@ -76,6 +76,24 @@ export function resolveLocale({
 
 const projectsBase = [
   {
+    name: "String Art",
+    href: "https://stringart.taotao.au/",
+    accent: "rgba(255, 151, 188, 0.46)",
+    description: {
+      en: "A visual web tool for designing string-art patterns and turning simple geometry into shareable creations.",
+      zh: "一个可视化网页工具，用来设计弦线艺术图案，把简单几何变成可分享的作品。",
+    },
+  },
+  {
+    name: "Mindboard",
+    href: "https://mindboard.taotao.au/",
+    accent: "rgba(139, 217, 255, 0.46)",
+    description: {
+      en: "A calm thinking board for arranging ideas spatially, shaping rough thoughts, and exploring connections.",
+      zh: "一个安静的思考白板，用空间方式整理想法、打磨粗略思路并探索连接。",
+    },
+  },
+  {
     name: "Mentii",
     href: "https://menti.taotao.au/",
     accent: "rgba(120, 189, 255, 0.5)",
@@ -94,30 +112,12 @@ const projectsBase = [
     },
   },
   {
-    name: "CaseMap",
-    href: "https://casemap.taotao.au/",
-    accent: "rgba(186, 168, 255, 0.46)",
-    description: {
-      en: "An AI preparation map for Chinese debate, turning motions into argument pools, clash routes, and attack-defense prep.",
-      zh: "一个中文辩论 AI 备赛地图，把辩题拆成立论池、交锋路线和攻防准备。",
-    },
-  },
-  {
     name: "Voicely",
     href: "https://voicely.taotao.au/",
     accent: "rgba(230, 171, 255, 0.42)",
     description: {
       en: "A privacy-first iOS voice notes and transcription product with a dedicated public website.",
       zh: "一个隐私优先的 iOS 语音笔记和转录产品，并有独立公开网站。",
-    },
-  },
-  {
-    name: "Energy Plan Lens",
-    href: "https://energy.taotao.au/",
-    accent: "rgba(160, 255, 214, 0.42)",
-    description: {
-      en: "A practical energy comparison lens for making electricity plan details easier to inspect and understand.",
-      zh: "一个实用的电力方案比较视角，让电费计划细节更容易查看和理解。",
     },
   },
   {
@@ -130,12 +130,21 @@ const projectsBase = [
     },
   },
   {
-    name: "WhispLine / SayType",
-    href: "https://github.com/hellotaotao/WhispLine",
-    accent: "rgba(255, 223, 132, 0.42)",
+    name: "Energy Plan Lens",
+    href: "https://energy.taotao.au/",
+    accent: "rgba(160, 255, 214, 0.42)",
     description: {
-      en: "Voice-first productivity tooling still in active development before a deployed public website.",
-      zh: "语音优先的效率工具，目前仍在积极开发中，尚未部署公开网站。",
+      en: "A practical energy comparison lens for making electricity plan details easier to inspect and understand.",
+      zh: "一个实用的电力方案比较视角，让电费计划细节更容易查看和理解。",
+    },
+  },
+  {
+    name: "CaseMap",
+    href: "https://casemap.taotao.au/",
+    accent: "rgba(186, 168, 255, 0.46)",
+    description: {
+      en: "An AI preparation map for Chinese debate, turning motions into argument pools, clash routes, and attack-defense prep.",
+      zh: "一个中文辩论 AI 备赛地图，把辩题拆成立论池、交锋路线和攻防准备。",
     },
   },
 ] as const;
@@ -209,9 +218,9 @@ export const translations = {
       "Voice-first software",
     ],
     nowItems: [
-      "Keeping taotao.au current with live public project websites.",
-      "Improving live products like Mentii, BetterSchool.au, CaseMap, Voicely, Energy Plan Lens, and Avalon Host.",
-      "Building WhispLine / SayType before it has a deployed public website.",
+      "Keeping taotao.au current with the strongest live public project websites.",
+      "Improving hands-on products like String Art, Mindboard, Mentii, BetterSchool.au, Voicely, Avalon Host, Energy Plan Lens, and CaseMap.",
+      "Favoring projects that are already live, easy to try, and useful without explanation.",
     ],
     hero: {
       eyebrow: "taotao.au",
@@ -232,7 +241,7 @@ export const translations = {
       label: "Selected work",
       title: "Current projects",
       intro:
-        "Live project websites first, followed by active builds that are still moving toward a public launch.",
+        "A curated set of live project websites that are current, useful, and ready to try.",
     },
     about: {
       label: "Profile",
@@ -317,9 +326,9 @@ export const translations = {
     ],
     focusAreas: ["实用 AI 产品", "教育", "效率工具", "语音优先软件"],
     nowItems: [
-      "持续更新 taotao.au，让公开项目网站保持当前状态。",
-      "改进 Mentii、BetterSchool.au、CaseMap、Voicely、Energy Plan Lens 和 Avalon Host 等线上产品。",
-      "继续开发 WhispLine / SayType，直到它拥有公开部署的网站。",
+      "持续更新 taotao.au，优先展示最强的线上公开项目。",
+      "改进 String Art、Mindboard、Mentii、BetterSchool.au、Voicely、Avalon Host、Energy Plan Lens 和 CaseMap 等可直接试用的产品。",
+      "优先展示已经上线、容易试用、并且不用解释也能体现用途的项目。",
     ],
     hero: {
       eyebrow: "taotao.au",
@@ -339,7 +348,7 @@ export const translations = {
     projects: {
       label: "精选作品",
       title: "当前项目",
-      intro: "先列出已经上线的项目网站，再列出仍在走向公开发布的开发中项目。",
+      intro: "精选已经上线、当前可用、并且值得直接试用的项目网站。",
     },
     about: {
       label: "简介",
@@ -366,14 +375,11 @@ export const translations = {
 export function getProjectCards(locale: Locale): ProjectCard[] {
   const t = translations[locale];
 
-  return projectsBase.map((project, index) => ({
+  return projectsBase.map((project) => ({
     name: project.name,
     href: project.href,
     accent: project.accent,
-    status:
-      index === projectsBase.length - 1
-        ? t.projectStatus.active
-        : t.projectStatus.live,
+    status: t.projectStatus.live,
     description: project.description[locale],
   }));
 }

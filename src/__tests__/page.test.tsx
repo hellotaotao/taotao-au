@@ -143,11 +143,19 @@ describe("Home page", () => {
 
     expect(
       within(projects).getByText(
-        /Live project websites first, followed by active builds that are still moving toward a public launch/i,
+        /A curated set of live project websites that are current, useful, and ready to try/i,
       ),
     ).toBeInTheDocument();
 
-    expect(within(projects).getAllByRole("link")).toHaveLength(7);
+    expect(within(projects).getAllByRole("link")).toHaveLength(8);
+
+    expect(
+      within(projects).getByRole("link", { name: /String Art/i }),
+    ).toHaveAttribute("href", "https://stringart.taotao.au/");
+
+    expect(
+      within(projects).getByRole("link", { name: /Mindboard/i }),
+    ).toHaveAttribute("href", "https://mindboard.taotao.au/");
 
     expect(within(projects).getByRole("link", { name: /Mentii/i })).toHaveAttribute(
       "href",
@@ -178,8 +186,8 @@ describe("Home page", () => {
     ).toHaveAttribute("href", "https://avalon.taotao.au/");
 
     expect(
-      within(projects).getByRole("link", { name: /WhispLine \/ SayType/i }),
-    ).toHaveAttribute("href", "https://github.com/hellotaotao/WhispLine");
+      within(projects).queryByRole("link", { name: /WhispLine \/ SayType/i }),
+    ).not.toBeInTheDocument();
 
     expect(
       within(projects).queryByRole("link", { name: /Field Proof/i }),
@@ -199,19 +207,19 @@ describe("Home page", () => {
 
     expect(
       within(now).getByText(
-        /Keeping taotao.au current with live public project websites/i,
+        /Keeping taotao.au current with the strongest live public project websites/i,
       ),
     ).toBeInTheDocument();
 
     expect(
       within(now).getByText(
-        /Improving live products like Mentii, BetterSchool.au, CaseMap, Voicely, Energy Plan Lens, and Avalon Host/i,
+        /Improving hands-on products like String Art, Mindboard, Mentii, BetterSchool.au, Voicely, Avalon Host, Energy Plan Lens, and CaseMap/i,
       ),
     ).toBeInTheDocument();
 
     expect(
       within(now).getByText(
-        /Building WhispLine \/ SayType before it has a deployed public website/i,
+        /Favoring projects that are already live, easy to try, and useful without explanation/i,
       ),
     ).toBeInTheDocument();
   });

@@ -147,7 +147,11 @@ describe("Home page", () => {
       ),
     ).toBeInTheDocument();
 
-    expect(within(projects).getAllByRole("link")).toHaveLength(8);
+    expect(within(projects).getAllByRole("link")).toHaveLength(9);
+
+    expect(
+      within(projects).getByRole("link", { name: /MathPlay AU/i }),
+    ).toHaveAttribute("href", "https://mathplay.taotao.au/");
 
     expect(
       within(projects).getByRole("link", { name: /String Art/i }),
@@ -213,7 +217,7 @@ describe("Home page", () => {
 
     expect(
       within(now).getByText(
-        /Improving hands-on products like String Art, Mindboard, Mentii, BetterSchool.au, Voicely, Avalon Host, Energy Plan Lens, and CaseMap/i,
+        /Improving hands-on products like MathPlay AU, String Art, Mindboard, Mentii, BetterSchool.au, Voicely, Avalon Host, Energy Plan Lens, and CaseMap/i,
       ),
     ).toBeInTheDocument();
 

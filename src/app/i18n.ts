@@ -76,6 +76,15 @@ export function resolveLocale({
 
 const projectsBase = [
   {
+    name: "MathPlay AU",
+    href: "https://mathplay.taotao.au/",
+    accent: "rgba(255, 211, 102, 0.52)",
+    description: {
+      en: "A visual, bilingual Australian primary maths playground with interactive manipulatives, curriculum maps, and child-friendly lessons.",
+      zh: "一个可视化、双语的澳洲小学数学互动乐园，用教具、课程地图和儿童友好的动态课程帮助学习。",
+    },
+  },
+  {
     name: "String Art",
     href: "https://stringart.taotao.au/",
     accent: "rgba(255, 151, 188, 0.46)",
@@ -194,7 +203,7 @@ export const translations = {
       },
       {
         label: "Focus areas",
-        value: "AI, productivity, education, and voice-first software with real utility.",
+        value: "AI, productivity, education, games, and voice-first software with real utility.",
       },
     ],
     motionSignals: [
@@ -219,7 +228,7 @@ export const translations = {
     ],
     nowItems: [
       "Keeping taotao.au current with the strongest live public project websites.",
-      "Improving hands-on products like String Art, Mindboard, Mentii, BetterSchool.au, Voicely, Avalon Host, Energy Plan Lens, and CaseMap.",
+      "Improving hands-on products like MathPlay AU, String Art, Mindboard, Mentii, BetterSchool.au, Voicely, Avalon Host, Energy Plan Lens, and CaseMap.",
       "Favoring projects that are already live, easy to try, and useful without explanation.",
     ],
     hero: {
@@ -307,7 +316,7 @@ export const translations = {
       },
       {
         label: "关注方向",
-        value: "AI、效率、教育，以及真正有用的语音优先软件。",
+        value: "AI、效率、教育、游戏，以及真正有用的语音优先软件。",
       },
     ],
     motionSignals: [
@@ -327,7 +336,7 @@ export const translations = {
     focusAreas: ["实用 AI 产品", "教育", "效率工具", "语音优先软件"],
     nowItems: [
       "持续更新 taotao.au，优先展示最强的线上公开项目。",
-      "改进 String Art、Mindboard、Mentii、BetterSchool.au、Voicely、Avalon Host、Energy Plan Lens 和 CaseMap 等可直接试用的产品。",
+      "改进 MathPlay AU、String Art、Mindboard、Mentii、BetterSchool.au、Voicely、Avalon Host、Energy Plan Lens 和 CaseMap 等可直接试用的产品。",
       "优先展示已经上线、容易试用、并且不用解释也能体现用途的项目。",
     ],
     hero: {

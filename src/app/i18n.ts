@@ -2,12 +2,22 @@ export type Locale = "en" | "zh";
 
 export const resolvedLocaleHeader = "x-taotao-locale";
 
+export type ProjectStatus = "live" | "active" | "prototype";
+export type ProjectTier = "activeNow" | "experiments";
+
 export type ProjectCard = {
   name: string;
   href: string;
   status: string;
   accent: string;
   description: string;
+};
+
+export type ProjectGroup = {
+  tier: ProjectTier;
+  title: string;
+  intro: string;
+  projects: ProjectCard[];
 };
 
 export function detectLocaleFromAcceptLanguage(
@@ -76,93 +86,173 @@ export function resolveLocale({
 
 const projectsBase = [
   {
-    name: "MathPlay AU",
-    href: "https://mathplay.taotao.au/",
-    accent: "rgba(255, 211, 102, 0.52)",
-    description: {
-      en: "A visual, bilingual Australian primary maths playground with interactive manipulatives, curriculum maps, and child-friendly lessons.",
-      zh: "一个可视化、双语的澳洲小学数学互动乐园，用教具、课程地图和儿童友好的动态课程帮助学习。",
-    },
-  },
-  {
-    name: "String Art",
-    href: "https://stringart.taotao.au/",
-    accent: "rgba(255, 151, 188, 0.46)",
-    description: {
-      en: "A visual web tool for designing string-art patterns and turning simple geometry into shareable creations.",
-      zh: "一个可视化网页工具，用来设计弦线艺术图案，把简单几何变成可分享的作品。",
-    },
-  },
-  {
-    name: "Mindboard",
-    href: "https://mindboard.taotao.au/",
-    accent: "rgba(139, 217, 255, 0.46)",
-    description: {
-      en: "A calm thinking board for arranging ideas spatially, shaping rough thoughts, and exploring connections.",
-      zh: "一个安静的思考白板，用空间方式整理想法、打磨粗略思路并探索连接。",
-    },
-  },
-  {
-    name: "Mentii",
-    href: "https://menti.taotao.au/",
-    accent: "rgba(120, 189, 255, 0.5)",
-    description: {
-      en: "A lightweight audience interaction tool for live sessions, voting, and host-controlled experiences.",
-      zh: "一个轻量的现场观众互动工具，支持实时环节、投票和主持人控制的体验。",
-    },
-  },
-  {
-    name: "BetterSchool.au",
+    name: "BetterSchool",
     href: "https://betterschool.au/",
+    tier: "activeNow",
+    status: "live",
     accent: "rgba(255, 190, 126, 0.48)",
     description: {
-      en: "A school discovery product focused on helping families compare options with map-led exploration.",
-      zh: "面向家庭的学校发现产品，用地图驱动的探索方式帮助比较不同选择。",
+      en: "A map-led school discovery product covering all 11,034 Australian schools, with state and suburb browsing plus NSW intake-zone and catchment maps.",
+      zh: "一个地图驱动的学校发现产品，覆盖全澳 11,034 所学校，支持按州和城区浏览，并提供新州入学区域与学区边界地图。",
+    },
+  },
+  {
+    name: "SayType",
+    href: "https://saytype.taotao.au/",
+    tier: "activeNow",
+    status: "live",
+    accent: "rgba(139, 217, 255, 0.46)",
+    description: {
+      en: "Cross-platform desktop voice input for macOS, Windows, and Linux: hold a shortcut, speak, and insert AI-transcribed text into any app.",
+      zh: "面向 macOS、Windows 和 Linux 的跨平台桌面语音输入工具：按住快捷键说话，松开后把 AI 转写文字插入任何应用。",
+    },
+  },
+  {
+    name: "KanaDrill",
+    href: "https://kanadrill.taotao.au/",
+    tier: "activeNow",
+    status: "active",
+    accent: "rgba(255, 151, 188, 0.46)",
+    description: {
+      en: "Focused hiragana and katakana recall practice with guided drills, progress tracking, and cross-session sync.",
+      zh: "专注于平假名和片假名回忆练习，通过引导式训练、进度追踪和跨会话同步建立熟练度。",
+    },
+  },
+  {
+    name: "Maths Practice",
+    href: "https://mathtrainer.taotao.au/",
+    tier: "activeNow",
+    status: "active",
+    accent: "rgba(255, 211, 102, 0.52)",
+    description: {
+      en: "An Australian Curriculum v9 Year 2 maths fluency trainer with adaptive practice and a parent view of progress.",
+      zh: "一个对齐澳洲课程 v9 二年级内容的数学熟练度训练器，提供自适应练习和家长进度视图。",
     },
   },
   {
     name: "Voicely",
     href: "https://voicely.taotao.au/",
+    tier: "activeNow",
+    status: "active",
     accent: "rgba(230, 171, 255, 0.42)",
     description: {
-      en: "A privacy-first iOS voice notes and transcription product with a dedicated public website.",
-      zh: "一个隐私优先的 iOS 语音笔记和转录产品，并有独立公开网站。",
+      en: "A local-first iOS meeting transcription app that keeps sensitive audio processing on device with WhisperKit and Core ML.",
+      zh: "一个本地优先的 iOS 会议转录应用，通过 WhisperKit 和 Core ML 在设备端处理敏感音频。",
     },
   },
   {
-    name: "Avalon Host",
-    href: "https://avalon.taotao.au/",
-    accent: "rgba(142, 226, 255, 0.44)",
-    description: {
-      en: "A mobile web host for in-person Avalon games and quick Avalon Lite sessions.",
-      zh: "一个移动网页主持工具，用于线下阿瓦隆游戏和快速 Avalon Lite 场次。",
-    },
-  },
-  {
-    name: "Energy Plan Lens",
-    href: "https://energy.taotao.au/",
+    name: "EverLog",
+    href: "https://everlog.taotao.au/",
+    tier: "activeNow",
+    status: "active",
     accent: "rgba(160, 255, 214, 0.42)",
     description: {
-      en: "A practical energy comparison lens for making electricity plan details easier to inspect and understand.",
-      zh: "一个实用的电力方案比较视角，让电费计划细节更容易查看和理解。",
+      en: "A private life-memory app that turns everyday moments into searchable entries with on-device transcription and temporary audio by default.",
+      zh: "一个私密的生活记忆应用，把日常片段变成可搜索记录，默认在设备端转录，并只临时保留音频。",
+    },
+  },
+  {
+    name: "Threadline Studio",
+    href: "https://stringart.taotao.au/",
+    tier: "experiments",
+    status: "live",
+    accent: "rgba(255, 151, 188, 0.46)",
+    description: {
+      en: "Turns meaningful photos into circular nail-and-thread artwork, with a preview, pin path, and step-by-step winding instructions.",
+      zh: "把有意义的照片转换成圆形钉线画，并生成效果预览、钉点路径和逐步绕线说明。",
+    },
+  },
+  {
+    name: "MathPlay AU",
+    href: "https://mathplay.taotao.au/",
+    tier: "experiments",
+    status: "prototype",
+    accent: "rgba(255, 211, 102, 0.52)",
+    description: {
+      en: "An interactive Australian Curriculum v9 Mathematics F-6 prototype with bilingual, child-friendly visual learning.",
+      zh: "一个对齐澳洲课程 v9 学前班至六年级数学的互动原型，提供双语、儿童友好的可视化学习体验。",
+    },
+  },
+  {
+    name: "Mentii",
+    href: "https://menti.taotao.au/",
+    tier: "experiments",
+    status: "prototype",
+    accent: "rgba(120, 189, 255, 0.5)",
+    description: {
+      en: "Lightweight audience interaction for live sessions, voting, prompts, and host-controlled participation.",
+      zh: "面向现场环节的轻量观众互动工具，支持投票、提示和主持人控制的参与流程。",
+    },
+  },
+  {
+    name: "Veiled Roundtable",
+    href: "https://avalon.taotao.au/",
+    tier: "experiments",
+    status: "prototype",
+    accent: "rgba(142, 226, 255, 0.44)",
+    description: {
+      en: "A mobile Avalon room assistant for hidden-role reveals, quest voting, Merlin assassination, and AI fill-ins for short tables.",
+      zh: "一个移动端阿瓦隆房间助手，支持隐藏身份揭示、任务投票、刺杀梅林，以及人数不足时的 AI 补位。",
+    },
+  },
+  {
+    name: "EnergyLens",
+    href: "https://energy.taotao.au/",
+    tier: "experiments",
+    status: "prototype",
+    accent: "rgba(160, 255, 214, 0.42)",
+    description: {
+      en: "Compares Australian electricity plans by replaying real smart-meter interval data through retailer tariff formulas.",
+      zh: "把真实智能电表分时数据代入零售商资费公式，比较澳洲电力方案的实际成本。",
     },
   },
   {
     name: "CaseMap",
     href: "https://casemap.taotao.au/",
+    tier: "experiments",
+    status: "prototype",
     accent: "rgba(186, 168, 255, 0.46)",
     description: {
       en: "An AI preparation map for Chinese debate, turning motions into argument pools, clash routes, and attack-defense prep.",
       zh: "一个中文辩论 AI 备赛地图，把辩题拆成立论池、交锋路线和攻防准备。",
     },
   },
-] as const;
+  {
+    name: "AI Ops Canvas",
+    href: "https://mindboard.taotao.au/",
+    tier: "experiments",
+    status: "prototype",
+    accent: "rgba(139, 217, 255, 0.46)",
+    description: {
+      en: "An AI operations canvas for mapping workflows, roles, tools, and hand-offs before turning an idea into a working system.",
+      zh: "一个 AI 运营画布，在把想法变成可运行系统之前，先梳理流程、角色、工具和交接关系。",
+    },
+  },
+] as const satisfies readonly {
+  name: string;
+  href: string;
+  tier: ProjectTier;
+  status: ProjectStatus;
+  accent: string;
+  description: Record<Locale, string>;
+}[];
 
 export const translations = {
   en: {
     projectStatus: {
-      live: "Live website",
+      live: "Live product",
       active: "Active build",
+      prototype: "Prototype",
+    },
+    projectTiers: {
+      activeNow: {
+        title: "Active now",
+        intro: "The products receiving most of my build time and attention right now.",
+      },
+      experiments: {
+        title: "More live experiments",
+        intro: "Working explorations that remain online, useful, and open to iteration.",
+      },
     },
     contactLinks: [
       {
@@ -175,7 +265,7 @@ export const translations = {
       },
       {
         name: "LinkedIn",
-        href: "https://www.linkedin.com",
+        href: "https://www.linkedin.com/in/ta0wang",
       },
     ],
     spotlightStats: [
@@ -227,9 +317,9 @@ export const translations = {
       "Voice-first software",
     ],
     nowItems: [
-      "Keeping taotao.au current with the strongest live public project websites.",
-      "Improving hands-on products like MathPlay AU, String Art, Mindboard, Mentii, BetterSchool.au, Voicely, Avalon Host, Energy Plan Lens, and CaseMap.",
-      "Favoring projects that are already live, easy to try, and useful without explanation.",
+      "Focusing current build time on BetterSchool, SayType, KanaDrill, Maths Practice, Voicely, and EverLog.",
+      "Turning active builds into dependable products through short build-test-ship loops.",
+      "Keeping live experiments available without letting them crowd out the work receiving attention now.",
     ],
     hero: {
       eyebrow: "taotao.au",
@@ -250,7 +340,7 @@ export const translations = {
       label: "Selected work",
       title: "Current projects",
       intro:
-        "A curated set of live project websites that are current, useful, and ready to try.",
+        "Current products first, followed by live experiments that are still useful to explore.",
     },
     about: {
       label: "Profile",
@@ -274,8 +364,19 @@ export const translations = {
   },
   zh: {
     projectStatus: {
-      live: "线上网站",
-      active: "开发中",
+      live: "已上线产品",
+      active: "活跃开发中",
+      prototype: "原型",
+    },
+    projectTiers: {
+      activeNow: {
+        title: "当前投入",
+        intro: "目前获得我最多构建时间和注意力的产品。",
+      },
+      experiments: {
+        title: "更多线上实验",
+        intro: "仍然在线、可以使用，并会继续迭代的探索项目。",
+      },
     },
     contactLinks: [
       {
@@ -288,7 +389,7 @@ export const translations = {
       },
       {
         name: "LinkedIn",
-        href: "https://www.linkedin.com",
+        href: "https://www.linkedin.com/in/ta0wang",
       },
     ],
     spotlightStats: [
@@ -335,9 +436,9 @@ export const translations = {
     ],
     focusAreas: ["实用 AI 产品", "教育", "效率工具", "语音优先软件"],
     nowItems: [
-      "持续更新 taotao.au，优先展示最强的线上公开项目。",
-      "改进 MathPlay AU、String Art、Mindboard、Mentii、BetterSchool.au、Voicely、Avalon Host、Energy Plan Lens 和 CaseMap 等可直接试用的产品。",
-      "优先展示已经上线、容易试用、并且不用解释也能体现用途的项目。",
+      "当前主要投入 BetterSchool、SayType、KanaDrill、Maths Practice、Voicely 和 EverLog。",
+      "通过短周期的构建、测试和发布，把活跃开发项目打磨成可靠产品。",
+      "保留可用的线上实验，但不让它们淹没现在真正获得投入的工作。",
     ],
     hero: {
       eyebrow: "taotao.au",
@@ -357,7 +458,7 @@ export const translations = {
     projects: {
       label: "精选作品",
       title: "当前项目",
-      intro: "精选已经上线、当前可用、并且值得直接试用的项目网站。",
+      intro: "先展示当前产品，再展示仍然值得探索的线上实验。",
     },
     about: {
       label: "简介",
@@ -381,14 +482,23 @@ export const translations = {
   },
 } as const;
 
-export function getProjectCards(locale: Locale): ProjectCard[] {
+const projectTierOrder: readonly ProjectTier[] = ["activeNow", "experiments"];
+
+export function getProjectGroups(locale: Locale): ProjectGroup[] {
   const t = translations[locale];
 
-  return projectsBase.map((project) => ({
-    name: project.name,
-    href: project.href,
-    accent: project.accent,
-    status: t.projectStatus.live,
-    description: project.description[locale],
+  return projectTierOrder.map((tier) => ({
+    tier,
+    title: t.projectTiers[tier].title,
+    intro: t.projectTiers[tier].intro,
+    projects: projectsBase
+      .filter((project) => project.tier === tier)
+      .map((project) => ({
+        name: project.name,
+        href: project.href,
+        accent: project.accent,
+        status: t.projectStatus[project.status],
+        description: project.description[locale],
+      })),
   }));
 }

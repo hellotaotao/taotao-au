@@ -112,7 +112,7 @@ describe("Home page", () => {
     expect(screen.getByText(/Fast trial/i)).toBeInTheDocument();
   });
 
-  it("renders Chinese content for the Chinese locale", () => {
+  it("renders Chinese content and translated project maturity", () => {
     render(<HomePage locale="zh" />);
 
     expect(
@@ -125,9 +125,34 @@ describe("Home page", () => {
         name: "当前项目",
       }),
     ).toBeInTheDocument();
+    expect(
+      screen.getByRole("group", { name: "当前投入" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("group", { name: "更多线上实验" }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByText("已上线产品")).toHaveLength(3);
+    expect(screen.getAllByText("活跃开发中")).toHaveLength(4);
+    expect(screen.getAllByText("原型")).toHaveLength(6);
+    expect(
+      screen.getByText(/11,034 所学校/),
+    ).toBeInTheDocument();
+
+    const now = screen.getByRole("region", { name: "现在" });
+    expect(
+      within(now).getByText(
+        /当前主要投入 BetterSchool、SayType、KanaDrill、Maths Practice、Voicely 和 EverLog/,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      within(now).getByText(/通过短周期的构建、测试和发布/),
+    ).toBeInTheDocument();
+    expect(
+      within(now).getByText(/保留可用的线上实验/),
+    ).toBeInTheDocument();
   });
 
-  it("renders the current projects section with the full project set", () => {
+  it("renders current work and live experiments as separate project tiers", () => {
     render(<HomePage locale="en" />);
 
     const projects = screen.getByRole("region", {
@@ -143,87 +168,94 @@ describe("Home page", () => {
 
     expect(
       within(projects).getByText(
-        /A curated set of live project websites that are current, useful, and ready to try/i,
+        /Current products first, followed by live experiments that are still useful to explore/i,
       ),
     ).toBeInTheDocument();
 
-    expect(within(projects).getAllByRole("link")).toHaveLength(9);
+    const activeNow = within(projects).getByRole("group", {
+      name: /Active now/i,
+    });
+    const experiments = within(projects).getByRole("group", {
+      name: /More live experiments/i,
+    });
+
+    expect(within(activeNow).getAllByRole("link")).toHaveLength(6);
+    expect(within(experiments).getAllByRole("link")).toHaveLength(7);
+
+    const activeLinks = [
+      ["BetterSchool", "https://betterschool.au/"],
+      ["SayType", "https://saytype.taotao.au/"],
+      ["KanaDrill", "https://kanadrill.taotao.au/"],
+      ["Maths Practice", "https://mathtrainer.taotao.au/"],
+      ["Voicely", "https://voicely.taotao.au/"],
+      ["EverLog", "https://everlog.taotao.au/"],
+    ] as const;
+
+    for (const [name, href] of activeLinks) {
+      expect(within(activeNow).getByRole("link", { name })).toHaveAttribute(
+        "href",
+        href,
+      );
+    }
 
     expect(
-      within(projects).getByRole("link", { name: /MathPlay AU/i }),
-    ).toHaveAttribute("href", "https://mathplay.taotao.au/");
-
+      within(activeNow).getByText(/11,034 Australian schools/i),
+    ).toBeInTheDocument();
     expect(
-      within(projects).getByRole("link", { name: /String Art/i }),
-    ).toHaveAttribute("href", "https://stringart.taotao.au/");
-
+      within(activeNow).getByText(/macOS, Windows, and Linux/i),
+    ).toBeInTheDocument();
     expect(
-      within(projects).getByRole("link", { name: /Mindboard/i }),
-    ).toHaveAttribute("href", "https://mindboard.taotao.au/");
+      within(activeNow).getByText(/local-first iOS meeting transcription/i),
+    ).toBeInTheDocument();
 
-    expect(within(projects).getByRole("link", { name: /Mentii/i })).toHaveAttribute(
-      "href",
-      "https://menti.taotao.au/",
-    );
+    const experimentLinks = [
+      ["Threadline Studio", "https://stringart.taotao.au/"],
+      ["MathPlay AU", "https://mathplay.taotao.au/"],
+      ["Mentii", "https://menti.taotao.au/"],
+      ["Veiled Roundtable", "https://avalon.taotao.au/"],
+      ["EnergyLens", "https://energy.taotao.au/"],
+      ["CaseMap", "https://casemap.taotao.au/"],
+      ["AI Ops Canvas", "https://mindboard.taotao.au/"],
+    ] as const;
 
-    expect(
-      within(projects).getByRole("link", { name: /BetterSchool.au/i }),
-    ).toHaveAttribute("href", "https://betterschool.au/");
+    for (const [name, href] of experimentLinks) {
+      expect(within(experiments).getByRole("link", { name })).toHaveAttribute(
+        "href",
+        href,
+      );
+    }
 
-    expect(
-      within(projects).getByRole("link", { name: /CaseMap/i }),
-    ).toHaveAttribute("href", "https://casemap.taotao.au/");
+    expect(within(projects).getAllByText("Live product")).toHaveLength(3);
+    expect(within(projects).getAllByText("Active build")).toHaveLength(4);
+    expect(within(projects).getAllByText("Prototype")).toHaveLength(6);
 
-    const voicelyLink = within(projects).getByRole("link", { name: /Voicely/i });
-    expect(voicelyLink).toHaveAttribute("href", "https://voicely.taotao.au/");
-    expect(voicelyLink).not.toHaveAttribute(
-      "href",
-      "https://github.com/hellotaotao/Voicely",
-    );
-
-    expect(
-      within(projects).getByRole("link", { name: /Energy Plan Lens/i }),
-    ).toHaveAttribute("href", "https://energy.taotao.au/");
-
-    expect(
-      within(projects).getByRole("link", { name: /Avalon Host/i }),
-    ).toHaveAttribute("href", "https://avalon.taotao.au/");
-
-    expect(
-      within(projects).queryByRole("link", { name: /WhispLine \/ SayType/i }),
-    ).not.toBeInTheDocument();
-
-    expect(
-      within(projects).queryByRole("link", { name: /Field Proof/i }),
-    ).not.toBeInTheDocument();
-    expect(
-      within(projects).queryByRole("link", { name: /AI Ops Canvas/i }),
-    ).not.toBeInTheDocument();
-    expect(
-      within(projects).queryByRole("link", { name: /Social Deduction Host/i }),
-    ).not.toBeInTheDocument();
+    for (const staleName of ["String Art", "Mindboard", "Avalon Host"]) {
+      expect(
+        within(projects).queryByRole("link", { name: staleName }),
+      ).not.toBeInTheDocument();
+    }
   });
 
-  it("keeps the now section aligned with current public project sites", () => {
+  it("keeps the now section aligned with the active-now portfolio", () => {
     render(<HomePage locale="en" />);
 
     const now = screen.getByRole("region", { name: /^Now$/i });
 
     expect(
       within(now).getByText(
-        /Keeping taotao.au current with the strongest live public project websites/i,
+        /Focusing current build time on BetterSchool, SayType, KanaDrill, Maths Practice, Voicely, and EverLog/i,
       ),
     ).toBeInTheDocument();
 
     expect(
       within(now).getByText(
-        /Improving hands-on products like MathPlay AU, String Art, Mindboard, Mentii, BetterSchool.au, Voicely, Avalon Host, Energy Plan Lens, and CaseMap/i,
+        /Turning active builds into dependable products through short build-test-ship loops/i,
       ),
     ).toBeInTheDocument();
 
     expect(
       within(now).getByText(
-        /Favoring projects that are already live, easy to try, and useful without explanation/i,
+        /Keeping live experiments available without letting them crowd out the work receiving attention now/i,
       ),
     ).toBeInTheDocument();
   });
@@ -246,5 +278,9 @@ describe("Home page", () => {
       "href",
       "mailto:hellotaotao@gmail.com",
     );
+
+    expect(
+      within(contact).getByRole("link", { name: /LinkedIn/i }),
+    ).toHaveAttribute("href", "https://www.linkedin.com/in/ta0wang");
   });
 });

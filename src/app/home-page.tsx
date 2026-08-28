@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 
-import { getProjectCards, type Locale, translations } from "./i18n";
+import { getProjectGroups, type Locale, translations } from "./i18n";
 
 function buildStyle(delay: string, accent?: string): CSSProperties {
   return {
@@ -11,7 +11,7 @@ function buildStyle(delay: string, accent?: string): CSSProperties {
 
 export function HomePage({ locale }: { locale: Locale }) {
   const t = translations[locale];
-  const projectCards = getProjectCards(locale);
+  const projectGroups = getProjectGroups(locale);
 
   return (
     <main id="content" className="site-shell">
@@ -127,30 +127,74 @@ export function HomePage({ locale }: { locale: Locale }) {
             <p className="section-intro">{t.projects.intro}</p>
           </div>
 
-          <div className="project-grid">
-            {projectCards.map((project, index) => (
-              <article
-                key={project.name}
-                className="project-card reveal"
-                style={buildStyle(`${0.24 + index * 0.08}s`, project.accent)}
-              >
-                <span className="project-glow-ring" aria-hidden="true" />
-                <div className="project-meta">
-                  <span className="project-index">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="project-status">{project.status}</span>
+          <div className="project-groups">
+            {projectGroups.map((group, groupIndex) => {
+              const groupId = `projects-${group.tier}`;
+
+              return (
+                <div
+                  key={group.tier}
+                  className="project-group"
+                  role="group"
+                  aria-labelledby={groupId}
+                >
+                  <div className="project-group-header">
+                    <div>
+                      <h3 id={groupId} className="project-group-title">
+                        {group.title}
+                      </h3>
+                      <p className="project-group-intro">{group.intro}</p>
+                    </div>
+                    <span
+                      className="project-group-count"
+                      aria-hidden="true"
+                    >
+                      {String(group.projects.length).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  <div className="project-grid">
+                    {group.projects.map((project, index) => (
+                      <article
+                        key={project.name}
+                        className="project-card reveal"
+                        style={buildStyle(
+                          `${0.24 + groupIndex * 0.12 + index * 0.06}s`,
+                          project.accent,
+                        )}
+                      >
+                        <span
+                          className="project-glow-ring"
+                          aria-hidden="true"
+                        />
+                        <div className="project-meta">
+                          <span className="project-index">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <span className="project-status">
+                            {project.status}
+                          </span>
+                        </div>
+
+                        <h4 className="project-title">
+                          <a
+                            href={project.href}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {project.name}
+                          </a>
+                        </h4>
+
+                        <p className="project-description">
+                          {project.description}
+                        </p>
+                      </article>
+                    ))}
+                  </div>
                 </div>
-
-                <h3 className="project-title">
-                  <a href={project.href} target="_blank" rel="noreferrer">
-                    {project.name}
-                  </a>
-                </h3>
-
-                <p className="project-description">{project.description}</p>
-              </article>
-            ))}
+              );
+            })}
           </div>
         </section>
 

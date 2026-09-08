@@ -38,10 +38,10 @@ const projectPresentation = {
     "id": "saytype",
     "tone": "blue",
     "monogram": "ST",
-    "platform": "macOS \u00b7 Windows \u00b7 Linux",
+    "platform": "macOS",
     "shortDescription": {
-      "en": "Speak naturally. Type anywhere.",
-      "zh": "\u81ea\u7136\u8bf4\u8bdd\uff0c\u968f\u5904\u8f93\u5165\u3002"
+      "en": "100% local transcription. Offline. No subscription.",
+      "zh": "100% \u672c\u5730\u8f6c\u5199\u3002\u79bb\u7ebf\u53ef\u7528\uff0c\u65e0\u9700\u8ba2\u9605\u3002"
     },
     "cta": {
       "en": "Explore SayType",

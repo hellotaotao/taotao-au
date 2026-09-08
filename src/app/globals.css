@@ -67,7 +67,7 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
 .featured-saytype { color: white; }
 .featured-saytype .featured-copy { padding: 67px 28px 36px; }
 .featured-saytype h3 { font-size: clamp(44px, 4.8vw, 68px); letter-spacing: -1.8px; margin-bottom: 14px; }
-.featured-saytype .featured-description { max-width: 300px; }
+.featured-saytype .featured-description { max-width: 300px; text-wrap: balance; }
 .featured-saytype .product-button { background: var(--paper); color: var(--ink); margin-top: 36px; min-height: 46px; font-size: 16px; padding-inline: 18px; }
 .featured-saytype .featured-icon { margin-bottom: 15px; }
 .featured-kanadrill .featured-icon { color: #8351da; }

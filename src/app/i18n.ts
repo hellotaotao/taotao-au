@@ -103,8 +103,8 @@ const projectsBase = [
     status: "live",
     accent: "rgba(139, 217, 255, 0.46)",
     description: {
-      en: "Cross-platform desktop voice input for macOS, Windows, and Linux: hold a shortcut, speak, and insert AI-transcribed text into any app.",
-      zh: "面向 macOS、Windows 和 Linux 的跨平台桌面语音输入工具：按住快捷键说话，松开后把 AI 转写文字插入任何应用。",
+      en: "100% local transcription on Apple Silicon Macs. After a one-time model download, dictate offline with no account, subscription, or word limits. Audio stays on-device in local mode. Optional cloud transcription and translation upload audio to your chosen provider.",
+      zh: "\u5728 Apple Silicon Mac \u4e0a\u8fdb\u884c 100% \u672c\u5730\u8f6c\u5199\u3002\u4e00\u6b21\u4e0b\u8f7d\u6a21\u578b\uff0c\u5373\u53ef\u79bb\u7ebf\u8f93\u5165\uff0c\u65e0\u9700\u8d26\u53f7\u6216\u8ba2\u9605\uff0c\u6ca1\u6709\u8bcd\u6570\u989d\u5ea6\u3002\u672c\u5730\u6a21\u5f0f\u4e0b\u97f3\u9891\u4e0d\u4e0a\u4f20\uff1b\u53ef\u9009\u4e91\u7aef\u8f6c\u5199\u4e0e\u7ffb\u8bd1\u4f1a\u5c06\u97f3\u9891\u53d1\u9001\u7ed9\u4f60\u9009\u62e9\u7684\u670d\u52a1\u5546\u3002",
     },
   },
   {

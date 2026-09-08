@@ -4,9 +4,9 @@ import "./globals.css";
 import { resolvedLocaleHeader, resolveLocale } from "./i18n";
 
 export const metadata: Metadata = {
-  title: "Tao Wang | taotao.au",
+  title: "taotao.au | Useful tools. Playful experiments.",
   description:
-    "Personal site of Tao Wang — practical AI products, tools, experiments, and current projects.",
+    "Explore useful tools and playful experiments by Tao. Find your next favourite app, from voice input to learning and everyday life.",
 };
 
 export default async function RootLayout({
@@ -21,7 +21,7 @@ export default async function RootLayout({
   });
 
   return (
-    <html lang={locale === "zh" ? "zh" : "en"} className="h-full antialiased">
+    <html data-scroll-behavior="smooth" lang={locale === "zh" ? "zh" : "en"} className="h-full antialiased">
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

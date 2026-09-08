@@ -1,6 +1,10 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
+import { AboutPage } from "../app/about/about-page";
+import { getHubProjects, hubCopy } from "../app/hub-data";
+import { getProjectGroups } from "../app/i18n";
+
 import { HomePage } from "../app/home-page";
 import {
   detectLocaleFromAcceptLanguage,
@@ -20,7 +24,7 @@ describe("i18n locale detection", () => {
   });
 
   it("detects manual Chinese language query values", () => {
-    for (const value of ["zh", "cn", "zh-cn", "zh-tw", "chinese", "中文"]) {
+    for (const value of ["zh", "cn", "zh-cn", "zh-tw", "chinese", "\u4e2d\u6587"]) {
       expect(detectLocaleFromLanguageParam(value)).toBe("zh");
       expect(detectLocaleFromLanguageParam(` ${value.toUpperCase()} `)).toBe(
         "zh",
@@ -76,211 +80,49 @@ describe("i18n locale detection", () => {
   });
 });
 
-describe("Home page", () => {
-  it("renders Tao Wang hero and keeps the primary homepage pathways", () => {
-    render(<HomePage locale="en" />);
-
-    expect(
-      screen.getByRole("heading", {
-        level: 1,
-        name: /Tao Wang/i,
-      }),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByText(/practical AI products, tools, and experiments/i),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByText(
-        /Shipping small, useful products with AI where it actually helps/i,
-      ),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole("link", { name: /View current projects/i }),
-    ).toHaveAttribute("href", "#projects");
-
-    expect(screen.getByRole("link", { name: /Get in touch/i })).toHaveAttribute(
-      "href",
-      "#contact",
-    );
-
-    expect(
-      screen.getByRole("group", { name: /Current build signals/i }),
-    ).toBeInTheDocument();
-    expect(screen.getByText(/Fast trial/i)).toBeInTheDocument();
+describe("Product hub", () => {
+  it.each(["en", "zh"] as const)("keeps every project reachable in %s", (locale) => {
+    render(<HomePage locale={locale} />);
+    const links = screen.getAllByRole("link").filter((link) => /betterschool.au|saytype.taotao|kanadrill.taotao|mathtrainer.taotao|voicely.taotao|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|energy.taotao|casemap.taotao|mindboard.taotao/.test(link.getAttribute("href") ?? ""));
+    expect(links).toHaveLength(13);
+    expect(screen.getAllByText(locale === "en" ? "Live product" : "\u5df2\u4e0a\u7ebf\u4ea7\u54c1")).toHaveLength(3);
+    expect(screen.getAllByText(locale === "en" ? "Active build" : "\u6d3b\u8dc3\u5f00\u53d1\u4e2d")).toHaveLength(4);
+    expect(screen.getAllByText(locale === "en" ? "Prototype" : "\u539f\u578b")).toHaveLength(6);
+    expect(new Set(links.map((link) => link.getAttribute("href"))).size).toBe(13);
   });
 
-  it("renders Chinese content and translated project maturity", () => {
-    render(<HomePage locale="zh" />);
-
-    expect(
-      screen.getByText(/我构建实用的 AI 产品、工具和实验/),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole("heading", {
-        level: 2,
-        name: "当前项目",
-      }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("group", { name: "当前投入" }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("group", { name: "更多线上实验" }),
-    ).toBeInTheDocument();
-    expect(screen.getAllByText("已上线产品")).toHaveLength(3);
-    expect(screen.getAllByText("活跃开发中")).toHaveLength(4);
-    expect(screen.getAllByText("原型")).toHaveLength(6);
-    expect(
-      screen.getByText(/11,034 所学校/),
-    ).toBeInTheDocument();
-
-    const now = screen.getByRole("region", { name: "现在" });
-    expect(
-      within(now).getByText(
-        /当前主要投入 BetterSchool、SayType、KanaDrill、Maths Practice、Voicely 和 EverLog/,
-      ),
-    ).toBeInTheDocument();
-    expect(
-      within(now).getByText(/通过短周期的构建、测试和发布/),
-    ).toBeInTheDocument();
-    expect(
-      within(now).getByText(/保留可用的线上实验/),
-    ).toBeInTheDocument();
-  });
-
-  it("renders current work and live experiments as separate project tiers", () => {
+  it("puts products first and moves the biography off the homepage", () => {
     render(<HomePage locale="en" />);
-
-    const projects = screen.getByRole("region", {
-      name: /Current projects/i,
-    });
-
-    expect(
-      within(projects).getByRole("heading", {
-        level: 2,
-        name: /Current projects/i,
-      }),
-    ).toBeInTheDocument();
-
-    expect(
-      within(projects).getByText(
-        /Current products first, followed by live experiments that are still useful to explore/i,
-      ),
-    ).toBeInTheDocument();
-
-    const activeNow = within(projects).getByRole("group", {
-      name: /Active now/i,
-    });
-    const experiments = within(projects).getByRole("group", {
-      name: /More live experiments/i,
-    });
-
-    expect(within(activeNow).getAllByRole("link")).toHaveLength(6);
-    expect(within(experiments).getAllByRole("link")).toHaveLength(7);
-
-    const activeLinks = [
-      ["BetterSchool", "https://betterschool.au/"],
-      ["SayType", "https://saytype.taotao.au/"],
-      ["KanaDrill", "https://kanadrill.taotao.au/"],
-      ["Maths Practice", "https://mathtrainer.taotao.au/"],
-      ["Voicely", "https://voicely.taotao.au/"],
-      ["EverLog", "https://everlog.taotao.au/"],
-    ] as const;
-
-    for (const [name, href] of activeLinks) {
-      expect(within(activeNow).getByRole("link", { name })).toHaveAttribute(
-        "href",
-        href,
-      );
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Useful tools. Playful experiments.");
+    expect(screen.queryByRole("heading", { name: "Tao Wang" })).not.toBeInTheDocument();
+    expect(screen.queryByText(/Based in Adelaide/)).not.toBeInTheDocument();
+    const featured = screen.getByRole("region", { name: "Try these first" });
+    const lab = screen.getByRole("region", { name: "In the lab" });
+    expect(within(featured).getAllByRole("link")).toHaveLength(3);
+    expect(within(lab).getAllByRole("link")).toHaveLength(10);
+    for (const name of ["SayType", "BetterSchool", "KanaDrill"]) {
+      expect(within(featured).getByRole("heading", { name })).toBeInTheDocument();
     }
+    expect(screen.getAllByRole("link", { name: "About" })[0]).toHaveAttribute("href", "/about?lang=en");
+  });
+});
 
-    expect(
-      within(activeNow).getByText(/11,034 Australian schools/i),
-    ).toBeInTheDocument();
-    expect(
-      within(activeNow).getByText(/macOS, Windows, and Linux/i),
-    ).toBeInTheDocument();
-    expect(
-      within(activeNow).getByText(/local-first iOS meeting transcription/i),
-    ).toBeInTheDocument();
-
-    const experimentLinks = [
-      ["Threadline Studio", "https://stringart.taotao.au/"],
-      ["MathPlay AU", "https://mathplay.taotao.au/"],
-      ["Mentii", "https://menti.taotao.au/"],
-      ["Veiled Roundtable", "https://avalon.taotao.au/"],
-      ["EnergyLens", "https://energy.taotao.au/"],
-      ["CaseMap", "https://casemap.taotao.au/"],
-      ["AI Ops Canvas", "https://mindboard.taotao.au/"],
-    ] as const;
-
-    for (const [name, href] of experimentLinks) {
-      expect(within(experiments).getByRole("link", { name })).toHaveAttribute(
-        "href",
-        href,
-      );
-    }
-
-    expect(within(projects).getAllByText("Live product")).toHaveLength(3);
-    expect(within(projects).getAllByText("Active build")).toHaveLength(4);
-    expect(within(projects).getAllByText("Prototype")).toHaveLength(6);
-
-    for (const staleName of ["String Art", "Mindboard", "Avalon Host"]) {
-      expect(
-        within(projects).queryByRole("link", { name: staleName }),
-      ).not.toBeInTheDocument();
+describe("Hub data and About", () => {
+  it.each(["en", "zh"] as const)("preserves existing destinations and maturity in %s", (locale) => {
+    const original = getProjectGroups(locale).flatMap((group) => group.projects);
+    const { featured, lab } = getHubProjects(locale);
+    expect(featured.map((project) => project.name)).toEqual(["SayType", "BetterSchool", "KanaDrill"]);
+    expect([...featured, ...lab]).toHaveLength(original.length);
+    for (const project of original) {
+      expect([...featured, ...lab].find((item) => item.name === project.name)).toMatchObject(project);
     }
   });
 
-  it("keeps the now section aligned with the active-now portfolio", () => {
-    render(<HomePage locale="en" />);
-
-    const now = screen.getByRole("region", { name: /^Now$/i });
-
-    expect(
-      within(now).getByText(
-        /Focusing current build time on BetterSchool, SayType, KanaDrill, Maths Practice, Voicely, and EverLog/i,
-      ),
-    ).toBeInTheDocument();
-
-    expect(
-      within(now).getByText(
-        /Turning active builds into dependable products through short build-test-ship loops/i,
-      ),
-    ).toBeInTheDocument();
-
-    expect(
-      within(now).getByText(
-        /Keeping live experiments available without letting them crowd out the work receiving attention now/i,
-      ),
-    ).toBeInTheDocument();
-  });
-
-  it("renders about and contact sections as named regions", () => {
-    render(<HomePage locale="en" />);
-
-    const about = screen.getByRole("region", { name: /About/i });
-    const contact = screen.getByRole("region", { name: /Contact/i });
-
-    expect(about).toBeInTheDocument();
-    expect(contact).toBeInTheDocument();
-
-    expect(within(contact).getByRole("link", { name: /GitHub/i })).toHaveAttribute(
-      "href",
-      "https://github.com/hellotaotao",
-    );
-
-    expect(within(contact).getByRole("link", { name: /Email/i })).toHaveAttribute(
-      "href",
-      "mailto:hellotaotao@gmail.com",
-    );
-
-    expect(
-      within(contact).getByRole("link", { name: /LinkedIn/i }),
-    ).toHaveAttribute("href", "https://www.linkedin.com/in/ta0wang");
+  it.each(["en", "zh"] as const)("moves profile and contact to About in %s", (locale) => {
+    render(<AboutPage locale={locale} />);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(hubCopy[locale].hello);
+    expect(screen.getByRole("link", { name: /LinkedIn/ })).toHaveAttribute("href", "https://www.linkedin.com/in/ta0wang");
+    expect(screen.getByRole("link", { name: new RegExp(hubCopy[locale].backToProducts) })).toHaveAttribute("href", `/?lang=${locale}#products`);
+    expect(screen.getByRole("link", { name: hubCopy[locale].language })).toHaveAttribute("href", `/about?lang=${locale === "en" ? "zh" : "en"}`);
   });
 });

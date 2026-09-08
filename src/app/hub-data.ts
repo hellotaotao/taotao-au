@@ -40,8 +40,8 @@ const projectPresentation = {
     "monogram": "ST",
     "platform": "macOS \u00b7 Windows \u00b7 Linux",
     "shortDescription": {
-      "en": "100% local transcription. No subscription.",
-      "zh": "100% \u672c\u5730\u8f6c\u5199\uff0c\u65e0\u9700\u8ba2\u9605\u3002"
+      "en": "100% local, offline transcription.",
+      "zh": "100% \u672c\u5730\u79bb\u7ebf\u8f6c\u5199"
     },
     "cta": {
       "en": "Explore SayType",

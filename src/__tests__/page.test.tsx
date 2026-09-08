@@ -145,10 +145,10 @@ describe("SayType local transcription positioning", () => {
     const project = getHubProjects(locale).featured.find((item) => item.name === "SayType")!;
     const card = screen.getByRole("heading", { name: "SayType" }).closest("article")!;
     const expected = locale === "en"
-      ? "100% local transcription. Offline. No subscription."
-      : "100% \u672c\u5730\u8f6c\u5199\u3002\u79bb\u7ebf\u53ef\u7528\uff0c\u65e0\u9700\u8ba2\u9605\u3002";
+      ? "100% local transcription. No subscription."
+      : "100% \u672c\u5730\u8f6c\u5199\uff0c\u65e0\u9700\u8ba2\u9605\u3002";
     expect(within(card).getByText(expected)).toBeInTheDocument();
-    expect(project.platform).toBe("macOS");
+    expect(project.platform).toBe("macOS \u00b7 Windows \u00b7 Linux");
     expect(project.description).toContain(locale === "en" ? "Optional cloud" : "\u53ef\u9009\u4e91\u7aef");
     expect(project.description).toContain(locale === "en" ? "model download" : "\u4e0b\u8f7d\u6a21\u578b");
     expect(within(card).getByRole("link")).toHaveAttribute("href", "https://saytype.taotao.au/");

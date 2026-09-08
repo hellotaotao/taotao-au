@@ -255,19 +255,19 @@ export const translations = {
       },
     },
     contactLinks: [
-      {
-        name: "GitHub",
-        href: "https://github.com/hellotaotao",
-      },
-      {
-        name: "Email",
-        href: "mailto:hellotaotao@gmail.com",
-      },
-      {
-        name: "LinkedIn",
-        href: "https://www.linkedin.com/in/ta0wang",
-      },
-    ],
+  {
+    "name": "Email",
+    "href": "mailto:hellotaotao@gmail.com"
+  },
+  {
+    "name": "LinkedIn",
+    "href": "https://www.linkedin.com/in/ta0wang"
+  },
+  {
+    "name": "GitHub",
+    "href": "https://github.com/hellotaotao"
+  }
+],
     spotlightStats: [
       {
         label: "Base",
@@ -317,16 +317,16 @@ export const translations = {
       "Voice-first software",
     ],
     nowItems: [
-      "Focusing current build time on BetterSchool, SayType, KanaDrill, Maths Practice, Voicely, and EverLog.",
-      "Turning active builds into dependable products through short build-test-ship loops.",
-      "Keeping live experiments available without letting them crowd out the work receiving attention now.",
+      "Lately, my spare-time projects have focused on voice tools, learning apps, and an Avalon game.",
+      "Some are ready to try; others are still taking shape.",
+      "I keep improving them in my own time, alongside my full-time job.",
     ],
     hero: {
       eyebrow: "taotao.au",
       badges: ["Adelaide-based builder", "Useful AI over AI spectacle"],
       title: "Tao Wang",
-      lead: "I build practical AI products, tools, and experiments.",
-      body: "Based in Adelaide, I work on useful software that is simple, fast to try, and grounded in real-world problems. This site is the main hub for my current products, ideas, and ongoing work.",
+      lead: "I'm a full-time software engineer based in Adelaide.",
+      body: "Outside work, I enjoy making tools I want to use and playful experiments that others might enjoy too. taotao.au brings these side projects together, for my own everyday use and for you to explore.",
       projectsCta: "View current projects",
       contactCta: "Get in touch",
       signalsLabel: "Current build signals",
@@ -346,20 +346,20 @@ export const translations = {
       label: "Profile",
       title: "About",
       copy: [
-        "I like building software that feels immediately useful: products with a clear purpose, simple interfaces, and enough technical depth to keep getting better over time.",
-        "My work often sits at the intersection of AI, productivity, education, and practical web products.",
+        "These hobby projects usually start with something I need in everyday life, or an idea I want to explore.",
+        "My interests include AI, productivity, learning, voice tools, and games.",
       ],
       focusLabel: "Focus areas",
     },
     now: {
       label: "In motion",
-      title: "Now",
+      title: "Outside work, lately",
     },
     contact: {
       label: "Open line",
       title: "Contact",
       intro:
-        "The easiest way to find me is through GitHub or email. If we are discussing products, prototypes, or practical AI ideas, feel free to reach out.",
+        "The best way to reach me is by email or LinkedIn. Project feedback, questions about using a tool, or a chat about shared interests are all welcome. You can find my code on GitHub.",
     },
   },
   zh: {
@@ -379,19 +379,19 @@ export const translations = {
       },
     },
     contactLinks: [
-      {
-        name: "GitHub",
-        href: "https://github.com/hellotaotao",
-      },
-      {
-        name: "Email",
-        href: "mailto:hellotaotao@gmail.com",
-      },
-      {
-        name: "LinkedIn",
-        href: "https://www.linkedin.com/in/ta0wang",
-      },
-    ],
+  {
+    "name": "Email",
+    "href": "mailto:hellotaotao@gmail.com"
+  },
+  {
+    "name": "LinkedIn",
+    "href": "https://www.linkedin.com/in/ta0wang"
+  },
+  {
+    "name": "GitHub",
+    "href": "https://github.com/hellotaotao"
+  }
+],
     spotlightStats: [
       {
         label: "位置",
@@ -436,16 +436,16 @@ export const translations = {
     ],
     focusAreas: ["实用 AI 产品", "教育", "效率工具", "语音优先软件"],
     nowItems: [
-      "当前主要投入 BetterSchool、SayType、KanaDrill、Maths Practice、Voicely 和 EverLog。",
-      "通过短周期的构建、测试和发布，把活跃开发项目打磨成可靠产品。",
-      "保留可用的线上实验，但不让它们淹没现在真正获得投入的工作。",
+      "\u6700\u8fd1\uff0c\u6211\u628a\u4e1a\u4f59\u5f00\u53d1\u65f6\u95f4\u4e3b\u8981\u82b1\u5728\u8bed\u97f3\u5de5\u5177\u3001\u5b66\u4e60\u5e94\u7528\u548c\u963f\u74e6\u9686\u6e38\u620f\u4e0a\u3002",
+      "\u6709\u4e9b\u5df2\u7ecf\u53ef\u4ee5\u4f7f\u7528\uff0c\u6709\u4e9b\u8fd8\u5728\u6162\u6162\u6253\u78e8\u3002",
+      "\u6211\u4f1a\u5229\u7528\u5168\u804c\u5de5\u4f5c\u4e4b\u4f59\u7684\u65f6\u95f4\uff0c\u6301\u7eed\u5b8c\u5584\u8fd9\u4e9b\u5174\u8da3\u9879\u76ee\u3002",
     ],
     hero: {
       eyebrow: "taotao.au",
       badges: ["常驻阿德莱德的产品构建者", "重视有用 AI，而不是 AI 表演"],
       title: "Tao Wang",
-      lead: "我构建实用的 AI 产品、工具和实验。",
-      body: "我在阿德莱德工作，专注于简单、容易试用、并扎根真实问题的软件。这个网站是我当前产品、想法和持续工作的主要入口。",
+      lead: "\u6211\u4f4f\u5728\u963f\u5fb7\u83b1\u5fb7\uff0c\u662f\u4e00\u540d\u5168\u804c\u8f6f\u4ef6\u5de5\u7a0b\u5e08\u3002",
+      body: "\u5de5\u4f5c\u4e4b\u5916\uff0c\u6211\u559c\u6b22\u505a\u4e00\u4e9b\u81ea\u5df1\u60f3\u7528\u3001\u4e5f\u5e0c\u671b\u522b\u4eba\u89c9\u5f97\u6709\u7528\u7684\u5c0f\u5de5\u5177\uff0c\u4ee5\u53ca\u597d\u73a9\u7684\u5b9e\u9a8c\u3002taotao.au \u6536\u96c6\u4e86\u8fd9\u4e9b\u4e1a\u4f59\u9879\u76ee\uff0c\u65b9\u4fbf\u6211\u81ea\u5df1\u4f7f\u7528\uff0c\u4e5f\u6b22\u8fce\u4f60\u6765\u63a2\u7d22\u3001\u8bd5\u7528\u3002",
       projectsCta: "查看当前项目",
       contactCta: "联系我",
       signalsLabel: "当前构建信号",
@@ -464,20 +464,20 @@ export const translations = {
       label: "简介",
       title: "关于",
       copy: [
-        "我喜欢构建能立刻体现用途的软件：目标清楚、界面简单，并且有足够技术深度，可以持续变得更好。",
-        "我的工作经常落在 AI、效率、教育和实用网页产品的交汇处。",
+        "\u8fd9\u4e9b\u5174\u8da3\u9879\u76ee\u5927\u591a\u6765\u81ea\u81ea\u5df1\u7684\u65e5\u5e38\u9700\u8981\uff0c\u6216\u4e00\u4e2a\u60f3\u8bd5\u8bd5\u770b\u7684\u70b9\u5b50\u3002",
+        "\u6211\u611f\u5174\u8da3\u7684\u65b9\u5411\u5305\u62ec AI\u3001\u6548\u7387\u3001\u5b66\u4e60\u3001\u8bed\u97f3\u5de5\u5177\u548c\u6e38\u620f\u3002",
       ],
       focusLabel: "关注方向",
     },
     now: {
       label: "进行中",
-      title: "现在",
+      title: "\u5de5\u4f5c\u4e4b\u5916\uff0c\u6700\u8fd1\u5728\u505a\u4ec0\u4e48",
     },
     contact: {
       label: "联系方式",
       title: "联系",
       intro:
-        "最容易找到我的方式是 GitHub 或邮件。如果你想聊产品、原型或实用 AI 想法，欢迎联系。",
+        "\u5982\u679c\u4f60\u60f3\u8054\u7cfb\u6211\uff0c\u6b22\u8fce\u53d1\u90ae\u4ef6\u6216\u901a\u8fc7 LinkedIn \u627e\u5230\u6211\u3002\u65e0\u8bba\u662f\u9879\u76ee\u53cd\u9988\u3001\u4f7f\u7528\u4e2d\u7684\u95ee\u9898\uff0c\u8fd8\u662f\u804a\u804a\u5171\u540c\u7684\u5174\u8da3\uff0c\u90fd\u5f88\u6b22\u8fce\u3002\u4ee3\u7801\u53ef\u4ee5\u5728 GitHub \u4e0a\u67e5\u770b\u3002",
     },
   },
 } as const;

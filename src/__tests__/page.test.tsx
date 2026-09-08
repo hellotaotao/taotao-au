@@ -121,8 +121,19 @@ describe("Hub data and About", () => {
   it.each(["en", "zh"] as const)("moves profile and contact to About in %s", (locale) => {
     render(<AboutPage locale={locale} />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(hubCopy[locale].hello);
-    expect(screen.getByRole("link", { name: /LinkedIn/ })).toHaveAttribute("href", "https://www.linkedin.com/in/ta0wang");
+    expect(screen.getAllByRole("link", { name: /LinkedIn/ })[0]).toHaveAttribute("href", "https://www.linkedin.com/in/ta0wang");
     expect(screen.getByRole("link", { name: new RegExp(hubCopy[locale].backToProducts) })).toHaveAttribute("href", `/?lang=${locale}#products`);
     expect(screen.getByRole("link", { name: hubCopy[locale].language })).toHaveAttribute("href", `/about?lang=${locale === "en" ? "zh" : "en"}`);
+  });
+});
+
+describe("About identity and contact priorities", () => {
+  it.each(["en", "zh"] as const)("distinguishes employment from hobbies in %s", (locale) => {
+    render(<AboutPage locale={locale} />);
+    expect(screen.getByText(locale === "en" ? /full-time software engineer/ : /\u5168\u804c\u8f6f\u4ef6\u5de5\u7a0b\u5e08/)).toBeInTheDocument();
+    expect(screen.getByText(locale === "en" ? /side projects/ : /\u4e1a\u4f59\u9879\u76ee/)).toBeInTheDocument();
+    expect(screen.getByRole("heading", {name: locale === "en" ? "Outside work, lately" : "\u5de5\u4f5c\u4e4b\u5916，\u6700\u8fd1\u5728\u505a\u4ec0\u4e48"})).toBeInTheDocument();
+    const contact = screen.getByRole("region", {name: locale === "en" ? "Contact" : "\u8054\u7cfb"});
+    expect(within(contact).getAllByRole("link").map(a => a.textContent?.replace("↗", ""))).toEqual(["Email", "LinkedIn", "GitHub"]);
   });
 });

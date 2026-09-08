@@ -39,7 +39,7 @@ export function SiteShell({
         <span>{t.madeBy}</span>
         <div className="footer-links">
           <Link href={about}>{t.about}</Link>
-          {translations[locale].contactLinks.filter((link) => link.name !== "LinkedIn").map((link) => (
+          {translations[locale].contactLinks.map((link) => (
             <a key={link.name} href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noreferrer" : undefined}>{link.name}</a>
           ))}
         </div>

@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { AboutPage } from "../app/about/about-page";
@@ -84,11 +84,11 @@ describe("Product hub", () => {
   it.each(["en", "zh"] as const)("keeps every project reachable in %s", (locale) => {
     render(<HomePage locale={locale} />);
     const links = screen.getAllByRole("link").filter((link) => /betterschool.au|saytype.taotao|kanadrill.taotao|mathtrainer.taotao|voicely.taotao|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|energy.taotao|casemap.taotao|chromewebstore.google.com/.test(link.getAttribute("href") ?? ""));
-    expect(links).toHaveLength(13);
+    expect(links).toHaveLength(3);
     expect(screen.getAllByText(locale === "en" ? "Live product" : "\u5df2\u4e0a\u7ebf\u4ea7\u54c1")).toHaveLength(4);
     expect(screen.getAllByText(locale === "en" ? "Active build" : "\u6d3b\u8dc3\u5f00\u53d1\u4e2d")).toHaveLength(4);
     expect(screen.getAllByText(locale === "en" ? "Prototype" : "\u539f\u578b")).toHaveLength(5);
-    expect(new Set(links.map((link) => link.getAttribute("href"))).size).toBe(13);
+    expect(new Set(links.map((link) => link.getAttribute("href"))).size).toBe(3);
   });
 
   it("puts products first and moves the biography off the homepage", () => {
@@ -99,7 +99,8 @@ describe("Product hub", () => {
     const featured = screen.getByRole("region", { name: "Try these first" });
     const lab = screen.getByRole("region", { name: "In the lab" });
     expect(within(featured).getAllByRole("link")).toHaveLength(3);
-    expect(within(lab).getAllByRole("link")).toHaveLength(10);
+    expect(within(lab).queryAllByRole("link")).toHaveLength(0);
+    expect(within(lab).getAllByRole("button")).toHaveLength(10);
     for (const name of ["SayType", "BetterSchool", "KanaDrill"]) {
       expect(within(featured).getByRole("heading", { name })).toBeInTheDocument();
     }
@@ -160,5 +161,29 @@ it.each(["en", "zh"] as const)("orders public lab priorities and adds TubeFilter
   expect(lab.map(p => p.name)).toEqual(["Voicely", "Maths Practice", "Veiled Roundtable", "TubeFilter", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"]);
   render(<HomePage locale={locale} />);
   expect(screen.queryByText("AI Ops Canvas")).not.toBeInTheDocument();
-  expect(screen.getByRole("link", {name: /TubeFilter/})).toHaveAttribute("href", "https://chromewebstore.google.com/detail/tubefilter-%E2%80%93-block-youtub/mfhflkedbldmbkfnpekebilfcnpfbafh");
+  fireEvent.click(screen.getByRole("button", {name: /TubeFilter/}));
+  expect(screen.getByRole("link", {name: /Chrome/})).toHaveAttribute("href", "https://chromewebstore.google.com/detail/tubefilter-%E2%80%93-block-youtub/mfhflkedbldmbkfnpekebilfcnpfbafh");
+});
+
+
+it.each(["en", "zh"] as const)("expands one project at a time with explicit destinations in %s", (locale) => {
+  render(<HomePage locale={locale} />);
+  const { lab } = getHubProjects(locale);
+  for (const project of lab) {
+    const trigger = screen.getByRole("button", {name: new RegExp(project.name)});
+    fireEvent.click(trigger);
+    expect(trigger).toHaveAttribute("aria-expanded", "true");
+    const panel = document.getElementById(trigger.getAttribute("aria-controls")!)!;
+    expect(panel).toBeVisible();
+    expect(within(panel).getByText(project.description)).toBeVisible();
+    expect(within(panel).getByRole("link")).toHaveAttribute("href", project.href);
+    expect(screen.getAllByRole("button", {expanded: true})).toHaveLength(1);
+  }
+  const last = screen.getByRole("button", {name: /EnergyLens/});
+  fireEvent.click(last);
+  expect(last).toHaveAttribute("aria-expanded", "false");
+  fireEvent.click(last);
+  fireEvent.keyDown(document.getElementById(last.getAttribute("aria-controls")!)!, {key: "Escape"});
+  expect(last).toHaveFocus();
+  expect(last).toHaveAttribute("aria-expanded", "false");
 });

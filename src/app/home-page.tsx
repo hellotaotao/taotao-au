@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { LabProjects } from "./lab-projects";
 import { getHubProjects, hubCopy, type HubProject } from "./hub-data";
 import type { Locale } from "./i18n";
 import { ProductIcon, SparkIcon } from "./product-icon";
@@ -24,7 +25,7 @@ function FeaturedProduct({ project }: { project: HubProject }) {
         <p className="featured-description">{project.shortDescription}</p>
         <p className="platform">{project.platform}</p>
         <a className="product-button" href={project.href} target="_blank" rel="noreferrer">
-          {project.cta}<span aria-hidden="true">&rarr;</span>
+          {project.cta}<span aria-hidden="true">&#8599;</span>
         </a>
       </div>
     </article>
@@ -52,19 +53,7 @@ export function HomePage({ locale }: { locale: Locale }) {
             <h2 id="lab-title">{t.labTitle}</h2>
             <p>{t.labIntro}</p>
           </div>
-          <div className="lab-grid">
-            {lab.map((project) => (
-              <article className={`lab-card tone-${project.tone}`} key={project.id}>
-                <a href={project.href} target="_blank" rel="noreferrer" className="lab-link">
-                  <span className="lab-icon" aria-hidden="true"><ProductIcon id={project.id} /></span>
-                  <h3>{project.name}</h3>
-                  <p>{project.shortDescription}</p>
-                  <span className="project-status">{project.status}</span>
-                  <span className="lab-arrow" aria-hidden="true">{"\u2197"}</span>
-                </a>
-              </article>
-            ))}
-          </div>
+          <LabProjects projects={lab} locale={locale} />
         </section>
       </main>
     </SiteShell>

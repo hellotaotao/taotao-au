@@ -83,11 +83,11 @@ describe("i18n locale detection", () => {
 describe("Product hub", () => {
   it.each(["en", "zh"] as const)("keeps every project reachable in %s", (locale) => {
     render(<HomePage locale={locale} />);
-    const links = screen.getAllByRole("link").filter((link) => /betterschool.au|saytype.taotao|kanadrill.taotao|mathtrainer.taotao|voicely.taotao|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|energy.taotao|casemap.taotao|mindboard.taotao/.test(link.getAttribute("href") ?? ""));
+    const links = screen.getAllByRole("link").filter((link) => /betterschool.au|saytype.taotao|kanadrill.taotao|mathtrainer.taotao|voicely.taotao|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|energy.taotao|casemap.taotao|chromewebstore.google.com/.test(link.getAttribute("href") ?? ""));
     expect(links).toHaveLength(13);
-    expect(screen.getAllByText(locale === "en" ? "Live product" : "\u5df2\u4e0a\u7ebf\u4ea7\u54c1")).toHaveLength(3);
+    expect(screen.getAllByText(locale === "en" ? "Live product" : "\u5df2\u4e0a\u7ebf\u4ea7\u54c1")).toHaveLength(4);
     expect(screen.getAllByText(locale === "en" ? "Active build" : "\u6d3b\u8dc3\u5f00\u53d1\u4e2d")).toHaveLength(4);
-    expect(screen.getAllByText(locale === "en" ? "Prototype" : "\u539f\u578b")).toHaveLength(6);
+    expect(screen.getAllByText(locale === "en" ? "Prototype" : "\u539f\u578b")).toHaveLength(5);
     expect(new Set(links.map((link) => link.getAttribute("href"))).size).toBe(13);
   });
 
@@ -109,7 +109,7 @@ describe("Product hub", () => {
 
 describe("Hub data and About", () => {
   it.each(["en", "zh"] as const)("preserves existing destinations and maturity in %s", (locale) => {
-    const original = getProjectGroups(locale).flatMap((group) => group.projects);
+    const original = getProjectGroups(locale).flatMap((group) => group.projects).filter((project) => project.name !== "AI Ops Canvas");
     const { featured, lab } = getHubProjects(locale);
     expect(featured.map((project) => project.name)).toEqual(["SayType", "BetterSchool", "KanaDrill"]);
     expect([...featured, ...lab]).toHaveLength(original.length);
@@ -153,4 +153,12 @@ describe("SayType local transcription positioning", () => {
     expect(project.description).toContain(locale === "en" ? "model download" : "\u4e0b\u8f7d\u6a21\u578b");
     expect(within(card).getByRole("link")).toHaveAttribute("href", "https://saytype.taotao.au/");
   });
+});
+
+it.each(["en", "zh"] as const)("orders public lab priorities and adds TubeFilter in %s", (locale) => {
+  const { lab } = getHubProjects(locale);
+  expect(lab.map(p => p.name)).toEqual(["Voicely", "Maths Practice", "Veiled Roundtable", "TubeFilter", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"]);
+  render(<HomePage locale={locale} />);
+  expect(screen.queryByText("AI Ops Canvas")).not.toBeInTheDocument();
+  expect(screen.getByRole("link", {name: /TubeFilter/})).toHaveAttribute("href", "https://chromewebstore.google.com/detail/tubefilter-%E2%80%93-block-youtub/mfhflkedbldmbkfnpekebilfcnpfbafh");
 });

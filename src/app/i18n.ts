@@ -85,6 +85,17 @@ export function resolveLocale({
 }
 
 const projectsBase = [
+{
+  "name": "TubeFilter",
+  "href": "https://chromewebstore.google.com/detail/tubefilter-%E2%80%93-block-youtub/mfhflkedbldmbkfnpekebilfcnpfbafh",
+  "tier": "experiments",
+  "status": "live",
+  "accent": "rgba(255, 151, 188, 0.46)",
+  "description": {
+    "en": "A Chrome extension that blocks YouTube Shorts and Facebook Reels for a less distracting feed.",
+    "zh": "\u5c4f\u853d YouTube Shorts \u548c Facebook Reels \u7684 Chrome \u6269\u5c55\uff0c\u8ba9\u4fe1\u606f\u6d41\u5c11\u4e9b\u5e72\u6270\u3002"
+  }
+},
   {
     name: "BetterSchool",
     href: "https://betterschool.au/",

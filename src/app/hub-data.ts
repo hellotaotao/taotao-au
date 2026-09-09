@@ -34,6 +34,20 @@ export const hubCopy = {
 } as const;
 
 const projectPresentation = {
+"TubeFilter": {
+  "id": "tubefilter",
+  "tone": "coral",
+  "monogram": "TF",
+  "platform": "Chrome",
+  "shortDescription": {
+    "en": "Block YouTube Shorts & Facebook Reels.",
+    "zh": "\u5c4f\u853d YouTube Shorts \u548c Facebook Reels\u3002"
+  },
+  "cta": {
+    "en": "Get TubeFilter",
+    "zh": "\u5b89\u88c5 TubeFilter"
+  }
+},
   "SayType": {
     "id": "saytype",
     "tone": "blue",
@@ -229,6 +243,8 @@ export type HubProject = ProjectCard & {
 
 const featuredNames = ["SayType", "BetterSchool", "KanaDrill"] as const;
 
+const labNames = ["Voicely", "Maths Practice", "Veiled Roundtable", "TubeFilter", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"] as const;
+
 export function getHubProjects(locale: Locale): {
   featured: HubProject[];
   lab: HubProject[];
@@ -245,6 +261,6 @@ export function getHubProjects(locale: Locale): {
   });
   return {
     featured: featuredNames.map((name) => presented.find((project) => project.name === name)!),
-    lab: presented.filter((project) => !featuredNames.some((name) => name === project.name)),
+    lab: labNames.map((name) => presented.find((project) => project.name === name)!),
   };
 }

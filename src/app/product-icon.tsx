@@ -1,5 +1,6 @@
 import {
   BookOpenTextIcon,
+  FunnelIcon,
   ChatsIcon,
   FlowArrowIcon,
   LightningIcon,
@@ -16,6 +17,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 
 const icons = {
+  tubefilter: FunnelIcon,
   saytype: MicrophoneIcon,
   betterschool: MapPinIcon,
   kanadrill: TranslateIcon,

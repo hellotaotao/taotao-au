@@ -7,6 +7,9 @@ export const hubCopy = {
     "lab": "Lab",
     "about": "About",
     "featuredTitle": "Try these first",
+    "moreTitle": "More products",
+    "visitProduct": "Use product",
+    "installProduct": "Install extension",
     "labTitle": "In the lab",
     "labIntro": "Works in progress, open to explore.",
     "madeBy": "Made by Tao",
@@ -22,6 +25,9 @@ export const hubCopy = {
     "lab": "\u5b9e\u9a8c\u5ba4",
     "about": "\u5173\u4e8e\u6211",
     "featuredTitle": "\u5148\u8bd5\u8bd5\u8fd9\u51e0\u4e2a",
+    "moreTitle": "\u66f4\u591a\u4f5c\u54c1",
+    "visitProduct": "\u5f00\u59cb\u4f7f\u7528",
+    "installProduct": "\u5b89\u88c5\u6269\u5c55",
     "labTitle": "\u5b9e\u9a8c\u5ba4\u91cc",
     "labIntro": "\u8fd8\u5728\u6253\u78e8\uff0c\u4e5f\u6b22\u8fce\u6765\u901b\u901b\u3002",
     "madeBy": "Tao \u5236\u4f5c",
@@ -243,10 +249,13 @@ export type HubProject = ProjectCard & {
 
 const featuredNames = ["SayType", "BetterSchool", "KanaDrill"] as const;
 
-const labNames = ["Voicely", "Maths Practice", "Veiled Roundtable", "TubeFilter", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"] as const;
+const moreNames = ["TubeFilter", "Threadline Studio"] as const;
+
+const labNames = ["Voicely", "Maths Practice", "Veiled Roundtable", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"] as const;
 
 export function getHubProjects(locale: Locale): {
   featured: HubProject[];
+  more: HubProject[];
   lab: HubProject[];
 } {
   const projects = getProjectGroups(locale).flatMap((group) => group.projects);
@@ -261,6 +270,7 @@ export function getHubProjects(locale: Locale): {
   });
   return {
     featured: featuredNames.map((name) => presented.find((project) => project.name === name)!),
+    more: moreNames.map((name) => presented.find((project) => project.name === name)!),
     lab: labNames.map((name) => presented.find((project) => project.name === name)!),
   };
 }

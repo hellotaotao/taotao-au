@@ -123,7 +123,6 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
   .featured-description { font-size: 16px; }
   .product-button { font-size: 12px; padding-inline: 10px; gap: 6px; }
   .lab-link { padding-inline: 15px; }
-  .lab-card .lab-name { font-size: 16px; }
 }
 @media (max-width: 1050px) {
   .featured-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -142,8 +141,6 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
   .lab-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .lab-link { padding-inline: 10px; }
   .lab-card .lab-summary { font-size: 13px; }
-  .lab-icon { width: 72px; height: 72px; border-radius: 20px; }
-  .lab-icon svg { width: 46px; height: 46px; }
 }
 @media (max-width: 700px) {
   html { scroll-padding-top: 16px; }
@@ -182,9 +179,7 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
   .lab-card:nth-child(5n) { border-right: 1px solid var(--line); }
   .lab-card:nth-child(2n) { border-right: none; }
   .lab-link { min-height: 215px; padding: 6px 12px 10px; }
-  .lab-card .lab-name { font-size: 16px; }
   .lab-card .lab-summary { font-size: 13px; }
-  .lab-icon { width: 78px; height: 78px; }
   .site-footer { align-items: flex-start; font-size: 12px; gap: 16px; }
   .footer-links { gap: 18px; }
   .about-page { padding-top: 12px; }
@@ -227,18 +222,70 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
 .lab-detail-copy small { display: block; font-size: 12px; margin-top: 12px; overflow-wrap: anywhere; }
 .lab-close { position: absolute; top: 16px; right: 18px; border: 0; background: #ffffff90; border-radius: 50%; width: 36px; height: 36px; font-size: 26px; cursor: pointer; color: inherit; }
 @keyframes lab-reveal { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 1050px) {
+  .lab-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lab-details { order: var(--tablet-order); }
+}
 @media (max-width: 700px) {
-  .lab-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .lab-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .lab-card:nth-child(n) { border: none; }
-  .lab-link { position: relative; align-items: flex-start; text-align: left; padding: 20px 16px 20px 108px; min-height: 158px; }
-  .lab-link .lab-icon { position: absolute; left: 14px; top: 22px; width: 72px; height: 72px; }
-  .lab-card .lab-summary { max-width: none; margin-bottom: 10px; }
-  .lab-link .project-status { margin-top: 0; }
+  .lab-link { padding: 14px 10px; min-height: 224px; }
+  .lab-card .lab-name { overflow-wrap: anywhere; }
+  .lab-card .lab-summary { margin-bottom: 12px; }
   .lab-disclosure { margin-top: 10px; }
-  .lab-details { order: var(--mobile-order); }
+  .lab-details { order: var(--phone-order); }
   .lab-details-inner { padding: 28px 22px; }
   .lab-detail-art { display: none; }
+  .lab-detail-copy { min-width: 0; }
   .lab-detail-copy h3 { font-size: 25px; padding-right: 24px; }
   .lab-detail-platform { display: block; padding-right: 26px; }
   .lab-detail-copy .product-button { font-size: 14px; white-space: normal; }
+}
+@media (max-width: 349px) {
+  .lab-grid { grid-template-columns: minmax(0, 1fr); }
+  .lab-details { order: var(--mobile-order); }
+  .lab-link { min-height: 200px; }
+  .lab-icon { width: 72px; height: 72px; border-radius: 20px; }
+  .lab-icon svg { width: 46px; height: 46px; }
+  .lab-card .lab-name { font-size: 16px; }
+}
+
+.more-products-section { margin-top: 36px; }
+.more-products-section > h2 { margin-bottom: 22px; }
+.more-products-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.more-product-card { display: grid; grid-template-columns: minmax(0, 1fr) 38%; align-items: center; gap: 16px; min-height: 180px; padding: 22px 20px 22px 28px; background: var(--soft); border-radius: 26px; }
+.more-product-card > .lab-icon { display: none; }
+.more-product-copy { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
+.more-product-copy h3 { margin: 0 0 8px; font-size: 26px; font-weight: 700; line-height: 1.2; letter-spacing: -.5px; overflow-wrap: anywhere; }
+.more-product-copy p { margin: 0; font-size: 16px; line-height: 1.5; }
+.more-product-copy .product-button { white-space: normal; margin-top: 16px; }
+.more-product-art { display: block; position: relative; height: 136px; pointer-events: none; }
+.more-product-art img { object-fit: contain; }
+@media (min-width: 701px) and (max-width: 1050px) {
+  .more-products-grid { grid-template-columns: minmax(0, 1fr); }
+  .featured-card:not(.featured-saytype) .featured-description { min-height: 2.8em; }
+}
+@media (max-width: 700px) {
+  .more-products-section, .lab-section { margin-top: 36px; }
+  .more-products-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .more-product-card { grid-template-columns: 86px minmax(0, 1fr); gap: 16px; padding: 22px 18px; min-height: 0; }
+  .more-product-art { grid-column: 1; grid-row: 1; height: 100px; }
+  .more-product-copy { grid-column: 2; grid-row: 1; }
+  .more-product-copy h3 { font-size: 22px; overflow-wrap: normal; }
+  .home-intro h1 .tagline-phrase { display: block; }
+  .featured-card:not(.featured-saytype) { min-height: 340px; }
+  .featured-card:not(.featured-saytype) .featured-copy { padding: 24px; }
+  .featured-card:not(.featured-saytype) .featured-icon { width: 54px; height: 54px; margin-bottom: 12px; }
+  .featured-card:not(.featured-saytype) .featured-icon svg { width: 38px; height: 38px; }
+  .featured-card:not(.featured-saytype) h3 { font-size: 30px; }
+  .featured-card:not(.featured-saytype) .illustration-slot { width: 45%; height: 108px; right: 0; bottom: 0; }
+  .featured-card:not(.featured-saytype) .featured-description { font-size: 16px; }
+}
+@media (max-width: 700px) {
+  .featured-saytype .illustration-slot { right: 0; bottom: 0; width: 48%; height: 72%; }
+}
+@media (min-width: 481px) and (max-width: 700px) {
+  .featured-saytype .illustration-slot { right: 2%; bottom: 4%; width: 44%; height: 88%; }
+  .featured-card:not(.featured-saytype) .illustration-slot { right: 2%; bottom: 6%; width: 43%; height: 76%; }
+  .featured-card:not(.featured-saytype) .featured-copy { max-width: 58%; }
 }

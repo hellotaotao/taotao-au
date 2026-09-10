@@ -42,7 +42,7 @@ export function LabProjects({ projects, locale }: { projects: HubProject[]; loca
             </article>
             <div id={panelId} role="region" aria-labelledby={titleId} hidden={!open}
               className={`lab-details tone-${project.tone}`}
-              style={{ "--desktop-order": Math.floor(index / 5) * 10 + 9, "--mobile-order": index * 2 + 1 } as CSSProperties}
+              style={{ "--desktop-order": Math.floor(index / 5) * 10 + 9, "--tablet-order": Math.floor(index / 3) * 6 + 5, "--phone-order": Math.floor(index / 2) * 4 + 3, "--mobile-order": index * 2 + 1 } as CSSProperties}
               onKeyDown={(event) => { if (event.key === "Escape") { event.stopPropagation(); close(project.id); } }}>
               {open && <div className="lab-details-inner">
                 <span className="lab-detail-art" aria-hidden="true"><ProductIcon id={project.id} /></span>

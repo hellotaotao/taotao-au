@@ -267,10 +267,6 @@ export const translations = {
     },
     contactLinks: [
   {
-    "name": "Email",
-    "href": "mailto:hellotaotao@gmail.com"
-  },
-  {
     "name": "LinkedIn",
     "href": "https://www.linkedin.com/in/ta0wang"
   }
@@ -386,10 +382,6 @@ export const translations = {
       },
     },
     contactLinks: [
-  {
-    "name": "Email",
-    "href": "mailto:hellotaotao@gmail.com"
-  },
   {
     "name": "LinkedIn",
     "href": "https://www.linkedin.com/in/ta0wang"

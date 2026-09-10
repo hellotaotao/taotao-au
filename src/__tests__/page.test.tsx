@@ -135,7 +135,7 @@ describe("About identity and contact priorities", () => {
     expect(screen.getByText(locale === "en" ? /side projects/ : /\u4e1a\u4f59\u9879\u76ee/)).toBeInTheDocument();
     expect(screen.getByRole("heading", {name: locale === "en" ? "Outside work, lately" : "\u5de5\u4f5c\u4e4b\u5916，\u6700\u8fd1\u5728\u505a\u4ec0\u4e48"})).toBeInTheDocument();
     const contact = screen.getByRole("region", {name: locale === "en" ? "Contact" : "\u8054\u7cfb"});
-    expect(within(contact).getAllByRole("link").map(a => a.textContent?.replace("↗", ""))).toEqual(["Email", "LinkedIn"]);
+    expect(within(contact).getAllByRole("link").map(a => a.textContent?.replace("↗", ""))).toEqual(["LinkedIn"]);
   });
 });
 

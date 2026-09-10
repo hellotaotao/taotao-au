@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EmailContact } from "../email-contact";
 import { hubCopy } from "../hub-data";
 import { type Locale, translations } from "../i18n";
 import { SiteShell } from "../site-shell";
@@ -30,7 +31,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
         <section className="contact-block" id="contact" aria-labelledby="contact-title">
           <h2 id="contact-title">{t.contact.title}</h2>
           <p>{t.contact.intro}</p>
-          <div className="contact-links">{t.contactLinks.map((link) => <a key={link.name} href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noreferrer" : undefined}>{link.name}<span aria-hidden="true">{"\u2197"}</span></a>)}</div>
+          <div className="contact-links"><EmailContact locale={locale} />{t.contactLinks.map((link) => <a key={link.name} href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noreferrer" : undefined}>{link.name}<span aria-hidden="true">{"\u2197"}</span></a>)}</div>
         </section>
       </main>
     </SiteShell>

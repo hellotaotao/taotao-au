@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EmailContact } from "./email-contact";
 import type { ReactNode } from "react";
 import { hubCopy } from "./hub-data";
 import { type Locale, translations } from "./i18n";
@@ -39,6 +40,7 @@ export function SiteShell({
         <span>{t.madeBy}</span>
         <div className="footer-links">
           <Link href={about}>{t.about}</Link>
+          <EmailContact locale={locale} />
           {translations[locale].contactLinks.map((link) => (
             <a key={link.name} href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noreferrer" : undefined}>{link.name}</a>
           ))}

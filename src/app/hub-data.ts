@@ -96,14 +96,14 @@ const projectPresentation = {
       "zh": "\u6253\u5f00 KanaDrill"
     }
   },
-  "Maths Practice": {
+  "MathTrainer": {
     "id": "maths-practice",
     "tone": "mint",
-    "monogram": "MP",
+    "monogram": "MT",
     "platform": "",
     "shortDescription": {
-      "en": "Adaptive maths practice.",
-      "zh": "\u81ea\u9002\u5e94\u6570\u5b66\u7ec3\u4e60\u3002"
+      "en": "Adaptive maths practice. Visible progress.",
+      "zh": "\u81ea\u9002\u5e94\u6570\u5b66\u7ec3\u4e60\uff0c\u8fdb\u6b65\u770b\u5f97\u89c1\u3002"
     },
     "cta": {
       "en": "",
@@ -249,9 +249,9 @@ export type HubProject = ProjectCard & {
 
 const featuredNames = ["SayType", "BetterSchool", "KanaDrill"] as const;
 
-const moreNames = ["TubeFilter", "Threadline Studio"] as const;
+const moreNames = ["MathTrainer", "TubeFilter"] as const;
 
-const labNames = ["Voicely", "Maths Practice", "Veiled Roundtable", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"] as const;
+const labNames = ["Voicely", "Veiled Roundtable", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"] as const;
 
 export function getHubProjects(locale: Locale): {
   featured: HubProject[];

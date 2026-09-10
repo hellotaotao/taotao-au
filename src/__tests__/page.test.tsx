@@ -85,8 +85,8 @@ describe("Product hub", () => {
     render(<HomePage locale={locale} />);
     const links = screen.getAllByRole("link").filter((link) => /betterschool.au|saytype.taotao|kanadrill.taotao|mathtrainer.taotao|voicely.taotao|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|energy.taotao|casemap.taotao|chromewebstore.google.com/.test(link.getAttribute("href") ?? ""));
     expect(links).toHaveLength(5);
-    expect(screen.getAllByText(locale === "en" ? "Live product" : "\u5df2\u4e0a\u7ebf\u4ea7\u54c1")).toHaveLength(2);
-    expect(screen.getAllByText(locale === "en" ? "Active build" : "\u6d3b\u8dc3\u5f00\u53d1\u4e2d")).toHaveLength(4);
+    expect(screen.getAllByText(locale === "en" ? "Live product" : "\u5df2\u4e0a\u7ebf\u4ea7\u54c1")).toHaveLength(3);
+    expect(screen.getAllByText(locale === "en" ? "Active build" : "\u6d3b\u8dc3\u5f00\u53d1\u4e2d")).toHaveLength(3);
     expect(screen.getAllByText(locale === "en" ? "Prototype" : "\u539f\u578b")).toHaveLength(5);
     expect(new Set(links.map((link) => link.getAttribute("href"))).size).toBe(5);
   });
@@ -156,14 +156,19 @@ describe("SayType local transcription positioning", () => {
   });
 });
 
-it.each(["en", "zh"] as const)("orders public lab priorities and adds TubeFilter in %s", (locale) => {
+it.each(["en", "zh"] as const)("promotes MathTrainer and keeps Threadline in the lab in %s", (locale) => {
   const { lab } = getHubProjects(locale);
-  expect(lab.map(p => p.name)).toEqual(["Voicely", "Maths Practice", "Veiled Roundtable", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"]);
+  expect(lab.map(p => p.name)).toEqual(["Voicely", "Veiled Roundtable", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"]);
   render(<HomePage locale={locale} />);
   expect(screen.queryByText("AI Ops Canvas")).not.toBeInTheDocument();
   expect(screen.queryByRole("button", {name: /TubeFilter/})).not.toBeInTheDocument();
   const more = screen.getByRole("region", {name: hubCopy[locale].moreTitle});
   expect(within(more).getAllByRole("link")).toHaveLength(2);
+  expect(getHubProjects(locale).more.map(p => p.name)).toEqual(["MathTrainer", "TubeFilter"]);
+  expect(within(more).getByRole("heading", { name: "MathTrainer" })).toBeInTheDocument();
+  expect(within(more).getByRole("link", { name: hubCopy[locale].visitProduct })).toHaveAttribute("href", "https://mathtrainer.taotao.au/");
+  expect(within(more).queryByText("Threadline Studio")).not.toBeInTheDocument();
+  expect(screen.queryByText("Maths Practice")).not.toBeInTheDocument();
   expect(screen.getByRole("link", {name: hubCopy[locale].installProduct})).toHaveAttribute("href", "https://chromewebstore.google.com/detail/tubefilter-%E2%80%93-block-youtub/mfhflkedbldmbkfnpekebilfcnpfbafh");
 });
 
@@ -205,4 +210,15 @@ describe("Product-first portfolio links", () => {
       expect(link.getAttribute("href")).not.toMatch(/github\.com/i);
     }
   });
+});
+
+
+it.each(["en", "zh"] as const)("uses each more product's own illustration in %s", (locale) => {
+  render(<HomePage locale={locale} />);
+  for (const project of getHubProjects(locale).more) {
+    const card = screen.getByRole("heading", { name: project.name }).closest("article")!;
+    const image = card.querySelector("img")!;
+    expect(image).not.toBeNull();
+    expect(decodeURIComponent(image.getAttribute("src")!)).toContain(`/illustrations/${project.id}.png`);
+  }
 });

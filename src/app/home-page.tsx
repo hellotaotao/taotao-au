@@ -62,7 +62,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                     </a>
                   </div>
                   <div className="more-product-art" aria-hidden="true">
-                    <Image src={`/illustrations/${project.id === "tubefilter" ? "tubefilter" : "threadline"}.png`} alt="" fill sizes="(max-width: 700px) 86px, (max-width: 1050px) 30vw, 20vw" />
+                    <Image src={`/illustrations/${project.id}.png`} alt="" fill sizes="(max-width: 700px) 86px, (max-width: 1050px) 30vw, 20vw" />
                   </div>
                 </article>
               ))}

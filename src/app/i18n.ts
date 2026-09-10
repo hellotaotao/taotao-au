@@ -130,14 +130,14 @@ const projectsBase = [
     },
   },
   {
-    name: "Maths Practice",
+    name: "MathTrainer",
     href: "https://mathtrainer.taotao.au/",
     tier: "activeNow",
     status: "active",
     accent: "rgba(255, 211, 102, 0.52)",
     description: {
-      en: "An Australian Curriculum v9 Year 2 maths fluency trainer with adaptive practice and a parent view of progress.",
-      zh: "一个对齐澳洲课程 v9 二年级内容的数学熟练度训练器，提供自适应练习和家长进度视图。",
+      en: "Adaptive maths practice with a parent progress view to track learning over time.",
+      zh: "\u81ea\u9002\u5e94\u6570\u5b66\u7ec3\u4e60\uff0c\u642d\u914d\u5bb6\u957f\u8fdb\u5ea6\u89c6\u56fe\uff0c\u6301\u7eed\u8ffd\u8e2a\u5b66\u4e60\u8868\u73b0\u3002",
     },
   },
   {

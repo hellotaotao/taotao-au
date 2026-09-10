@@ -45,3 +45,15 @@ describe("Email contact", () => {
     expect(document.querySelector('a[href^="mailto:"]')).toBeNull();
   });
 });
+
+it("dismisses on Escape and outside interaction", () => {
+  render(<EmailContact locale="en" />);
+  const trigger = screen.getByRole("button", { name: "Email" });
+  fireEvent.click(trigger);
+  fireEvent.keyDown(document, { key: "Escape" });
+  expect(trigger).toHaveFocus();
+  expect(screen.queryByText(contactEmail)).not.toBeInTheDocument();
+  fireEvent.click(trigger);
+  fireEvent.pointerDown(document.body);
+  expect(screen.queryByText(contactEmail)).not.toBeInTheDocument();
+});

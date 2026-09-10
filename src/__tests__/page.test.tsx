@@ -135,7 +135,7 @@ describe("About identity and contact priorities", () => {
     expect(screen.getByText(locale === "en" ? /side projects/ : /\u4e1a\u4f59\u9879\u76ee/)).toBeInTheDocument();
     expect(screen.getByRole("heading", {name: locale === "en" ? "Outside work, lately" : "\u5de5\u4f5c\u4e4b\u5916，\u6700\u8fd1\u5728\u505a\u4ec0\u4e48"})).toBeInTheDocument();
     const contact = screen.getByRole("region", {name: locale === "en" ? "Contact" : "\u8054\u7cfb"});
-    expect(within(contact).getAllByRole("link").map(a => a.textContent?.replace("↗", ""))).toEqual(["Email", "LinkedIn", "GitHub"]);
+    expect(within(contact).getAllByRole("link").map(a => a.textContent?.replace("↗", ""))).toEqual(["Email", "LinkedIn"]);
   });
 });
 
@@ -186,4 +186,21 @@ it.each(["en", "zh"] as const)("expands one project at a time with explicit dest
   fireEvent.keyDown(document.getElementById(last.getAttribute("aria-controls")!)!, {key: "Escape"});
   expect(last).toHaveFocus();
   expect(last).toHaveAttribute("aria-expanded", "false");
+});
+
+
+describe("Product-first portfolio links", () => {
+  it.each(["en", "zh"] as const)("keeps GitHub out of home and About in %s", (locale) => {
+    const { unmount } = render(<HomePage locale={locale} />);
+    expect(screen.queryByText(/github/i)).not.toBeInTheDocument();
+    for (const link of screen.getAllByRole("link")) {
+      expect(link.getAttribute("href")).not.toMatch(/github\.com/i);
+    }
+    unmount();
+    render(<AboutPage locale={locale} />);
+    expect(screen.queryByText(/github/i)).not.toBeInTheDocument();
+    for (const link of screen.getAllByRole("link")) {
+      expect(link.getAttribute("href")).not.toMatch(/github\.com/i);
+    }
+  });
 });

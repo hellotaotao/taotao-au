@@ -110,8 +110,8 @@ const projectPresentation = {
     "monogram": "V",
     "platform": "",
     "shortDescription": {
-      "en": "Private meeting transcription.",
-      "zh": "\u79c1\u5bc6\u7684\u4f1a\u8bae\u8f6c\u5f55\u3002"
+      "en": "On-device transcription. No uploads.",
+      "zh": "\u672c\u5730\u8f6c\u5199\uff0c\u65e0\u9700\u4e0a\u4f20\u3002"
     },
     "cta": {
       "en": "",

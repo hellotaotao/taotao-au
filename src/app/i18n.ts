@@ -273,10 +273,6 @@ export const translations = {
   {
     "name": "LinkedIn",
     "href": "https://www.linkedin.com/in/ta0wang"
-  },
-  {
-    "name": "GitHub",
-    "href": "https://github.com/hellotaotao"
   }
 ],
     spotlightStats: [
@@ -370,7 +366,7 @@ export const translations = {
       label: "Open line",
       title: "Contact",
       intro:
-        "The best way to reach me is by email or LinkedIn. Project feedback, questions about using a tool, or a chat about shared interests are all welcome. You can find my code on GitHub.",
+        "The best way to reach me is by email or LinkedIn. Project feedback, questions about using a tool, or a chat about shared interests are all welcome.",
     },
   },
   zh: {
@@ -397,10 +393,6 @@ export const translations = {
   {
     "name": "LinkedIn",
     "href": "https://www.linkedin.com/in/ta0wang"
-  },
-  {
-    "name": "GitHub",
-    "href": "https://github.com/hellotaotao"
   }
 ],
     spotlightStats: [
@@ -488,7 +480,7 @@ export const translations = {
       label: "联系方式",
       title: "联系",
       intro:
-        "\u5982\u679c\u4f60\u60f3\u8054\u7cfb\u6211\uff0c\u6b22\u8fce\u53d1\u90ae\u4ef6\u6216\u901a\u8fc7 LinkedIn \u627e\u5230\u6211\u3002\u65e0\u8bba\u662f\u9879\u76ee\u53cd\u9988\u3001\u4f7f\u7528\u4e2d\u7684\u95ee\u9898\uff0c\u8fd8\u662f\u804a\u804a\u5171\u540c\u7684\u5174\u8da3\uff0c\u90fd\u5f88\u6b22\u8fce\u3002\u4ee3\u7801\u53ef\u4ee5\u5728 GitHub \u4e0a\u67e5\u770b\u3002",
+        "\u5982\u679c\u4f60\u60f3\u8054\u7cfb\u6211\uff0c\u6b22\u8fce\u53d1\u90ae\u4ef6\u6216\u901a\u8fc7 LinkedIn \u627e\u5230\u6211\u3002\u65e0\u8bba\u662f\u9879\u76ee\u53cd\u9988\u3001\u4f7f\u7528\u4e2d\u7684\u95ee\u9898\uff0c\u8fd8\u662f\u804a\u804a\u5171\u540c\u7684\u5174\u8da3\uff0c\u90fd\u5f88\u6b22\u8fce\u3002",
     },
   },
 } as const;

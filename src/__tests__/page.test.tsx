@@ -84,11 +84,11 @@ describe("Product hub", () => {
   it.each(["en", "zh"] as const)("keeps every project reachable in %s", (locale) => {
     render(<HomePage locale={locale} />);
     const links = screen.getAllByRole("link").filter((link) => /betterschool.au|saytype.taotao|kanadrill.taotao|mathtrainer.taotao|voicely.taotao|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|energy.taotao|casemap.taotao|chromewebstore.google.com/.test(link.getAttribute("href") ?? ""));
-    expect(links).toHaveLength(5);
+    expect(links).toHaveLength(6);
     expect(screen.getAllByText(locale === "en" ? "Live product" : "\u5df2\u4e0a\u7ebf\u4ea7\u54c1")).toHaveLength(3);
     expect(screen.getAllByText(locale === "en" ? "Active build" : "\u6d3b\u8dc3\u5f00\u53d1\u4e2d")).toHaveLength(3);
-    expect(screen.getAllByText(locale === "en" ? "Prototype" : "\u539f\u578b")).toHaveLength(5);
-    expect(new Set(links.map((link) => link.getAttribute("href"))).size).toBe(5);
+    expect(screen.getAllByText(locale === "en" ? "Prototype" : "\u539f\u578b")).toHaveLength(4);
+    expect(new Set(links.map((link) => link.getAttribute("href"))).size).toBe(6);
   });
 
   it("puts products first and moves the biography off the homepage", () => {
@@ -98,9 +98,9 @@ describe("Product hub", () => {
     expect(screen.queryByText(/Based in Adelaide/)).not.toBeInTheDocument();
     const featured = screen.getByRole("region", { name: "Try these first" });
     const lab = screen.getByRole("region", { name: "In the lab" });
-    expect(within(featured).getAllByRole("link")).toHaveLength(5);
+    expect(within(featured).getAllByRole("link")).toHaveLength(6);
     expect(within(lab).queryAllByRole("link")).toHaveLength(0);
-    expect(within(lab).getAllByRole("button")).toHaveLength(8);
+    expect(within(lab).getAllByRole("button")).toHaveLength(7);
     for (const name of ["SayType", "BetterSchool", "KanaDrill"]) {
       expect(within(featured).getByRole("heading", { name })).toBeInTheDocument();
     }
@@ -158,15 +158,18 @@ describe("SayType local transcription positioning", () => {
 
 it.each(["en", "zh"] as const)("promotes MathTrainer and keeps Threadline in the lab in %s", (locale) => {
   const { lab } = getHubProjects(locale);
-  expect(lab.map(p => p.name)).toEqual(["Voicely", "Veiled Roundtable", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"]);
+  expect(lab.map(p => p.name)).toEqual(["Voicely", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"]);
   render(<HomePage locale={locale} />);
   expect(screen.queryByText("AI Ops Canvas")).not.toBeInTheDocument();
   expect(screen.queryByRole("button", {name: /TubeFilter/})).not.toBeInTheDocument();
   const more = screen.getByRole("region", {name: hubCopy[locale].moreTitle});
-  expect(within(more).getAllByRole("link")).toHaveLength(2);
-  expect(getHubProjects(locale).more.map(p => p.name)).toEqual(["MathTrainer", "TubeFilter"]);
+  expect(within(more).getAllByRole("link")).toHaveLength(3);
+  expect(getHubProjects(locale).more.map(p => p.name)).toEqual(["MathTrainer", "TubeFilter", "Veiled Roundtable"]);
   expect(within(more).getByRole("heading", { name: "MathTrainer" })).toBeInTheDocument();
-  expect(within(more).getByRole("link", { name: hubCopy[locale].visitProduct })).toHaveAttribute("href", "https://mathtrainer.taotao.au/");
+  const mathTrainer = within(more).getByRole("heading", { name: "MathTrainer" }).closest("article")!;
+  expect(within(mathTrainer).getByRole("link", { name: hubCopy[locale].visitProduct })).toHaveAttribute("href", "https://mathtrainer.taotao.au/");
+  const avalon = within(more).getByRole("heading", { name: "Veiled Roundtable" }).closest("article")!;
+  expect(within(avalon).getByRole("link", { name: hubCopy[locale].visitProduct })).toHaveAttribute("href", "https://avalon.taotao.au/");
   expect(within(more).queryByText("Threadline Studio")).not.toBeInTheDocument();
   expect(screen.queryByText("Maths Practice")).not.toBeInTheDocument();
   expect(screen.getByRole("link", {name: hubCopy[locale].installProduct})).toHaveAttribute("href", "https://chromewebstore.google.com/detail/tubefilter-%E2%80%93-block-youtub/mfhflkedbldmbkfnpekebilfcnpfbafh");

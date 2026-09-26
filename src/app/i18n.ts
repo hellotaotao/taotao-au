@@ -198,8 +198,8 @@ const projectsBase = [
   {
     name: "Veiled Roundtable",
     href: "https://avalon.taotao.au/",
-    tier: "experiments",
-    status: "prototype",
+    tier: "activeNow",
+    status: "active",
     accent: "rgba(142, 226, 255, 0.44)",
     description: {
       en: "A mobile Avalon room assistant for hidden-role reveals, quest voting, Merlin assassination, and AI fill-ins for short tables.",

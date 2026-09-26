@@ -249,9 +249,9 @@ export type HubProject = ProjectCard & {
 
 const featuredNames = ["SayType", "BetterSchool", "KanaDrill"] as const;
 
-const moreNames = ["MathTrainer", "TubeFilter"] as const;
+const moreNames = ["MathTrainer", "TubeFilter", "Veiled Roundtable"] as const;
 
-const labNames = ["Voicely", "Veiled Roundtable", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"] as const;
+const labNames = ["Voicely", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"] as const;
 
 export function getHubProjects(locale: Locale): {
   featured: HubProject[];

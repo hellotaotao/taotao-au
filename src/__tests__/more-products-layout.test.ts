@@ -8,7 +8,7 @@ const stylesheet = postcss.parse(
 );
 
 function getGridColumns(container: postcss.Container): string | undefined {
-  const rule = container.nodes.find(
+  const rule = container.nodes?.find(
     (node): node is postcss.Rule =>
       node.type === "rule" && node.selector === ".more-products-grid",
   );

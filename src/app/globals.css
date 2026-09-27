@@ -52,7 +52,8 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
 .illustration-slot { position: absolute; z-index: -1; pointer-events: none; }
 .product-illustration { object-fit: contain; object-position: right bottom; }
 .featured-saytype .illustration-slot { right: -22px; bottom: -12px; width: 72%; height: 96%; }
-.featured-betterschool .illustration-slot { right: -10px; bottom: -10px; width: 115%; height: 190px; }
+.featured-veiled-roundtable .illustration-slot { right: -2%; bottom: 0; width: 92%; height: 48%; }
+.featured-veiled-roundtable .product-illustration { object-position: center bottom; }
 .featured-kanadrill .illustration-slot { right: 3%; bottom: 0; width: 90%; height: 180px; }
 .featured-status { position: absolute; top: 15px; right: 16px; font-size: 10px; font-weight: 600; opacity: .78; }
 .featured-copy { position: relative; padding: 26px; max-width: 100%; }
@@ -130,7 +131,6 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
   .featured-saytype .featured-copy { padding: 38px; }
   .featured-saytype h3 { font-size: 62px; }
   .featured-saytype .illustration-slot { right: 4%; width: 65%; }
-  .featured-betterschool .illustration-slot { height: 190px; }
   .featured-kanadrill .illustration-slot { height: 180px; }
   .featured-card:not(.featured-saytype) { min-height: 445px; }
   .featured-copy { padding: 28px; }
@@ -159,7 +159,6 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
   .featured-saytype { grid-column: auto; min-height: 445px; }
   .featured-saytype .featured-copy { padding: 28px; }
   .featured-saytype .illustration-slot { right: -13%; bottom: -12%; width: 96%; height: 80%; }
-  .featured-betterschool .illustration-slot { height: 163px; }
   .featured-kanadrill .illustration-slot { height: 151px; }
   .featured-saytype h3 { font-size: 52px; }
   .featured-saytype .featured-description { max-width: 230px; }
@@ -290,6 +289,9 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
   .featured-saytype .illustration-slot { right: 2%; bottom: 4%; width: 44%; height: 88%; }
   .featured-card:not(.featured-saytype) .illustration-slot { right: 2%; bottom: 6%; width: 43%; height: 76%; }
   .featured-card:not(.featured-saytype) .featured-copy { max-width: 58%; }
+}
+@media (max-width: 700px) {
+  .featured-card.featured-veiled-roundtable .illustration-slot { right: 2%; bottom: 4%; width: 48%; height: 136px; }
 }
 
  .email-contact { display: inline-flex; align-items: center; flex: 0 0 auto; width: 3em; max-width: 100%; min-width: 0; position: relative; transition: width 300ms cubic-bezier(.22, 1, .36, 1); }

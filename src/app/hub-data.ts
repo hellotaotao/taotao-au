@@ -184,14 +184,14 @@ const projectPresentation = {
     "id": "veiled-roundtable",
     "tone": "sky",
     "monogram": "VR",
-    "platform": "",
+    "platform": "Web",
     "shortDescription": {
       "en": "An extra hand for Avalon night.",
       "zh": "\u963f\u74e6\u9686\u805a\u4f1a\u7684\u5c0f\u52a9\u624b\u3002"
     },
     "cta": {
-      "en": "",
-      "zh": ""
+      "en": "Open Avalon Assistant",
+      "zh": "\u6253\u5f00\u963f\u74e6\u9686\u52a9\u624b"
     }
   },
   "EnergyLens": {
@@ -247,9 +247,9 @@ export type HubProject = ProjectCard & {
   cta: string;
 };
 
-const featuredNames = ["SayType", "BetterSchool", "KanaDrill"] as const;
+const featuredNames = ["SayType", "Veiled Roundtable", "KanaDrill"] as const;
 
-const moreNames = ["MathTrainer", "TubeFilter", "Veiled Roundtable"] as const;
+const moreNames = ["TubeFilter", "BetterSchool", "MathTrainer"] as const;
 
 const labNames = ["Voicely", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"] as const;
 

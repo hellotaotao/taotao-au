@@ -97,6 +97,17 @@ const projectsBase = [
   }
 },
   {
+    name: "QuotaSwap",
+    href: "https://quotaswap.taotao.au/",
+    tier: "experiments",
+    status: "live",
+    accent: "rgba(126, 170, 255, 0.46)",
+    description: {
+      en: "A macOS menu bar app that switches the Claude desktop app between accounts in one click, keeps your Code sessions, and shows each account's usage.",
+      zh: "一个 macOS 菜单栏应用，一键切换 Claude 桌面版账号，保留 Code 会话，并显示每个账号的用量。",
+    },
+  },
+  {
     name: "BetterSchool",
     href: "https://betterschool.au/",
     tier: "activeNow",

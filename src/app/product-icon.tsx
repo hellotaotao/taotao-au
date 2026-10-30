@@ -12,12 +12,14 @@ import {
   PuzzlePieceIcon,
   ScribbleLoopIcon,
   StarFourIcon,
+  SwapIcon,
   TranslateIcon,
   WaveformIcon,
 } from "@phosphor-icons/react/dist/ssr";
 
 const icons = {
   tubefilter: FunnelIcon,
+  quotaswap: SwapIcon,
   saytype: MicrophoneIcon,
   betterschool: MapPinIcon,
   kanadrill: TranslateIcon,

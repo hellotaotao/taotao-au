@@ -83,12 +83,12 @@ describe("i18n locale detection", () => {
 describe("Product hub", () => {
   it.each(["en", "zh"] as const)("keeps every project reachable in %s", (locale) => {
     render(<HomePage locale={locale} />);
-    const links = screen.getAllByRole("link").filter((link) => /betterschool.au|saytype.taotao|kanadrill.taotao|mathtrainer.taotao|voicely.taotao|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|energy.taotao|casemap.taotao|chromewebstore.google.com/.test(link.getAttribute("href") ?? ""));
-    expect(links).toHaveLength(6);
+    const links = screen.getAllByRole("link").filter((link) => /betterschool.au|saytype.taotao|kanadrill.taotao|mathtrainer.taotao|voicely.taotao|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|energy.taotao|casemap.taotao|quotaswap.taotao|chromewebstore.google.com/.test(link.getAttribute("href") ?? ""));
+    expect(links).toHaveLength(7);
     expect(screen.getAllByText(locale === "en" ? "Live product" : "\u5df2\u4e0a\u7ebf\u4ea7\u54c1")).toHaveLength(2);
     expect(screen.getAllByText(locale === "en" ? "Active build" : "\u6d3b\u8dc3\u5f00\u53d1\u4e2d")).toHaveLength(4);
     expect(screen.getAllByText(locale === "en" ? "Prototype" : "\u539f\u578b")).toHaveLength(4);
-    expect(new Set(links.map((link) => link.getAttribute("href"))).size).toBe(6);
+    expect(new Set(links.map((link) => link.getAttribute("href"))).size).toBe(7);
   });
 
   it("puts products first and moves the biography off the homepage", () => {
@@ -119,7 +119,7 @@ describe("Hub data and About", () => {
     const original = getProjectGroups(locale).flatMap((group) => group.projects).filter((project) => project.name !== "AI Ops Canvas");
     const { featured, more, lab } = getHubProjects(locale);
     expect(featured.map((project) => project.name)).toEqual(["SayType", "Veiled Roundtable", "KanaDrill"]);
-    expect(more.map((project) => project.name)).toEqual(["TubeFilter", "BetterSchool", "MathTrainer"]);
+    expect(more.map((project) => project.name)).toEqual(["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap"]);
     expect([...featured, ...more, ...lab]).toHaveLength(original.length);
     for (const project of original) {
       expect([...featured, ...more, ...lab].find((item) => item.name === project.name)).toMatchObject(project);
@@ -170,12 +170,13 @@ it.each(["en", "zh"] as const)("orders secondary products and keeps Threadline i
   expect(screen.queryByText("AI Ops Canvas")).not.toBeInTheDocument();
   expect(screen.queryByRole("button", {name: /TubeFilter/})).not.toBeInTheDocument();
   const more = screen.getByRole("region", {name: hubCopy[locale].moreTitle});
-  expect(within(more).getAllByRole("link")).toHaveLength(3);
-  expect(getHubProjects(locale).more.map(p => p.name)).toEqual(["TubeFilter", "BetterSchool", "MathTrainer"]);
+  expect(within(more).getAllByRole("link")).toHaveLength(4);
+  expect(getHubProjects(locale).more.map(p => p.name)).toEqual(["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap"]);
   expect(within(more).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent)).toEqual([
     "TubeFilter",
     "BetterSchool",
     "MathTrainer",
+    "QuotaSwap",
   ]);
   expect(within(more).getByRole("heading", { name: "MathTrainer" })).toBeInTheDocument();
   const mathTrainer = within(more).getByRole("heading", { name: "MathTrainer" }).closest("article")!;

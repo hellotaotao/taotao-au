@@ -54,6 +54,20 @@ const projectPresentation = {
     "zh": "\u5b89\u88c5 TubeFilter"
   }
 },
+  "QuotaSwap": {
+    "id": "quotaswap",
+    "tone": "sky",
+    "monogram": "QS",
+    "platform": "macOS",
+    "shortDescription": {
+      "en": "Switch Claude accounts in one click.",
+      "zh": "\u4e00\u952e\u5207\u6362 Claude \u8d26\u53f7\u3002"
+    },
+    "cta": {
+      "en": "Get QuotaSwap",
+      "zh": "\u83b7\u53d6 QuotaSwap"
+    }
+  },
   "SayType": {
     "id": "saytype",
     "tone": "blue",
@@ -249,7 +263,7 @@ export type HubProject = ProjectCard & {
 
 const featuredNames = ["SayType", "Veiled Roundtable", "KanaDrill"] as const;
 
-const moreNames = ["TubeFilter", "BetterSchool", "MathTrainer"] as const;
+const moreNames = ["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap"] as const;
 
 const labNames = ["Voicely", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"] as const;
 

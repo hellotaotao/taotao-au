@@ -1,24 +1,20 @@
-import { headers } from "next/headers";
+import type { Metadata } from "next";
 
 import { HomePage } from "./home-page";
-import { resolveLocale } from "./i18n";
+import { localizedAlternates, resolvePageLocale, type LocaleSearchParams } from "./seo";
 
-type HomeSearchParams = Promise<{
-  language?: string | string[];
-  lang?: string | string[];
-}>;
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: LocaleSearchParams;
+}): Promise<Metadata> {
+  return { alternates: localizedAlternates("/", await resolvePageLocale(searchParams)) };
+}
 
 export default async function Home({
   searchParams,
 }: {
-  searchParams: HomeSearchParams;
+  searchParams: LocaleSearchParams;
 }) {
-  const headersList = await headers();
-  const query = await searchParams;
-  const locale = resolveLocale({
-    languageParam: query.language ?? query.lang,
-    acceptLanguage: headersList.get("accept-language"),
-  });
-
-  return <HomePage locale={locale} />;
+  return <HomePage locale={await resolvePageLocale(searchParams)} />;
 }

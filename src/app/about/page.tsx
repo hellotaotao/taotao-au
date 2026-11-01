@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
-import { resolveLocale } from "../i18n";
+import { localizedAlternates, resolvePageLocale, type LocaleSearchParams } from "../seo";
 import { AboutPage } from "./about-page";
 
-export const metadata: Metadata = {
-  title: "About Tao | taotao.au",
-  description: "The person behind the useful tools and playful experiments at taotao.au.",
-};
+export async function generateMetadata({ searchParams }: {
+  searchParams: LocaleSearchParams;
+}): Promise<Metadata> {
+  return {
+    title: "About Tao | taotao.au",
+    description: "The person behind the useful tools and playful experiments at taotao.au.",
+    alternates: localizedAlternates("/about", await resolvePageLocale(searchParams)),
+  };
+}
 
 export default async function About({ searchParams }: {
-  searchParams: Promise<{ language?: string | string[]; lang?: string | string[] }>;
+  searchParams: LocaleSearchParams;
 }) {
-  const headersList = await headers();
-  const query = await searchParams;
-  const locale = resolveLocale({
-    languageParam: query.language ?? query.lang,
-    acceptLanguage: headersList.get("accept-language"),
-  });
-  return <AboutPage locale={locale} />;
+  return <AboutPage locale={await resolvePageLocale(searchParams)} />;
 }

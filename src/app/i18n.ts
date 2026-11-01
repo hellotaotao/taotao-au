@@ -120,7 +120,7 @@ const projectsBase = [
   },
   {
     name: "SayType",
-    href: "https://saytype.taotao.au/",
+    href: "https://typealoud.app/",
     tier: "activeNow",
     status: "live",
     accent: "rgba(139, 217, 255, 0.46)",

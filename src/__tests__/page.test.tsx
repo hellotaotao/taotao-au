@@ -83,11 +83,11 @@ describe("i18n locale detection", () => {
 describe("Product hub", () => {
   it.each(["en", "zh"] as const)("keeps every project reachable in %s", (locale) => {
     render(<HomePage locale={locale} />);
-    const links = screen.getAllByRole("link").filter((link) => /betterschool.au|saytype.taotao|kanadrill.taotao|mathtrainer.taotao|voicely.taotao|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|energy.taotao|casemap.taotao|quotaswap.taotao|chromewebstore.google.com/.test(link.getAttribute("href") ?? ""));
+    const links = screen.getAllByRole("link").filter((link) => /betterschool.au|typealoud.app|kanadrill.taotao|mathtrainer.taotao|voicely.taotao|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|energy.taotao|casemap.taotao|quotaswap.taotao|chromewebstore.google.com/.test(link.getAttribute("href") ?? ""));
     expect(links).toHaveLength(7);
-    expect(screen.getAllByText(locale === "en" ? "Live product" : "\u5df2\u4e0a\u7ebf\u4ea7\u54c1")).toHaveLength(2);
-    expect(screen.getAllByText(locale === "en" ? "Active build" : "\u6d3b\u8dc3\u5f00\u53d1\u4e2d")).toHaveLength(4);
-    expect(screen.getAllByText(locale === "en" ? "Prototype" : "\u539f\u578b")).toHaveLength(4);
+    expect(screen.getAllByText(locale === "en" ? "Live product" : "\u5df2\u4e0a\u7ebf\u4ea7\u54c1", { ignore: ".lab-details[hidden] *" })).toHaveLength(2);
+    expect(screen.getAllByText(locale === "en" ? "Active build" : "\u6d3b\u8dc3\u5f00\u53d1\u4e2d", { ignore: ".lab-details[hidden] *" })).toHaveLength(4);
+    expect(screen.getAllByText(locale === "en" ? "Prototype" : "\u539f\u578b", { ignore: ".lab-details[hidden] *" })).toHaveLength(4);
     expect(new Set(links.map((link) => link.getAttribute("href"))).size).toBe(7);
   });
 
@@ -159,7 +159,7 @@ describe("SayType local transcription positioning", () => {
     expect(project.platform).toBe("macOS \u00b7 Windows \u00b7 Linux");
     expect(project.description).toContain(locale === "en" ? "Optional cloud" : "\u53ef\u9009\u4e91\u7aef");
     expect(project.description).toContain(locale === "en" ? "model download" : "\u4e0b\u8f7d\u6a21\u578b");
-    expect(within(card).getByRole("link")).toHaveAttribute("href", "https://saytype.taotao.au/");
+    expect(within(card).getByRole("link")).toHaveAttribute("href", "https://typealoud.app/");
   });
 });
 
@@ -191,6 +191,11 @@ it.each(["en", "zh"] as const)("orders secondary products and keeps Threadline i
   expect(screen.getByRole("link", {name: hubCopy[locale].installProduct})).toHaveAttribute("href", "https://chromewebstore.google.com/detail/tubefilter-%E2%80%93-block-youtub/mfhflkedbldmbkfnpekebilfcnpfbafh");
 });
 
+it.each(["en", "zh"] as const)("keeps collapsed lab links in the markup for crawlers in %s", (locale) => {
+  const { container } = render(<HomePage locale={locale} />);
+  const hrefs = [...container.querySelectorAll(".lab-details[hidden] a")].map((link) => link.getAttribute("href"));
+  expect(hrefs).toEqual(getHubProjects(locale).lab.map((project) => project.href));
+});
 
 it.each(["en", "zh"] as const)("expands one project at a time with explicit destinations in %s", (locale) => {
   render(<HomePage locale={locale} />);

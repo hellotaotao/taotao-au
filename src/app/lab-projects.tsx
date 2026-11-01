@@ -44,7 +44,8 @@ export function LabProjects({ projects, locale }: { projects: HubProject[]; loca
               className={`lab-details tone-${project.tone}`}
               style={{ "--desktop-order": Math.floor(index / 5) * 10 + 9, "--tablet-order": Math.floor(index / 3) * 6 + 5, "--phone-order": Math.floor(index / 2) * 4 + 3, "--mobile-order": index * 2 + 1 } as CSSProperties}
               onKeyDown={(event) => { if (event.key === "Escape") { event.stopPropagation(); close(project.id); } }}>
-              {open && <div className="lab-details-inner">
+              {/* Stays in the markup while closed so crawlers can follow the product link. */}
+              <div className="lab-details-inner">
                 <span className="lab-detail-art" aria-hidden="true"><ProductIcon id={project.id} /></span>
                 <div className="lab-detail-copy">
                   <span className="lab-detail-platform">{project.platform && `${project.platform} \u00b7 `}{project.status}</span>
@@ -56,7 +57,7 @@ export function LabProjects({ projects, locale }: { projects: HubProject[]; loca
                   <small id={`${panelId}-destination`}>{host} &middot; {t.destination}</small>
                 </div>
                 <button type="button" className="lab-close" onClick={() => close(project.id)} aria-label={t.close}>{"\u00d7"}</button>
-              </div>}
+              </div>
             </div>
           </Fragment>
         );

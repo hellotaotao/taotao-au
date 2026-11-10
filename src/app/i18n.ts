@@ -153,13 +153,13 @@ const projectsBase = [
   },
   {
     name: "Voicely",
-    href: "https://voicely.taotao.au/",
+    href: "https://apps.apple.com/app/id6746871154",
     tier: "activeNow",
-    status: "active",
+    status: "live",
     accent: "rgba(230, 171, 255, 0.42)",
     description: {
-      en: "A local-first iOS meeting transcription app that keeps sensitive audio processing on device with WhisperKit and Core ML.",
-      zh: "一个本地优先的 iOS 会议转录应用，通过 WhisperKit 和 Core ML 在设备端处理敏感音频。",
+      en: "Meeting transcription for iPhone, iPad and Mac. The transcript builds while you record, the speech models run on your device, and audio is never uploaded to be transcribed. Free, with no account.",
+      zh: "适用于 iPhone、iPad 和 Mac 的会议转写应用。边录音边出文字，语音模型在你的设备上运行，音频不会上传转写。免费，无需账号。",
     },
   },
   {

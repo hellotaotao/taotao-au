@@ -83,12 +83,12 @@ describe("i18n locale detection", () => {
 describe("Product hub", () => {
   it.each(["en", "zh"] as const)("keeps every project reachable in %s", (locale) => {
     render(<HomePage locale={locale} />);
-    const links = screen.getAllByRole("link").filter((link) => /betterschool.au|typealoud.app|kanadrill.taotao|mathtrainer.taotao|voicely.taotao|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|energy.taotao|casemap.taotao|quotaswap.taotao|chromewebstore.google.com/.test(link.getAttribute("href") ?? ""));
-    expect(links).toHaveLength(7);
-    expect(screen.getAllByText(locale === "en" ? "Live product" : "\u5df2\u4e0a\u7ebf\u4ea7\u54c1", { ignore: ".lab-details[hidden] *" })).toHaveLength(2);
-    expect(screen.getAllByText(locale === "en" ? "Active build" : "\u6d3b\u8dc3\u5f00\u53d1\u4e2d", { ignore: ".lab-details[hidden] *" })).toHaveLength(4);
+    const links = screen.getAllByRole("link").filter((link) => /betterschool.au|typealoud.app|kanadrill.taotao|mathtrainer.taotao|apps\.apple\.com\/app\/id6746871154|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|energy.taotao|casemap.taotao|quotaswap.taotao|chromewebstore.google.com/.test(link.getAttribute("href") ?? ""));
+    expect(links).toHaveLength(8);
+    expect(screen.getAllByText(locale === "en" ? "Live product" : "\u5df2\u4e0a\u7ebf\u4ea7\u54c1", { ignore: ".lab-details[hidden] *" })).toHaveLength(3);
+    expect(screen.getAllByText(locale === "en" ? "Active build" : "\u6d3b\u8dc3\u5f00\u53d1\u4e2d", { ignore: ".lab-details[hidden] *" })).toHaveLength(2);
     expect(screen.getAllByText(locale === "en" ? "Prototype" : "\u539f\u578b", { ignore: ".lab-details[hidden] *" })).toHaveLength(4);
-    expect(new Set(links.map((link) => link.getAttribute("href"))).size).toBe(7);
+    expect(new Set(links.map((link) => link.getAttribute("href"))).size).toBe(8);
   });
 
   it("puts products first and moves the biography off the homepage", () => {
@@ -101,13 +101,13 @@ describe("Product hub", () => {
     const lab = screen.getByRole("region", { name: "In the lab" });
     expect(within(featuredGrid).getAllByRole("link")).toHaveLength(3);
     expect(within(lab).queryAllByRole("link")).toHaveLength(0);
-    expect(within(lab).getAllByRole("button")).toHaveLength(7);
+    expect(within(lab).getAllByRole("button")).toHaveLength(6);
     expect(within(featuredGrid).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent)).toEqual([
       "TypeAloud",
+      "Voicely",
       "Veiled Roundtable",
-      "KanaDrill",
     ]);
-    for (const name of ["TypeAloud", "Veiled Roundtable", "KanaDrill"]) {
+    for (const name of ["TypeAloud", "Voicely", "Veiled Roundtable"]) {
       expect(within(featuredGrid).getByRole("heading", { name })).toBeInTheDocument();
     }
     expect(screen.getAllByRole("link", { name: "About" })[0]).toHaveAttribute("href", "/about?lang=en");
@@ -118,8 +118,8 @@ describe("Hub data and About", () => {
   it.each(["en", "zh"] as const)("preserves existing destinations and maturity in %s", (locale) => {
     const original = getProjectGroups(locale).flatMap((group) => group.projects).filter((project) => project.name !== "AI Ops Canvas");
     const { featured, more, lab } = getHubProjects(locale);
-    expect(featured.map((project) => project.name)).toEqual(["TypeAloud", "Veiled Roundtable", "KanaDrill"]);
-    expect(more.map((project) => project.name)).toEqual(["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap"]);
+    expect(featured.map((project) => project.name)).toEqual(["TypeAloud", "Voicely", "Veiled Roundtable"]);
+    expect(more.map((project) => project.name)).toEqual(["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap", "KanaDrill"]);
     expect([...featured, ...more, ...lab]).toHaveLength(original.length);
     for (const project of original) {
       expect([...featured, ...more, ...lab].find((item) => item.name === project.name)).toMatchObject(project);
@@ -165,18 +165,19 @@ describe("TypeAloud local transcription positioning", () => {
 
 it.each(["en", "zh"] as const)("orders secondary products and keeps Threadline in the lab in %s", (locale) => {
   const { lab } = getHubProjects(locale);
-  expect(lab.map(p => p.name)).toEqual(["Voicely", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"]);
+  expect(lab.map(p => p.name)).toEqual(["Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"]);
   render(<HomePage locale={locale} />);
   expect(screen.queryByText("AI Ops Canvas")).not.toBeInTheDocument();
   expect(screen.queryByRole("button", {name: /TubeFilter/})).not.toBeInTheDocument();
   const more = screen.getByRole("region", {name: hubCopy[locale].moreTitle});
-  expect(within(more).getAllByRole("link")).toHaveLength(4);
-  expect(getHubProjects(locale).more.map(p => p.name)).toEqual(["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap"]);
+  expect(within(more).getAllByRole("link")).toHaveLength(5);
+  expect(getHubProjects(locale).more.map(p => p.name)).toEqual(["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap", "KanaDrill"]);
   expect(within(more).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent)).toEqual([
     "TubeFilter",
     "BetterSchool",
     "MathTrainer",
     "QuotaSwap",
+    "KanaDrill",
   ]);
   expect(within(more).getByRole("heading", { name: "MathTrainer" })).toBeInTheDocument();
   const mathTrainer = within(more).getByRole("heading", { name: "MathTrainer" }).closest("article")!;
@@ -245,4 +246,12 @@ it.each(["en", "zh"] as const)("uses each more product's own illustration in %s"
     expect(image).not.toBeNull();
     expect(decodeURIComponent(image.getAttribute("src")!)).toContain(`/illustrations/${project.id}.png`);
   }
+});
+
+it.each(["en", "zh"] as const)("features Voicely with its App Store listing in %s", (locale) => {
+  render(<HomePage locale={locale} />);
+  const card = screen.getByRole("heading", { name: "Voicely" }).closest("article")!;
+  expect(card).toHaveClass("featured-card");
+  expect(within(card).getByText("iPhone \u00b7 iPad \u00b7 Mac")).toBeInTheDocument();
+  expect(within(card).getByRole("link")).toHaveAttribute("href", "https://apps.apple.com/app/id6746871154");
 });

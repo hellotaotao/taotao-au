@@ -128,14 +128,14 @@ const projectPresentation = {
     "id": "voicely",
     "tone": "lavender",
     "monogram": "V",
-    "platform": "",
+    "platform": "iPhone \u00b7 iPad \u00b7 Mac",
     "shortDescription": {
-      "en": "On-device transcription. No uploads.",
-      "zh": "\u672c\u5730\u8f6c\u5199\uff0c\u65e0\u9700\u4e0a\u4f20\u3002"
+      "en": "Meeting transcripts, made on your device. Free.",
+      "zh": "\u4f1a\u8bae\u8f6c\u5199\uff0c\u5728\u4f60\u7684\u8bbe\u5907\u4e0a\u5b8c\u6210\u3002\u514d\u8d39\u3002"
     },
     "cta": {
-      "en": "",
-      "zh": ""
+      "en": "Get it on the App Store",
+      "zh": "\u5728 App Store \u83b7\u53d6"
     }
   },
   "EverLog": {
@@ -261,11 +261,11 @@ export type HubProject = ProjectCard & {
   cta: string;
 };
 
-const featuredNames = ["TypeAloud", "Veiled Roundtable", "KanaDrill"] as const;
+const featuredNames = ["TypeAloud", "Voicely", "Veiled Roundtable"] as const;
 
-const moreNames = ["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap"] as const;
+const moreNames = ["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap", "KanaDrill"] as const;
 
-const labNames = ["Voicely", "Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"] as const;
+const labNames = ["Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"] as const;
 
 export function getHubProjects(locale: Locale): {
   featured: HubProject[];

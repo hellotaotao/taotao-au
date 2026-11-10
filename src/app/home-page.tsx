@@ -15,7 +15,7 @@ function FeaturedProduct({ project }: { project: HubProject }) {
         alt=""
         loading="eager"
         fill
-        sizes={project.id === "saytype" ? "(max-width: 700px) 100vw, (max-width: 1050px) 90vw, 48vw" : "(max-width: 700px) 100vw, (max-width: 1050px) 45vw, 24vw"}
+        sizes={project.id === "typealoud" ? "(max-width: 700px) 100vw, (max-width: 1050px) 90vw, 48vw" : "(max-width: 700px) 100vw, (max-width: 1050px) 45vw, 24vw"}
       />
       </div>
       <span className="featured-status">{project.status}</span>

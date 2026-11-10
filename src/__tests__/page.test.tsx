@@ -103,11 +103,11 @@ describe("Product hub", () => {
     expect(within(lab).queryAllByRole("link")).toHaveLength(0);
     expect(within(lab).getAllByRole("button")).toHaveLength(7);
     expect(within(featuredGrid).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent)).toEqual([
-      "SayType",
+      "TypeAloud",
       "Veiled Roundtable",
       "KanaDrill",
     ]);
-    for (const name of ["SayType", "Veiled Roundtable", "KanaDrill"]) {
+    for (const name of ["TypeAloud", "Veiled Roundtable", "KanaDrill"]) {
       expect(within(featuredGrid).getByRole("heading", { name })).toBeInTheDocument();
     }
     expect(screen.getAllByRole("link", { name: "About" })[0]).toHaveAttribute("href", "/about?lang=en");
@@ -118,7 +118,7 @@ describe("Hub data and About", () => {
   it.each(["en", "zh"] as const)("preserves existing destinations and maturity in %s", (locale) => {
     const original = getProjectGroups(locale).flatMap((group) => group.projects).filter((project) => project.name !== "AI Ops Canvas");
     const { featured, more, lab } = getHubProjects(locale);
-    expect(featured.map((project) => project.name)).toEqual(["SayType", "Veiled Roundtable", "KanaDrill"]);
+    expect(featured.map((project) => project.name)).toEqual(["TypeAloud", "Veiled Roundtable", "KanaDrill"]);
     expect(more.map((project) => project.name)).toEqual(["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap"]);
     expect([...featured, ...more, ...lab]).toHaveLength(original.length);
     for (const project of original) {
@@ -147,11 +147,11 @@ describe("About identity and contact priorities", () => {
 });
 
 
-describe("SayType local transcription positioning", () => {
+describe("TypeAloud local transcription positioning", () => {
   it.each(["en", "zh"] as const)("shows the local promise in %s", (locale) => {
     render(<HomePage locale={locale} />);
-    const project = getHubProjects(locale).featured.find((item) => item.name === "SayType")!;
-    const card = screen.getByRole("heading", { name: "SayType" }).closest("article")!;
+    const project = getHubProjects(locale).featured.find((item) => item.name === "TypeAloud")!;
+    const card = screen.getByRole("heading", { name: "TypeAloud" }).closest("article")!;
     const expected = locale === "en"
       ? "100% local, offline transcription. No subscription."
       : "100% \u672c\u5730\u79bb\u7ebf\u8f6c\u5199\uff0c\u65e0\u9700\u8ba2\u9605";

@@ -68,18 +68,18 @@ const projectPresentation = {
       "zh": "\u83b7\u53d6 QuotaSwap"
     }
   },
-  "SayType": {
-    "id": "saytype",
+  "TypeAloud": {
+    "id": "typealoud",
     "tone": "blue",
-    "monogram": "ST",
+    "monogram": "TA",
     "platform": "macOS \u00b7 Windows \u00b7 Linux",
     "shortDescription": {
       "en": "100% local, offline transcription. No subscription.",
       "zh": "100% \u672c\u5730\u79bb\u7ebf\u8f6c\u5199\uff0c\u65e0\u9700\u8ba2\u9605"
     },
     "cta": {
-      "en": "Explore SayType",
-      "zh": "\u4e86\u89e3 SayType"
+      "en": "Explore TypeAloud",
+      "zh": "\u4e86\u89e3 TypeAloud"
     }
   },
   "BetterSchool": {
@@ -261,7 +261,7 @@ export type HubProject = ProjectCard & {
   cta: string;
 };
 
-const featuredNames = ["SayType", "Veiled Roundtable", "KanaDrill"] as const;
+const featuredNames = ["TypeAloud", "Veiled Roundtable", "KanaDrill"] as const;
 
 const moreNames = ["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap"] as const;
 

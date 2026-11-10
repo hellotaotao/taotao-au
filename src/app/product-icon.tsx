@@ -20,7 +20,7 @@ import {
 const icons = {
   tubefilter: FunnelIcon,
   quotaswap: SwapIcon,
-  saytype: MicrophoneIcon,
+  typealoud: MicrophoneIcon,
   betterschool: MapPinIcon,
   kanadrill: TranslateIcon,
   "maths-practice": MathOperationsIcon,

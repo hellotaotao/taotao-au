@@ -119,7 +119,7 @@ const projectsBase = [
     },
   },
   {
-    name: "SayType",
+    name: "TypeAloud",
     href: "https://typealoud.app/",
     tier: "activeNow",
     status: "live",

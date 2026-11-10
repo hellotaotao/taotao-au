@@ -51,7 +51,7 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
 .tone-peach { --tone: #ffddb4; --soft: #ffead1; --icon: #d67337; }
 .illustration-slot { position: absolute; z-index: -1; pointer-events: none; }
 .product-illustration { object-fit: contain; object-position: right bottom; }
-.featured-saytype .illustration-slot { right: -22px; bottom: -12px; width: 72%; height: 96%; }
+.featured-typealoud .illustration-slot { right: -22px; bottom: -12px; width: 72%; height: 96%; }
 /* Veiled Roundtable has a taller copy block, so its artwork sits in flow below the CTA instead of behind it. */
 .featured-veiled-roundtable { display: flex; flex-direction: column; }
 .featured-veiled-roundtable .illustration-slot { position: relative; order: 1; flex: 1 0 150px; margin: -20px 4% -12px; }
@@ -68,12 +68,12 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
 .product-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 40px; margin-top: 16px; padding: 9px 14px; border-radius: 8px; background: var(--ink); color: white; font-size: 14px; font-weight: 750; line-height: 1.3; transition: transform .18s ease, box-shadow .18s ease; white-space: nowrap; }
 .product-button:hover { transform: translateY(-3px); box-shadow: 0 5px 0 #14286b25; }
 .product-button span { font-size: 21px; line-height: .8; }
-.featured-saytype { color: white; }
-.featured-saytype .featured-copy { padding: 67px 28px 36px; }
-.featured-saytype h3 { font-size: clamp(44px, 4.8vw, 68px); letter-spacing: -1.8px; margin-bottom: 14px; }
-.featured-saytype .featured-description { max-width: 300px; text-wrap: balance; }
-.featured-saytype .product-button { background: var(--paper); color: var(--ink); margin-top: 36px; min-height: 46px; font-size: 16px; padding-inline: 18px; }
-.featured-saytype .featured-icon { margin-bottom: 15px; }
+.featured-typealoud { color: white; }
+.featured-typealoud .featured-copy { padding: 67px 28px 36px; }
+.featured-typealoud h3 { font-size: clamp(44px, 4.8vw, 68px); letter-spacing: -1.8px; margin-bottom: 14px; }
+.featured-typealoud .featured-description { max-width: 300px; text-wrap: balance; }
+.featured-typealoud .product-button { background: var(--paper); color: var(--ink); margin-top: 36px; min-height: 46px; font-size: 16px; padding-inline: 18px; }
+.featured-typealoud .featured-icon { margin-bottom: 15px; }
 .featured-kanadrill .featured-icon { color: #8351da; }
 .lab-section { margin-top: 36px; }
 .lab-heading { display: flex; align-items: baseline; gap: 17px; margin-bottom: 25px; }
@@ -130,15 +130,15 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
 }
 @media (max-width: 1050px) {
   .featured-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .featured-saytype { grid-column: 1 / -1; min-height: 400px; }
-  .featured-saytype .featured-copy { padding: 38px; }
-  .featured-saytype h3 { font-size: 62px; }
-  .featured-saytype .illustration-slot { right: 4%; width: 65%; }
+  .featured-typealoud { grid-column: 1 / -1; min-height: 400px; }
+  .featured-typealoud .featured-copy { padding: 38px; }
+  .featured-typealoud h3 { font-size: 62px; }
+  .featured-typealoud .illustration-slot { right: 4%; width: 65%; }
   .featured-kanadrill .illustration-slot { height: 180px; }
-  .featured-card:not(.featured-saytype) { min-height: 445px; }
+  .featured-card:not(.featured-typealoud) { min-height: 445px; }
   .featured-copy { padding: 28px; }
   .featured-card h3 { font-size: 34px; }
-  .featured-saytype h3 { font-size: 62px; }
+  .featured-typealoud h3 { font-size: 62px; }
   .featured-description { font-size: 18px; }
   .product-button { font-size: 15px; padding-inline: 15px; }
   .lab-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
@@ -158,18 +158,18 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
   .intro-spark svg { width: 40px; height: 40px; }
   h2 { font-size: 23px; }
   .featured-grid { grid-template-columns: 1fr; gap: 16px; }
-  .featured-card, .featured-card:not(.featured-saytype) { min-height: 415px; border-radius: 20px; }
-  .featured-saytype { grid-column: auto; min-height: 445px; }
-  .featured-saytype .featured-copy { padding: 28px; }
-  .featured-saytype .illustration-slot { right: -13%; bottom: -12%; width: 96%; height: 80%; }
+  .featured-card, .featured-card:not(.featured-typealoud) { min-height: 415px; border-radius: 20px; }
+  .featured-typealoud { grid-column: auto; min-height: 445px; }
+  .featured-typealoud .featured-copy { padding: 28px; }
+  .featured-typealoud .illustration-slot { right: -13%; bottom: -12%; width: 96%; height: 80%; }
   .featured-kanadrill .illustration-slot { height: 151px; }
-  .featured-saytype h3 { font-size: 52px; }
-  .featured-saytype .featured-description { max-width: 230px; }
-  .featured-saytype .platform { max-width: 195px; line-height: 1.55; font-size: 14px; }
-  .featured-saytype .product-button { margin-top: 25px; font-size: 14px; }
+  .featured-typealoud h3 { font-size: 52px; }
+  .featured-typealoud .featured-description { max-width: 230px; }
+  .featured-typealoud .platform { max-width: 195px; line-height: 1.55; font-size: 14px; }
+  .featured-typealoud .product-button { margin-top: 25px; font-size: 14px; }
   .featured-copy { padding: 27px; }
   .featured-card h3 { font-size: 36px; }
-  .featured-saytype h3 { font-size: 52px; }
+  .featured-typealoud h3 { font-size: 52px; }
   .featured-icon { width: 66px; height: 66px; border-radius: 18px; margin-bottom: 16px; }
   .featured-icon svg { width: 46px; height: 46px; }
   .featured-description { font-size: 18px; max-width: 230px; }
@@ -195,8 +195,8 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
   .site-header { gap: 18px; }
   .site-header nav { width: 100%; justify-content: space-between; }
   .home-intro h1 { font-size: 25px; }
-  .featured-saytype .featured-copy { padding-inline: 23px; }
-  .featured-saytype h3 { font-size: 46px; }
+  .featured-typealoud .featured-copy { padding-inline: 23px; }
+  .featured-typealoud h3 { font-size: 46px; }
   .footer-links { gap: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -267,7 +267,7 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
   .more-products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (min-width: 701px) and (max-width: 1050px) {
-  .featured-card:not(.featured-saytype) .featured-description { min-height: 2.8em; }
+  .featured-card:not(.featured-typealoud) .featured-description { min-height: 2.8em; }
 }
 @media (max-width: 700px) {
   .more-products-section, .lab-section { margin-top: 36px; }
@@ -277,21 +277,21 @@ h2 { font-size: 26px; font-weight: 700; line-height: 1.3; letter-spacing: -.4px;
   .more-product-copy { grid-column: 2; grid-row: 1; }
   .more-product-copy h3 { font-size: 22px; overflow-wrap: normal; }
   .home-intro h1 .tagline-phrase { display: block; }
-  .featured-card:not(.featured-saytype) { min-height: 340px; }
-  .featured-card:not(.featured-saytype) .featured-copy { padding: 24px; }
-  .featured-card:not(.featured-saytype) .featured-icon { width: 54px; height: 54px; margin-bottom: 12px; }
-  .featured-card:not(.featured-saytype) .featured-icon svg { width: 38px; height: 38px; }
-  .featured-card:not(.featured-saytype) h3 { font-size: 30px; }
-  .featured-card:not(.featured-saytype) .illustration-slot { width: 45%; height: 108px; right: 0; bottom: 0; }
-  .featured-card:not(.featured-saytype) .featured-description { font-size: 16px; }
+  .featured-card:not(.featured-typealoud) { min-height: 340px; }
+  .featured-card:not(.featured-typealoud) .featured-copy { padding: 24px; }
+  .featured-card:not(.featured-typealoud) .featured-icon { width: 54px; height: 54px; margin-bottom: 12px; }
+  .featured-card:not(.featured-typealoud) .featured-icon svg { width: 38px; height: 38px; }
+  .featured-card:not(.featured-typealoud) h3 { font-size: 30px; }
+  .featured-card:not(.featured-typealoud) .illustration-slot { width: 45%; height: 108px; right: 0; bottom: 0; }
+  .featured-card:not(.featured-typealoud) .featured-description { font-size: 16px; }
 }
 @media (max-width: 700px) {
-  .featured-saytype .illustration-slot { right: 0; bottom: 0; width: 48%; height: 72%; }
+  .featured-typealoud .illustration-slot { right: 0; bottom: 0; width: 48%; height: 72%; }
 }
 @media (min-width: 481px) and (max-width: 700px) {
-  .featured-saytype .illustration-slot { right: 2%; bottom: 4%; width: 44%; height: 88%; }
-  .featured-card:not(.featured-saytype) .illustration-slot { right: 2%; bottom: 6%; width: 43%; height: 76%; }
-  .featured-card:not(.featured-saytype) .featured-copy { max-width: 58%; }
+  .featured-typealoud .illustration-slot { right: 2%; bottom: 4%; width: 44%; height: 88%; }
+  .featured-card:not(.featured-typealoud) .illustration-slot { right: 2%; bottom: 6%; width: 43%; height: 76%; }
+  .featured-card:not(.featured-typealoud) .featured-copy { max-width: 58%; }
 }
 @media (max-width: 700px) {
   .featured-card.featured-veiled-roundtable .featured-copy { max-width: 100%; }

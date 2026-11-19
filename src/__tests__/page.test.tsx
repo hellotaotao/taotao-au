@@ -83,11 +83,11 @@ describe("i18n locale detection", () => {
 describe("Product hub", () => {
   it.each(["en", "zh"] as const)("keeps every project reachable in %s", (locale) => {
     render(<HomePage locale={locale} />);
-    const links = screen.getAllByRole("link").filter((link) => /betterschool.au|typealoud.app|kanadrill.taotao|mathtrainer.taotao|apps\.apple\.com\/app\/id6746871154|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|energy.taotao|casemap.taotao|quotaswap.taotao|chromewebstore.google.com/.test(link.getAttribute("href") ?? ""));
+    const links = screen.getAllByRole("link").filter((link) => /betterschool.au|typealoud.app|kanadrill.taotao|mathtrainer.taotao|apps\.apple\.com\/app\/id6746871154|everlog.taotao|stringart.taotao|mathplay.taotao|menti.taotao|avalon.taotao|casemap.taotao|quotaswap.taotao|chromewebstore.google.com/.test(link.getAttribute("href") ?? ""));
     expect(links).toHaveLength(8);
     expect(screen.getAllByText(locale === "en" ? "Live product" : "\u5df2\u4e0a\u7ebf\u4ea7\u54c1", { ignore: ".lab-details[hidden] *" })).toHaveLength(3);
     expect(screen.getAllByText(locale === "en" ? "Active build" : "\u6d3b\u8dc3\u5f00\u53d1\u4e2d", { ignore: ".lab-details[hidden] *" })).toHaveLength(2);
-    expect(screen.getAllByText(locale === "en" ? "Prototype" : "\u539f\u578b", { ignore: ".lab-details[hidden] *" })).toHaveLength(4);
+    expect(screen.getAllByText(locale === "en" ? "Prototype" : "\u539f\u578b", { ignore: ".lab-details[hidden] *" })).toHaveLength(3);
     expect(new Set(links.map((link) => link.getAttribute("href"))).size).toBe(8);
   });
 
@@ -101,7 +101,7 @@ describe("Product hub", () => {
     const lab = screen.getByRole("region", { name: "In the lab" });
     expect(within(featuredGrid).getAllByRole("link")).toHaveLength(3);
     expect(within(lab).queryAllByRole("link")).toHaveLength(0);
-    expect(within(lab).getAllByRole("button")).toHaveLength(6);
+    expect(within(lab).getAllByRole("button")).toHaveLength(5);
     expect(within(featuredGrid).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent)).toEqual([
       "TypeAloud",
       "Voicely",
@@ -165,7 +165,7 @@ describe("TypeAloud local transcription positioning", () => {
 
 it.each(["en", "zh"] as const)("orders secondary products and keeps Threadline in the lab in %s", (locale) => {
   const { lab } = getHubProjects(locale);
-  expect(lab.map(p => p.name)).toEqual(["Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"]);
+  expect(lab.map(p => p.name)).toEqual(["Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii"]);
   render(<HomePage locale={locale} />);
   expect(screen.queryByText("AI Ops Canvas")).not.toBeInTheDocument();
   expect(screen.queryByRole("button", {name: /TubeFilter/})).not.toBeInTheDocument();
@@ -211,7 +211,7 @@ it.each(["en", "zh"] as const)("expands one project at a time with explicit dest
     expect(within(panel).getByRole("link")).toHaveAttribute("href", project.href);
     expect(screen.getAllByRole("button", {expanded: true})).toHaveLength(1);
   }
-  const last = screen.getByRole("button", {name: /EnergyLens/});
+  const last = screen.getByRole("button", {name: /Mentii/});
   fireEvent.click(last);
   expect(last).toHaveAttribute("aria-expanded", "false");
   fireEvent.click(last);

@@ -218,17 +218,6 @@ const projectsBase = [
     },
   },
   {
-    name: "EnergyLens",
-    href: "https://energy.taotao.au/",
-    tier: "experiments",
-    status: "prototype",
-    accent: "rgba(160, 255, 214, 0.42)",
-    description: {
-      en: "Compares Australian electricity plans by replaying real smart-meter interval data through retailer tariff formulas.",
-      zh: "把真实智能电表分时数据代入零售商资费公式，比较澳洲电力方案的实际成本。",
-    },
-  },
-  {
     name: "CaseMap",
     href: "https://casemap.taotao.au/",
     tier: "experiments",

@@ -208,20 +208,6 @@ const projectPresentation = {
       "zh": "\u6253\u5f00\u963f\u74e6\u9686\u52a9\u624b"
     }
   },
-  "EnergyLens": {
-    "id": "energylens",
-    "tone": "mint",
-    "monogram": "EL",
-    "platform": "",
-    "shortDescription": {
-      "en": "Compare electricity plans.",
-      "zh": "\u6bd4\u8f83\u7535\u529b\u65b9\u6848\u3002"
-    },
-    "cta": {
-      "en": "",
-      "zh": ""
-    }
-  },
   "CaseMap": {
     "id": "casemap",
     "tone": "lavender",
@@ -265,7 +251,7 @@ const featuredNames = ["TypeAloud", "Voicely", "Veiled Roundtable"] as const;
 
 const moreNames = ["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap", "KanaDrill"] as const;
 
-const labNames = ["Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii", "EnergyLens"] as const;
+const labNames = ["Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii"] as const;
 
 export function getHubProjects(locale: Locale): {
   featured: HubProject[];

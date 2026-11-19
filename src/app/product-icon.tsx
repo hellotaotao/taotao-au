@@ -3,7 +3,6 @@ import {
   FunnelIcon,
   ChatsIcon,
   FlowArrowIcon,
-  LightningIcon,
   MapPinIcon,
   MaskHappyIcon,
   MathOperationsIcon,
@@ -30,7 +29,6 @@ const icons = {
   "mathplay-au": PuzzlePieceIcon,
   mentii: MegaphoneIcon,
   "veiled-roundtable": MaskHappyIcon,
-  energylens: LightningIcon,
   casemap: ChatsIcon,
   "ai-ops-canvas": FlowArrowIcon,
 };

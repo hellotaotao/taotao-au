@@ -218,6 +218,28 @@ const projectsBase = [
     },
   },
   {
+    name: "Bad Instinct",
+    href: "https://badinstinct.taotao.au/",
+    tier: "experiments",
+    status: "live",
+    accent: "rgba(160, 255, 214, 0.42)",
+    description: {
+      en: "A 3D trainer for badminton doubles positioning. Five principles drawn from BWF coaching material, each with an animated rally you can pause, slow down and orbit, then rallies where you pick where to move and compare your move with the recommended one.",
+      zh: "一个 3D 羽毛球双打站位训练器。5 条站位原则取自 BWF 教练资料，每条配一段可暂停、慢放、转视角的 3D 回合演示；练习时由你决定往哪儿移动，再和推荐走位对照回放。",
+    },
+  },
+  {
+    name: "YourStory",
+    href: "https://yourstory.taotao.au/",
+    tier: "experiments",
+    status: "prototype",
+    accent: "rgba(255, 190, 126, 0.48)",
+    description: {
+      en: "An AI life-story interviewer (in Chinese) that asks follow-up questions and remembers what you have told it across sessions. Talk by voice or text, start without an account, and correct its notes when it gets a name wrong.",
+      zh: "人生访谈：一个会追问、会记住你的 AI 访谈者。可以打字也可以按住说话，打开就能聊，不用先注册；它记错了人名或说法，你可以直接纠正。",
+    },
+  },
+  {
     name: "CaseMap",
     href: "https://casemap.taotao.au/",
     tier: "experiments",

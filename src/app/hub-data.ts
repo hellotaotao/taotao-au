@@ -208,6 +208,34 @@ const projectPresentation = {
       "zh": "\u6253\u5f00\u963f\u74e6\u9686\u52a9\u624b"
     }
   },
+  "Bad Instinct": {
+    "id": "badinstinct",
+    "tone": "mint",
+    "monogram": "BI",
+    "platform": "Web",
+    "shortDescription": {
+      "en": "Learn where to stand in badminton doubles.",
+      "zh": "\u7fbd\u6bdb\u7403\u53cc\u6253\uff0c\u5b66\u4f1a\u7ad9\u4f4d\u3002"
+    },
+    "cta": {
+      "en": "",
+      "zh": ""
+    }
+  },
+  "YourStory": {
+    "id": "yourstory",
+    "tone": "peach",
+    "monogram": "YS",
+    "platform": "Web",
+    "shortDescription": {
+      "en": "An AI interviewer for your life story.",
+      "zh": "\u4eba\u751f\u8bbf\u8c08\uff0c\u4f1a\u8ffd\u95ee\u4e5f\u8bb0\u5f97\u4f4f\u3002"
+    },
+    "cta": {
+      "en": "",
+      "zh": ""
+    }
+  },
   "CaseMap": {
     "id": "casemap",
     "tone": "lavender",
@@ -251,7 +279,7 @@ const featuredNames = ["TypeAloud", "Voicely", "Veiled Roundtable"] as const;
 
 const moreNames = ["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap", "KanaDrill"] as const;
 
-const labNames = ["Threadline Studio", "MathPlay AU", "CaseMap", "EverLog", "Mentii"] as const;
+const labNames = ["Threadline Studio", "Bad Instinct", "YourStory", "MathPlay AU", "CaseMap", "EverLog", "Mentii"] as const;
 
 export function getHubProjects(locale: Locale): {
   featured: HubProject[];

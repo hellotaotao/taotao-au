@@ -9,6 +9,8 @@ import {
   MegaphoneIcon,
   MicrophoneIcon,
   PuzzlePieceIcon,
+  QuotesIcon,
+  RacquetIcon,
   ScribbleLoopIcon,
   StarFourIcon,
   SwapIcon,
@@ -29,6 +31,8 @@ const icons = {
   "mathplay-au": PuzzlePieceIcon,
   mentii: MegaphoneIcon,
   "veiled-roundtable": MaskHappyIcon,
+  badinstinct: RacquetIcon,
+  yourstory: QuotesIcon,
   casemap: ChatsIcon,
   "ai-ops-canvas": FlowArrowIcon,
 };

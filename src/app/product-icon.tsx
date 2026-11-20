@@ -2,7 +2,6 @@ import {
   BookOpenTextIcon,
   FunnelIcon,
   ChatsIcon,
-  FlowArrowIcon,
   MapPinIcon,
   MaskHappyIcon,
   MathOperationsIcon,
@@ -34,7 +33,6 @@ const icons = {
   badinstinct: RacquetIcon,
   yourstory: QuotesIcon,
   casemap: ChatsIcon,
-  "ai-ops-canvas": FlowArrowIcon,
 };
 
 export function ProductIcon({ id }: { id: string }) {

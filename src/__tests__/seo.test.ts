@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import robots from "../app/robots";
-import { localizedAlternates } from "../app/seo";
+import { localizedAlternates, pageMetadata } from "../app/seo";
 import sitemap from "../app/sitemap";
 
 describe("search metadata", () => {
@@ -26,10 +26,21 @@ describe("search metadata", () => {
       "https://www.taotao.au/?lang=zh",
       "https://www.taotao.au/about",
       "https://www.taotao.au/about?lang=zh",
+      "https://www.taotao.au/archive",
+      "https://www.taotao.au/archive?lang=zh",
     ]);
   });
 
   it("points robots.txt at the sitemap on the www host", () => {
     expect(robots().sitemap).toBe("https://www.taotao.au/sitemap.xml");
+  });
+
+  it("gives Chinese pages a Chinese title and description", () => {
+    for (const path of ["/", "/about", "/archive"] as const) {
+      const zh = pageMetadata(path, "zh");
+      expect(zh.title).toMatch(/[\u4e00-\u9fff]/);
+      expect(zh.description).toMatch(/[\u4e00-\u9fff]/);
+      expect(pageMetadata(path, "en").title).not.toMatch(/[\u4e00-\u9fff]/);
+    }
   });
 });

@@ -1,294 +1,232 @@
-import { getProjectGroups, type Locale, type ProjectCard } from "./i18n";
+import { getProjects, type Locale, type ProjectCard } from "./i18n";
 
 export const hubCopy = {
-  "en": {
-    "tagline": "Useful tools. Playful experiments.",
-    "products": "Products",
-    "lab": "Lab",
-    "about": "About",
-    "featuredTitle": "Try these first",
-    "moreTitle": "More products",
-    "visitProduct": "Use product",
-    "installProduct": "Install extension",
-    "labTitle": "In the lab",
-    "labIntro": "Works in progress, open to explore.",
-    "madeBy": "Made by Tao",
-    "skipContent": "Skip to content",
-    "backToProducts": "Back to products",
-    "navigation": "Main navigation",
-    "language": "Switch language",
-    "hello": "Hi, I\u2019m Tao."
+  en: {
+    tagline: "Useful tools. Playful experiments.",
+    products: "Products",
+    lab: "Lab",
+    about: "About",
+    featuredTitle: "Try these first",
+    moreTitle: "More products",
+    visitProduct: "Open",
+    installProduct: "Install extension",
+    labTitle: "In the lab",
+    labIntro: "Works in progress, open to explore.",
+    archiveLink: "Older projects",
+    archiveTitle: "Older projects",
+    archiveIntro: "I'm not working on these right now, but they're still online and free to try. I may pick them up again one day.",
+    backToLab: "Back to the lab",
+    madeBy: "Made by Tao",
+    skipContent: "Skip to content",
+    backToProducts: "Back to products",
+    navigation: "Main navigation",
+    language: "Switch language",
+    hello: "Hi, I’m Tao.",
   },
-  "zh": {
-    "tagline": "\u5b9e\u7528\u7684\u5c0f\u5de5\u5177\uff0c\u597d\u73a9\u7684\u65b0\u5c1d\u8bd5\u3002",
-    "products": "\u4ea7\u54c1",
-    "lab": "\u5b9e\u9a8c\u5ba4",
-    "about": "\u5173\u4e8e\u6211",
-    "featuredTitle": "\u5148\u8bd5\u8bd5\u8fd9\u51e0\u4e2a",
-    "moreTitle": "\u66f4\u591a\u4f5c\u54c1",
-    "visitProduct": "\u5f00\u59cb\u4f7f\u7528",
-    "installProduct": "\u5b89\u88c5\u6269\u5c55",
-    "labTitle": "\u5b9e\u9a8c\u5ba4\u91cc",
-    "labIntro": "\u8fd8\u5728\u6253\u78e8\uff0c\u4e5f\u6b22\u8fce\u6765\u901b\u901b\u3002",
-    "madeBy": "Tao \u5236\u4f5c",
-    "skipContent": "\u8df3\u5230\u5185\u5bb9",
-    "backToProducts": "\u8fd4\u56de\u4ea7\u54c1",
-    "navigation": "\u4e3b\u5bfc\u822a",
-    "language": "\u5207\u6362\u8bed\u8a00",
-    "hello": "\u4f60\u597d\uff0c\u6211\u662f Tao\u3002"
-  }
+  zh: {
+    tagline: "实用的小工具，好玩的新尝试。",
+    products: "产品",
+    lab: "实验室",
+    about: "关于我",
+    featuredTitle: "先试试这几个",
+    moreTitle: "更多作品",
+    visitProduct: "打开",
+    installProduct: "安装扩展",
+    labTitle: "实验室里",
+    labIntro: "还在打磨，也欢迎来逛逛。",
+    archiveLink: "更早的项目",
+    archiveTitle: "更早的项目",
+    archiveIntro: "这些项目暂时没在开发，但都还在线，可以随便试。说不定哪天我会接着做。",
+    backToLab: "返回实验室",
+    madeBy: "Tao 制作",
+    skipContent: "跳到内容",
+    backToProducts: "返回产品",
+    navigation: "主导航",
+    language: "切换语言",
+    hello: "你好，我是 Tao。",
+  },
 } as const;
 
 const projectPresentation = {
-"TubeFilter": {
-  "id": "tubefilter",
-  "tone": "coral",
-  "monogram": "TF",
-  "platform": "Chrome",
-  "shortDescription": {
-    "en": "Block YouTube Shorts & Facebook Reels.",
-    "zh": "\u5c4f\u853d YouTube Shorts \u548c Facebook Reels\u3002"
-  },
-  "cta": {
-    "en": "Get TubeFilter",
-    "zh": "\u5b89\u88c5 TubeFilter"
-  }
-},
-  "QuotaSwap": {
-    "id": "quotaswap",
-    "tone": "sky",
-    "monogram": "QS",
-    "platform": "macOS",
-    "shortDescription": {
-      "en": "Switch Claude accounts in one click.",
-      "zh": "\u4e00\u952e\u5207\u6362 Claude \u8d26\u53f7\u3002"
+  TubeFilter: {
+    id: "tubefilter",
+    tone: "coral",
+    platform: "Chrome",
+    shortDescription: {
+      en: "Block YouTube Shorts & Facebook Reels.",
+      zh: "屏蔽 YouTube Shorts 和 Facebook Reels。",
     },
-    "cta": {
-      "en": "Get QuotaSwap",
-      "zh": "\u83b7\u53d6 QuotaSwap"
-    }
+    cta: { en: "Get TubeFilter", zh: "安装 TubeFilter" },
   },
-  "TypeAloud": {
-    "id": "typealoud",
-    "tone": "blue",
-    "monogram": "TA",
-    "platform": "macOS \u00b7 Windows \u00b7 Linux",
-    "shortDescription": {
-      "en": "100% local, offline transcription. No subscription.",
-      "zh": "100% \u672c\u5730\u79bb\u7ebf\u8f6c\u5199\uff0c\u65e0\u9700\u8ba2\u9605"
+  QuotaSwap: {
+    id: "quotaswap",
+    tone: "sky",
+    platform: "macOS",
+    shortDescription: {
+      en: "Switch Claude accounts in one click.",
+      zh: "一键切换 Claude 账号。",
     },
-    "cta": {
-      "en": "Explore TypeAloud",
-      "zh": "\u4e86\u89e3 TypeAloud"
-    }
+    cta: { en: "Get QuotaSwap", zh: "获取 QuotaSwap" },
   },
-  "BetterSchool": {
-    "id": "betterschool",
-    "tone": "yellow",
-    "monogram": "BS",
-    "platform": "Web",
-    "shortDescription": {
-      "en": "Find your next school, on the map.",
-      "zh": "\u5728\u5730\u56fe\u4e0a\uff0c\u627e\u5230\u5fc3\u4eea\u7684\u5b66\u6821\u3002"
+  TypeAloud: {
+    id: "typealoud",
+    tone: "blue",
+    platform: "macOS · Windows · Linux",
+    shortDescription: {
+      en: "Free voice typing, 100% local. Your audio is never uploaded.",
+      zh: "免费的语音输入软件，100% 本地处理，音频不上传。",
     },
-    "cta": {
-      "en": "Open BetterSchool",
-      "zh": "\u6253\u5f00 BetterSchool"
-    }
+    cta: { en: "Explore TypeAloud", zh: "了解 TypeAloud" },
   },
-  "KanaDrill": {
-    "id": "kanadrill",
-    "tone": "coral",
-    "monogram": "KD",
-    "platform": "Web",
-    "shortDescription": {
-      "en": "Make kana second nature.",
-      "zh": "\u8ba9\u5047\u540d\uff0c\u6210\u4e3a\u808c\u8089\u8bb0\u5fc6\u3002"
+  BetterSchool: {
+    id: "betterschool",
+    tone: "yellow",
+    platform: "Web",
+    shortDescription: {
+      en: "Choose your child's school on a map of every Australian school.",
+      zh: "在全澳学校地图上，给孩子挑选学校。",
     },
-    "cta": {
-      "en": "Open KanaDrill",
-      "zh": "\u6253\u5f00 KanaDrill"
-    }
+    cta: { en: "Open BetterSchool", zh: "打开 BetterSchool" },
   },
-  "MathTrainer": {
-    "id": "maths-practice",
-    "tone": "mint",
-    "monogram": "MT",
-    "platform": "",
-    "shortDescription": {
-      "en": "Adaptive maths practice. Visible progress.",
-      "zh": "\u81ea\u9002\u5e94\u6570\u5b66\u7ec3\u4e60\uff0c\u8fdb\u6b65\u770b\u5f97\u89c1\u3002"
+  KanaDrill: {
+    id: "kanadrill",
+    tone: "coral",
+    platform: "Web",
+    shortDescription: {
+      en: "Drill Japanese hiragana and katakana until they stick.",
+      zh: "把日语平假名和片假名练成肌肉记忆。",
     },
-    "cta": {
-      "en": "",
-      "zh": ""
-    }
+    cta: { en: "Open KanaDrill", zh: "打开 KanaDrill" },
   },
-  "Voicely": {
-    "id": "voicely",
-    "tone": "lavender",
-    "monogram": "V",
-    "platform": "iPhone \u00b7 iPad \u00b7 Mac",
-    "shortDescription": {
-      "en": "Meeting transcripts, made on your device. Free.",
-      "zh": "\u4f1a\u8bae\u8f6c\u5199\uff0c\u5728\u4f60\u7684\u8bbe\u5907\u4e0a\u5b8c\u6210\u3002\u514d\u8d39\u3002"
+  MathTrainer: {
+    id: "maths-practice",
+    tone: "mint",
+    platform: "",
+    shortDescription: {
+      en: "Adaptive maths practice. Visible progress.",
+      zh: "自适应数学练习，进步看得见。",
     },
-    "cta": {
-      "en": "Get it on the App Store",
-      "zh": "\u5728 App Store \u83b7\u53d6"
-    }
+    cta: { en: "", zh: "" },
   },
-  "EverLog": {
-    "id": "everlog",
-    "tone": "sky",
-    "monogram": "E",
-    "platform": "",
-    "shortDescription": {
-      "en": "Searchable life memories.",
-      "zh": "\u53ef\u4ee5\u641c\u7d22\u7684\u751f\u6d3b\u8bb0\u5fc6\u3002"
+  Voicely: {
+    id: "voicely",
+    tone: "lavender",
+    platform: "iPhone · iPad · Mac",
+    shortDescription: {
+      en: "Meeting transcripts, made on your device. Free.",
+      zh: "会议转写，在你的设备上完成。免费。",
     },
-    "cta": {
-      "en": "",
-      "zh": ""
-    }
+    cta: { en: "Get it on the App Store", zh: "在 App Store 获取" },
+  },
+  EverLog: {
+    id: "everlog",
+    tone: "sky",
+    platform: "",
+    shortDescription: {
+      en: "Searchable life memories.",
+      zh: "可以搜索的生活记忆。",
+    },
+    cta: { en: "", zh: "" },
   },
   "Threadline Studio": {
-    "id": "threadline-studio",
-    "tone": "peach",
-    "monogram": "TS",
-    "platform": "",
-    "shortDescription": {
-      "en": "Turn photos into string art.",
-      "zh": "\u628a\u7167\u7247\u53d8\u6210\u9489\u7ebf\u753b\u3002"
+    id: "threadline-studio",
+    tone: "peach",
+    platform: "",
+    shortDescription: {
+      en: "Turn photos into string art.",
+      zh: "把照片变成钉线画。",
     },
-    "cta": {
-      "en": "",
-      "zh": ""
-    }
+    cta: { en: "", zh: "" },
   },
   "MathPlay AU": {
-    "id": "mathplay-au",
-    "tone": "yellow",
-    "monogram": "MA",
-    "platform": "",
-    "shortDescription": {
-      "en": "Play your way through maths.",
-      "zh": "\u5728\u4e92\u52a8\u4e2d\u63a2\u7d22\u6570\u5b66\u3002"
+    id: "mathplay-au",
+    tone: "yellow",
+    platform: "",
+    shortDescription: {
+      en: "Interactive F–6 maths for the Australian Curriculum.",
+      zh: "对齐澳洲课程的学前至六年级互动数学。",
     },
-    "cta": {
-      "en": "",
-      "zh": ""
-    }
+    cta: { en: "", zh: "" },
   },
-  "Mentii": {
-    "id": "mentii",
-    "tone": "coral",
-    "monogram": "M",
-    "platform": "",
-    "shortDescription": {
-      "en": "Bring your audience into the room.",
-      "zh": "\u8ba9\u73b0\u573a\u89c2\u4f17\u4e00\u8d77\u53c2\u4e0e\u3002"
+  Mentii: {
+    id: "mentii",
+    tone: "coral",
+    platform: "",
+    shortDescription: {
+      en: "Live voting and prompts for your audience.",
+      zh: "让现场观众实时投票、参与互动。",
     },
-    "cta": {
-      "en": "",
-      "zh": ""
-    }
+    cta: { en: "", zh: "" },
   },
   "Veiled Roundtable": {
-    "id": "veiled-roundtable",
-    "tone": "sky",
-    "monogram": "VR",
-    "platform": "Web",
-    "shortDescription": {
-      "en": "An extra hand for Avalon night.",
-      "zh": "\u963f\u74e6\u9686\u805a\u4f1a\u7684\u5c0f\u52a9\u624b\u3002"
+    id: "veiled-roundtable",
+    tone: "sky",
+    platform: "Web",
+    shortDescription: {
+      en: "An extra hand for Avalon night.",
+      zh: "阿瓦隆聚会的小助手。",
     },
-    "cta": {
-      "en": "Open Avalon Assistant",
-      "zh": "\u6253\u5f00\u963f\u74e6\u9686\u52a9\u624b"
-    }
+    cta: { en: "Open Veiled Roundtable", zh: "打开 Veiled Roundtable" },
   },
   "Bad Instinct": {
-    "id": "badinstinct",
-    "tone": "mint",
-    "monogram": "BI",
-    "platform": "Web",
-    "shortDescription": {
-      "en": "Learn where to stand in badminton doubles.",
-      "zh": "\u7fbd\u6bdb\u7403\u53cc\u6253\uff0c\u5b66\u4f1a\u7ad9\u4f4d\u3002"
+    id: "badinstinct",
+    tone: "mint",
+    platform: "Web",
+    shortDescription: {
+      en: "Learn where to stand in badminton doubles.",
+      zh: "羽毛球双打，学会站位。",
     },
-    "cta": {
-      "en": "",
-      "zh": ""
-    }
+    cta: { en: "", zh: "" },
   },
-  "YourStory": {
-    "id": "yourstory",
-    "tone": "peach",
-    "monogram": "YS",
-    "platform": "Web",
-    "shortDescription": {
-      "en": "An AI interviewer for your life story.",
-      "zh": "\u4eba\u751f\u8bbf\u8c08\uff0c\u4f1a\u8ffd\u95ee\u4e5f\u8bb0\u5f97\u4f4f\u3002"
+  YourStory: {
+    id: "yourstory",
+    tone: "peach",
+    platform: "Web",
+    shortDescription: {
+      en: "An AI interviewer for your life story.",
+      zh: "人生访谈，会追问也记得住。",
     },
-    "cta": {
-      "en": "",
-      "zh": ""
-    }
+    cta: { en: "", zh: "" },
   },
-  "CaseMap": {
-    "id": "casemap",
-    "tone": "lavender",
-    "monogram": "CM",
-    "platform": "",
-    "shortDescription": {
-      "en": "Map your debate arguments.",
-      "zh": "\u68b3\u7406\u8fa9\u8bba\u601d\u8def\u3002"
+  CaseMap: {
+    id: "casemap",
+    tone: "lavender",
+    platform: "",
+    shortDescription: {
+      en: "Map your debate arguments.",
+      zh: "梳理辩论思路。",
     },
-    "cta": {
-      "en": "",
-      "zh": ""
-    }
+    cta: { en: "", zh: "" },
   },
-  "AI Ops Canvas": {
-    "id": "ai-ops-canvas",
-    "tone": "peach",
-    "monogram": "AI",
-    "platform": "",
-    "shortDescription": {
-      "en": "Make your workflows visible.",
-      "zh": "\u8ba9\u5de5\u4f5c\u6d41\u7a0b\u6e05\u6670\u53ef\u89c1\u3002"
-    },
-    "cta": {
-      "en": "",
-      "zh": ""
-    }
-  }
 } as const;
 
 export type HubProject = ProjectCard & {
   id: string;
   tone: string;
-  monogram: string;
   platform: string;
   shortDescription: string;
   cta: string;
 };
 
-const featuredNames = ["TypeAloud", "Voicely", "Veiled Roundtable"] as const;
+type ProjectName = keyof typeof projectPresentation;
 
-const moreNames = ["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap", "KanaDrill"] as const;
+const featuredNames = ["TypeAloud", "Voicely", "Veiled Roundtable"] as const satisfies readonly ProjectName[];
 
-const labNames = ["Threadline Studio", "Bad Instinct", "YourStory", "MathPlay AU", "CaseMap", "EverLog", "Mentii"] as const;
+const moreNames = ["TubeFilter", "BetterSchool", "MathTrainer", "QuotaSwap", "KanaDrill"] as const satisfies readonly ProjectName[];
+
+const labNames = ["Threadline Studio", "Bad Instinct", "YourStory", "CaseMap", "EverLog", "Mentii"] as const satisfies readonly ProjectName[];
+
+// Projects that are no longer being worked on but stay online on the /archive page.
+const archiveNames = ["MathPlay AU"] as const satisfies readonly ProjectName[];
 
 export function getHubProjects(locale: Locale): {
   featured: HubProject[];
   more: HubProject[];
   lab: HubProject[];
+  archive: HubProject[];
 } {
-  const projects = getProjectGroups(locale).flatMap((group) => group.projects);
-  const presented = projects.map((project): HubProject => {
-    const presentation = projectPresentation[project.name as keyof typeof projectPresentation];
+  const presented = getProjects(locale).map((project): HubProject => {
+    const presentation = projectPresentation[project.name as ProjectName];
     return {
       ...project,
       ...presentation,
@@ -296,9 +234,12 @@ export function getHubProjects(locale: Locale): {
       cta: presentation.cta[locale],
     };
   });
+  const pick = (names: readonly ProjectName[]) =>
+    names.map((name) => presented.find((project) => project.name === name)!);
   return {
-    featured: featuredNames.map((name) => presented.find((project) => project.name === name)!),
-    more: moreNames.map((name) => presented.find((project) => project.name === name)!),
-    lab: labNames.map((name) => presented.find((project) => project.name === name)!),
+    featured: pick(featuredNames),
+    more: pick(moreNames),
+    lab: pick(labNames),
+    archive: pick(archiveNames),
   };
 }

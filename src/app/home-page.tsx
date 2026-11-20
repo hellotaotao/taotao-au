@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { LabProjects } from "./lab-projects";
 import { getHubProjects, hubCopy, type HubProject } from "./hub-data";
 import type { Locale } from "./i18n";
@@ -57,7 +58,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                     <h3>{project.name}</h3>
                     <p>{project.shortDescription}</p>
                     <a className="product-button" href={project.href} target="_blank" rel="noreferrer">
-                      {new URL(project.href).hostname === "chromewebstore.google.com" ? t.installProduct : t.visitProduct}
+                      {new URL(project.href).hostname === "chromewebstore.google.com" ? t.installProduct : `${t.visitProduct} ${project.name}`}
                       <span aria-hidden="true">&#8599;</span>
                     </a>
                   </div>
@@ -75,6 +76,9 @@ export function HomePage({ locale }: { locale: Locale }) {
             <p>{t.labIntro}</p>
           </div>
           <LabProjects projects={lab} locale={locale} />
+          <Link className="archive-link" href={`/archive?lang=${locale}`}>
+            {t.archiveLink}<span aria-hidden="true">&rarr;</span>
+          </Link>
         </section>
       </main>
     </SiteShell>

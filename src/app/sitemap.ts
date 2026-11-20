@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { localizedLanguages, localizedUrl, type LocalizedPath } from "./seo";
 
-const paths: LocalizedPath[] = ["/", "/about"];
+const paths: LocalizedPath[] = ["/", "/about", "/archive"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return paths.flatMap((path) =>

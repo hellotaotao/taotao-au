@@ -10,7 +10,7 @@ export function SiteShell({
   children,
 }: {
   locale: Locale;
-  page?: "home" | "about";
+  page?: "home" | "about" | "archive";
   children: ReactNode;
 }) {
   const t = hubCopy[locale];
@@ -27,7 +27,7 @@ export function SiteShell({
           <Link href={about} aria-current={page === "about" ? "page" : undefined}>{t.about}</Link>
           <a
             className="language-link"
-            href={`${page === "about" ? "/about" : "/"}?lang=${locale === "en" ? "zh" : "en"}`}
+            href={`${page === "home" ? "/" : `/${page}`}?lang=${locale === "en" ? "zh" : "en"}`}
             aria-label={t.language}
             lang={locale === "en" ? "zh" : "en"}
           >

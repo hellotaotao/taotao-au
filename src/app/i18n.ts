@@ -240,8 +240,8 @@ export const translations = {
       "Games",
     ],
     nowItems: [
-      "Most of my spare time goes into voice tools, learning apps, and an Avalon assistant.",
-      "Some are ready to try; others are still taking shape.",
+      "Most of my spare time goes into voice software: TypeAloud for voice typing and Voicely for meeting transcripts.",
+      "Alongside those, I keep improving BetterSchool, a map of every Australian school, and QuotaSwap, a Mac menu bar app for switching Claude accounts.",
     ],
     hero: {
       lead: "I'm a full-time software engineer based in Adelaide.",
@@ -277,8 +277,8 @@ export const translations = {
     ],
     focusAreas: ["实用 AI 产品", "教育", "效率工具", "语音优先软件", "游戏"],
     nowItems: [
-      "业余时间主要花在语音工具、学习应用和阿瓦隆助手上。",
-      "有些已经可以使用，有些还在慢慢打磨。",
+      "业余时间主要花在语音软件上：语音输入软件 TypeAloud，和会议转写应用 Voicely。",
+      "另外也在持续改进 BetterSchool（全澳学校地图）和 QuotaSwap（切换 Claude 账号的 Mac 菜单栏应用）。",
     ],
     hero: {
       lead: "我住在阿德莱德，是一名全职软件工程师。",

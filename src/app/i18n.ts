@@ -154,7 +154,7 @@ const projectsBase = [
     status: "live",
     description: {
       en: "Turns meaningful photos into circular nail-and-thread artwork, with a preview, pin path, and step-by-step winding instructions.",
-      zh: "把有意义的照片转换成圆形钉线画，并生成效果预览、钉点路径和逐步绕线说明。",
+      zh: "把照片做成圆形钉线画，并生成效果预览、钉点路径和逐步绕线说明。",
     },
   },
   {
@@ -172,7 +172,7 @@ const projectsBase = [
     status: "prototype",
     description: {
       en: "Lightweight audience interaction for live sessions, voting, prompts, and host-controlled participation.",
-      zh: "面向现场环节的轻量观众互动工具，支持投票、提示和主持人控制的参与流程。",
+      zh: "现场活动用的轻量观众互动工具：投票和提问，由主持人控制节奏。",
     },
   },
   {
@@ -245,10 +245,10 @@ export const translations = {
     ],
     hero: {
       lead: "I'm a full-time software engineer based in Adelaide.",
-      body: "Outside work, I enjoy making tools I want to use and playful experiments that others might enjoy too. taotao.au brings these side projects together, for my own everyday use and for you to explore.",
+      body: "Outside work, I enjoy making tools I want to use and playful experiments that others might enjoy too. taotao.au brings these side projects together. Feel free to try any of them.",
     },
     about: {
-      title: "About",
+      title: "Where these come from",
       copy: [
         "These hobby projects usually start with something I need in everyday life, or an idea I want to explore.",
       ],
@@ -275,17 +275,17 @@ export const translations = {
         href: "https://www.linkedin.com/in/ta0wang",
       },
     ],
-    focusAreas: ["实用 AI 产品", "教育", "效率工具", "语音优先软件", "游戏"],
+    focusAreas: ["实用 AI 产品", "教育", "效率工具", "语音软件", "游戏"],
     nowItems: [
-      "业余时间主要花在语音软件上：语音输入软件 TypeAloud，和会议转写应用 Voicely。",
+      "业余时间主要花在语音软件上：语音输入软件 TypeAloud 和会议转写应用 Voicely。",
       "另外也在持续改进 BetterSchool（全澳学校地图）和 QuotaSwap（切换 Claude 账号的 Mac 菜单栏应用）。",
     ],
     hero: {
       lead: "我住在阿德莱德，是一名全职软件工程师。",
-      body: "工作之外，我喜欢做一些自己想用、也希望别人觉得有用的小工具，以及好玩的实验。taotao.au 收集了这些业余项目，方便我自己使用，也欢迎你来探索、试用。",
+      body: "工作之外，我喜欢做一些自己想用、也希望别人觉得有用的小工具，以及好玩的实验。taotao.au 把这些业余项目放在一起，欢迎随便试用。",
     },
     about: {
-      title: "关于",
+      title: "这些项目从哪来",
       copy: [
         "这些兴趣项目大多来自自己的日常需要，或一个想试试看的点子。",
       ],
@@ -297,7 +297,7 @@ export const translations = {
     contact: {
       title: "联系",
       intro:
-        "如果你想联系我，欢迎发邮件或通过 LinkedIn 找到我。无论是项目反馈、使用中的问题，还是聊聊共同的兴趣，都很欢迎。",
+        "发邮件或在 LinkedIn 上找我都行。项目反馈、使用问题，或者只是聊聊共同的兴趣，都欢迎。",
     },
   },
 } as const;

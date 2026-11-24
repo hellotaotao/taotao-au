@@ -29,7 +29,7 @@ export const hubCopy = {
     lab: "实验室",
     about: "关于我",
     featuredTitle: "先试试这几个",
-    moreTitle: "更多作品",
+    moreTitle: "更多产品",
     visitProduct: "打开",
     installProduct: "安装扩展",
     labTitle: "实验室里",
